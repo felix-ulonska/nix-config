@@ -31,5 +31,4 @@
   networking.firewall.allowedTCPPorts = [ 22 ];
   networking.firewall.allowedUDPPorts = [ 22 ];
   system.stateVersion = "21.11"; # Did you read the comment?
-
 }
