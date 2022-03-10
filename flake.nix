@@ -7,10 +7,9 @@
       url = "github:serokell/deploy-rs";
     };
     agenix.url = "github:ryantm/agenix";
-    simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-20.09";
-
+    simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/";
   };
-  outputs = { self, nixpkgs, deploy-rs, agenix }:
+  outputs = { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver }:
     let pkgs = nixpkgs.legacyPackages.x86_64-linux;
     in
     {
@@ -19,6 +18,7 @@
         modules = [
           ./configuration.nix
           agenix.nixosModule
+          simple-nixos-mailserver.nixosModule
         ];
       };
 

@@ -14,4 +14,8 @@ let pubkeys = import ../data/pubkeys.nix; in
   "restic-nextcloud-password.age" = {
     publicKeys = pubkeys.jabbi.computers;
   };
+
+  "mail-password.age" = {
+    publicKeys = pubkeys.jabbi.computers;
+  };
 }
