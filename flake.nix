@@ -30,6 +30,7 @@
           };
         };
       };
+
       checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
 
       devShell.x86_64-linux = pkgs.mkShell {
@@ -39,8 +40,10 @@
         ];
         shellHook = ''
           lefthook install
+          function deploy() {
+            nix run --show-trace github:serokell/deploy-rs
+          }
         '';
-
       };
     };
 }

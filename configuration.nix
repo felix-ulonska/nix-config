@@ -4,6 +4,7 @@
     [
       ./hardware-configuration.nix
       ./modules/services/nginx.nix
+      ./modules/services/nextcloud.nix
     ];
 
   boot.loader.grub.enable = true;

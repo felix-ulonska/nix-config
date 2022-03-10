@@ -1,4 +1,4 @@
-{ ... }: {
+{ pkgs, ... }: {
   services.nginx = {
     enable = true;
 
@@ -9,14 +9,7 @@
 
     sslCiphers = "AES256+EECDH:AES256+EDH:!aNULL";
 
-    virtualHosts = {
-      "nix.zapfadventure.de" = {
-        ## Force HTTP redirect to HTTPS
-        forceSSL = true;
-        ## LetsEncrypt
-        enableACME = true;
-      };
-    };
+    virtualHosts = { };
   };
 
   security.acme = {
