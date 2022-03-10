@@ -6,6 +6,8 @@
       ./modules/services/nginx.nix
       ./modules/services/nextcloud.nix
       ./modules/services/mail.nix
+      ./modules/services/docker.nix
+      ./modules/services/minecraft.nix
     ];
 
   boot.loader.grub.enable = true;
