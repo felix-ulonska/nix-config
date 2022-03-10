@@ -7,7 +7,8 @@
       url = "github:serokell/deploy-rs";
     };
   };
-  outputs = { self, nixpkgs, deploy-rs }: {
+  outputs = { self, nixpkgs, deploy-rs }:
+  {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -28,7 +29,5 @@
       };
     };
     checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
-
-    devShell = nixpkgs.mkShell { buildInputs = [ nixpkgs.lefthook ]; };
   };
 }
