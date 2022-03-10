@@ -6,8 +6,9 @@
     deploy-rs = {
       url = "github:serokell/deploy-rs";
     };
+    agenix.url = "github:ryantm/agenix";
   };
-  outputs = { self, nixpkgs, deploy-rs }:
+  outputs = { self, nixpkgs, deploy-rs, agenix }:
     let pkgs = nixpkgs.legacyPackages.x86_64-linux;
     in
     {
@@ -15,6 +16,7 @@
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
+          agenix.nixosModule
         ];
       };
 
@@ -37,6 +39,7 @@
         buildInputs = [
           pkgs.lefthook
           pkgs.nixpkgs-fmt
+          agenix.defaultPackage.x86_64-linux
         ];
         shellHook = ''
           lefthook install
