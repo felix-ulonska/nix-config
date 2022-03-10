@@ -1,6 +1,24 @@
-{ ... }: {
-  age.secrets.nextcloud-db-pass.file = ../secrets/nextcloud-db-pass.age;
-  age.secrets.nextcloud-admin-pass.file = ../secrets/nextcloud-admin-pass.age;
+{ pkgs, ... }: {
+  age.secrets = {
+    nextcloud-db-pass = {
+      file = ../../secrets/nextcloud-db-pass.age;
+      owner = "nextcloud";
+      group = "nextcloud";
+    };
+    nextcloud-admin-pass = {
+      file = ../../secrets/nextcloud-admin-pass.age;
+      owner = "nextcloud";
+      group = "nextcloud";
+    };
+    restic-nextcloud-password = {
+      file = ../../secrets/restic-nextcloud-password.age;
+    };
+    resticSecrets = {
+      file = ../../secrets/resticSecrets.age;
+    };
+  };
+
+  environment.systemPackages = with pkgs; [ php ];
   services.nextcloud = {
     enable = true;
     hostName = "cloud.zapfadventure.de";
@@ -45,5 +63,21 @@
   systemd.services."nextcloud-setup" = {
     requires = [ "postgresql.service" ];
     after = [ "postgresql.service" ];
+  };
+
+  systemd.services."backup-nextcloud" = {
+    serviceConfig.Type = "oneshot";
+    startAt = "*-*-* 00:03:00";
+    script = "
+        source /run/agenix/resticSecrets
+        sudo -u nextcloud php occ maintenance:mode --on
+
+        export PGPASSWORD=$(cat /run/agenix/nextcloud-db-pass);
+        pg_dump nextcloud -f /var/lib/nextcloud/nextcloud-sqlbkp_`date +\"%Y%m%d\"`.bak
+        unset PGPASSWORD
+        restic -p /run/agenix/restic-nextcloud-password -r b2:silberpfeil:/nextcloud backup /var/lib/nextcloud
+        rm /var/lib/nextcloud/nextcloud-sqlbkp_*
+        ";
+    postStop = "sudo -u nextcloud php occ maintenance:mode --off";
   };
 }

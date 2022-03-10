@@ -9,7 +9,12 @@
 
     sslCiphers = "AES256+EECDH:AES256+EDH:!aNULL";
 
-    virtualHosts = { };
+    virtualHosts = {
+      "cloud.zapfadventure.de" = {
+        forceSSL = true;
+        enableACME = true;
+      };
+    };
   };
 
   security.acme = {
