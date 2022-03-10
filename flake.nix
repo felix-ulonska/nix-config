@@ -37,6 +37,10 @@
           pkgs.lefthook
           pkgs.nixpkgs-fmt
         ];
+        shellHook = ''
+          lefthook install
+        '';
+
       };
     };
 }
