@@ -1,4 +1,6 @@
 { ... }: {
+  age.secrets.nextcloud-db-pass.file = ../secrets/nextcloud-db-pass.age;
+  age.secrets.nextcloud-admin-pass.file = ../secrets/nextcloud-admin-pass.age;
   services.nextcloud = {
     enable = true;
     hostName = "cloud.zapfadventure.de";
@@ -20,9 +22,9 @@
       dbuser = "nextcloud";
       dbhost = "/run/postgresql"; # nextcloud will add /.s.PGSQL.5432 by itself
       dbname = "nextcloud";
-      dbpassFile = "/var/nextcloud-db-pass";
+      dbpassFile = "/run/agenix/nextcloud-db-pass";
 
-      adminpassFile = "/var/nextcloud-admin-pass";
+      adminpassFile = "/run/agenix/nextcloud-admin-pass";
       adminuser = "admin";
     };
   };

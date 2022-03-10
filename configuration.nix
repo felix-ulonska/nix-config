@@ -4,10 +4,9 @@
     [
       ./hardware-configuration.nix
       ./modules/services/nginx.nix
-      # ./modules/services/nextcloud.nix
+      ./modules/services/nextcloud.nix
     ];
 
-  age.secrets.nextcloud-db-pass.file = ./secrets/nextcloud-db-pass.age;
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
   boot.loader.grub.device = "/dev/sda";
