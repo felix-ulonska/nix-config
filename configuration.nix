@@ -9,7 +9,7 @@
   boot.loader.grub.version = 2;
   boot.loader.grub.device = "/dev/sda";
 
-  networking.hostName = "cool-server";
+  networking.hostName = "nixos";
 
   time.timeZone = "Europe/Amsterdam";
 
@@ -20,6 +20,9 @@
     isNormalUser = true;
     extraGroups = [ "wheel" ];
   };
+  users.users."root".openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGQ+BFtjE8D9+wVAnZ7IrhkTPlA62jdEq037+PaKCXkM jabbi@mimo"
+  ];
 
   environment.systemPackages = with pkgs; [
     vim
@@ -27,6 +30,7 @@
   ];
 
   services.openssh.enable = true;
+  services.openssh.permitRootLogin = "yes";
 
   networking.firewall.allowedTCPPorts = [ 22 ];
   networking.firewall.allowedUDPPorts = [ 22 ];
