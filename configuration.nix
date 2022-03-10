@@ -30,6 +30,7 @@
   environment.systemPackages = with pkgs; [
     vim
     curl
+    sudo
   ];
 
   networking.firewall.allowedTCPPorts = [ 22 80 443 ];

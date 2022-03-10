@@ -18,7 +18,6 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [ php ];
   services.nextcloud = {
     enable = true;
     hostName = "cloud.zapfadventure.de";
@@ -68,16 +67,15 @@
   systemd.services."backup-nextcloud" = {
     serviceConfig.Type = "oneshot";
     startAt = "*-*-* 00:03:00";
+    path = [ pkgs.restic pkgs.sudo ];
     script = "
         source /run/agenix/resticSecrets
-        sudo -u nextcloud php occ maintenance:mode --on
+        /run/current-system/sw/bin/nextcloud-occ maintenance:mode --on
 
-        export PGPASSWORD=$(cat /run/agenix/nextcloud-db-pass);
-        pg_dump nextcloud -f /var/lib/nextcloud/nextcloud-sqlbkp_`date +\"%Y%m%d\"`.bak
-        unset PGPASSWORD
+        sudo -u nextcloud /run/current-system/sw/bin/pg_dump nextcloud -U nextcloud -f /var/lib/nextcloud/nextcloud-sqlbkp_`date +\"%Y%m%d\"`.bak
         restic -p /run/agenix/restic-nextcloud-password -r b2:silberpfeil:/nextcloud backup /var/lib/nextcloud
         rm /var/lib/nextcloud/nextcloud-sqlbkp_*
         ";
-    postStop = "sudo -u nextcloud php occ maintenance:mode --off";
+    postStop = "/run/current-system/sw/bin/nextcloud-occ maintenance:mode --off";
   };
 }
