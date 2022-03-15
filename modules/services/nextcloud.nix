@@ -69,7 +69,7 @@
     startAt = "*-*-* 00:03:00";
     path = [ pkgs.restic pkgs.sudo ];
     script = "
-        source /run/agenix/resticSecrets
+        export $(grep -v '^#' /run/agenix/resticSecrets | xargs)
         /run/current-system/sw/bin/nextcloud-occ maintenance:mode --on
 
         sudo -u nextcloud /run/current-system/sw/bin/pg_dump nextcloud -U nextcloud -f /var/lib/nextcloud/nextcloud-sqlbkp_`date +\"%Y%m%d\"`.bak

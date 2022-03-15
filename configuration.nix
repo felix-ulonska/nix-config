@@ -8,6 +8,8 @@
       ./modules/services/mail.nix
       ./modules/services/docker.nix
       ./modules/services/minecraft.nix
+      #./modules/services/grafana.nix
+      #./modules/services/loki.nix
     ];
 
   boot.loader.grub.enable = true;
@@ -34,6 +36,7 @@
     vim
     curl
     sudo
+    wget
   ];
 
   networking.firewall.allowedTCPPorts = [ 22 80 443 ];
@@ -45,5 +48,5 @@
     passwordAuthentication = false;
   };
 
-  system.stateVersion = "21.11"; # Did you read the comment?
+  system.stateVersion = "21.11";
 }
