@@ -9,10 +9,17 @@
     agenix.url = "github:ryantm/agenix";
     simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/";
   };
-  outputs = { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver }:
-    let pkgs = nixpkgs.legacyPackages.x86_64-linux;
+  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, ... }:
+    let
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      lib = nixpkgs.lib.extend (self: super: {
+        my = import ./lib { inherit inputs; lib = self; };
+      });
     in
     {
+      lib = lib.my;
+      nixosModules = lib.my.mapModulesRec ./modules/services import;
+
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [

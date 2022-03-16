@@ -3,18 +3,13 @@
   imports =
     [
       ./hardware-configuration.nix
-      ./modules/services/nginx.nix
-      ./modules/services/nextcloud.nix
-      ./modules/services/mail.nix
-      ./modules/services/docker.nix
-      ./modules/services/minecraft.nix
-      #./modules/services/grafana.nix
-      #./modules/services/loki.nix
     ];
 
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
   boot.loader.grub.device = "/dev/sda";
+
+  jabbi.nextcloud.enable = true;
 
   networking.hostName = "nixos";
 
