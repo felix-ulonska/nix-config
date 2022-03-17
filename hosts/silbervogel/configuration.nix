@@ -29,13 +29,9 @@
 
   environment.systemPackages = with pkgs; [
     vim
-    curl
-    sudo
-    wget
   ];
 
-  networking.firewall.allowedTCPPorts = [ 22 80 443 ];
-  networking.firewall.allowedUDPPorts = [ 22 ];
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
 
   services.openssh = {
     enable = true;

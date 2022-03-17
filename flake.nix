@@ -23,7 +23,7 @@
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = lib.flatten [
-          ./configuration.nix
+          ./hosts/silbervogel/configuration.nix
           agenix.nixosModule
           simple-nixos-mailserver.nixosModule
           (lib.my.mapModulesRec' (toString ./modules/services) import)
@@ -32,12 +32,12 @@
 
       deploy = {
         nodes = {
-          "nixos" = {
+          "silbervogel" = {
             hostname = "5.45.111.134";
             sshUser = "root";
             profiles.system = {
               user = "root";
-              path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."nixos";
+              path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."silbervogel";
             };
           };
         };
