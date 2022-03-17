@@ -7,6 +7,9 @@ stages:
   - test
   - deploy
 
+before_script:
+  - echo "experimental-features = nix-command flakes" >> /etc/nix/nix.conf
+
 build:
   script:
     - nix flake check
