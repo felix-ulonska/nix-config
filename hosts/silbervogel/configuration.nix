@@ -15,6 +15,8 @@
     nextcloud.enable = true;
   };
 
+  jabbi.home.enable = true;
+
   networking.hostName = "silbervogel";
 
   time.timeZone = "Europe/Amsterdam";

@@ -8,8 +8,10 @@
     };
     agenix.url = "github:ryantm/agenix";
     simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/";
+    home-manager.url = "github:nix-community/home-manager/release-21.05";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, ... }:
+  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, ... }:
     let
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       lib = nixpkgs.lib.extend (self: super: {
@@ -26,8 +28,14 @@
           ./hosts/silbervogel/configuration.nix
           agenix.nixosModule
           simple-nixos-mailserver.nixosModule
-          (lib.my.mapModulesRec' (toString ./modules/services) import)
+          home-manager.nixosModules.home-manager
+          (lib.my.mapModulesRec' (toString ./modules) import)
+          ({ config, ... }: lib.mkMerge [{
+            services.getty.greetingLine =
+              "<<< Welcome to ${config.system.nixos.label} - Please leave\\l >>>";
+          }])
         ];
+        specialArgs = { inherit lib; };
       };
 
       deploy = {
