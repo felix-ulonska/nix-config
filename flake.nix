@@ -20,7 +20,7 @@
       lib = lib.my;
       nixosModules = lib.my.mapModulesRec ./modules/services import;
 
-      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.silbervogel = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = lib.flatten [
           ./hosts/silbervogel/configuration.nix

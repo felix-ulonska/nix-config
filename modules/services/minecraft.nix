@@ -1,10 +1,10 @@
 { lib, config, ... }:
 with lib;
 let
-  cfg = config.jabbi.minecraft;
+  cfg = config.jabbi.services.minecraft;
 in
 {
-  options.jabbi.minecraft = {
+  options.jabbi.services.minecraft = {
     enable = mkEnableOption "Enable ForgeServer";
   };
   config = mkIf cfg.enable {

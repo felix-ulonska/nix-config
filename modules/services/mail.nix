@@ -1,10 +1,10 @@
 { lib, config, ... }:
 with lib;
 let
-  cfg = config.jabbi.mail;
+  cfg = config.jabbi.services.mail;
 in
 {
-  options.jabbi.mail = {
+  options.jabbi.services.mail = {
     enable = mkEnableOption "Enable ForgeServer";
   };
 

@@ -9,9 +9,13 @@
   boot.loader.grub.version = 2;
   boot.loader.grub.device = "/dev/sda";
 
-  jabbi.nginx.enable = true;
+  jabbi.services = {
+    nginx.enable = true;
+    mail.enable = true;
+    nextcloud.enable = true;
+  };
 
-  networking.hostName = "nixos";
+  networking.hostName = "silbervogel";
 
   time.timeZone = "Europe/Amsterdam";
 
