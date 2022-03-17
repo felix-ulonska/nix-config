@@ -1,11 +1,11 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 with lib;
 let
   cfg = config.jabbi.nextcloud;
 in
 {
-  options.jabbi.nextcloud = {
-    enable = mkEnableOption "Enable Nextcloud";
+  options.jabbi.nginx = {
+    enable = mkEnableOption "Enable Nginx";
   };
   config = mkIf cfg.enable {
     services.nginx = {

@@ -9,7 +9,7 @@
   boot.loader.grub.version = 2;
   boot.loader.grub.device = "/dev/sda";
 
-  jabbi.nextcloud.enable = true;
+  jabbi.nginx.enable = true;
 
   networking.hostName = "nixos";
 

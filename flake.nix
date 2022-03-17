@@ -22,10 +22,11 @@
 
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [
+        modules = lib.flatten [
           ./configuration.nix
           agenix.nixosModule
           simple-nixos-mailserver.nixosModule
+          (lib.my.mapModulesRec' (toString ./modules/services) import)
         ];
       };
 
