@@ -2,6 +2,7 @@
 {
   home.packages = [
     pkgs.nodejs
+    pkgs.lazygit
   ];
   home.file.".config/nvim".source = ./config;
   home.file.".config/nvim".recursive = true;
@@ -9,14 +10,33 @@
     enable = true;
     vimAlias = true;
     viAlias = true;
+    extraConfig = ''
+      set runtimepath^=~/.config/nvim
+      lua dofile('${./config/init.lua}')
+    '';
 
     plugins = with pkgs.vimPlugins; [
       galaxyline-nvim
       barbar-nvim
+      nvim-web-devicons
       coc-nvim
       telescope-nvim
       toggleterm-nvim
       vim-nix
+      coc-tsserver
+      coc-pairs
+      coc-html
+      coc-css
+      coc-eslint
+      coc-prettier
+      coc-json
+      # coc-angular -- TODO add coc-angular
+      coc-lua
+      coc-explorer
+      coc-clangd
+      #coc-flutter-tools
     ];
   };
+  home.file.".vim/colors/colors.vim".source =
+    config.lib.base16.base16template "vim";
 }

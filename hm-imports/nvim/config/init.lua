@@ -1,5 +1,4 @@
 require('utils')
-require('plugins')
 -- TODO find better place for this
 require('config.toggleterm')
 require('keybindings')
@@ -8,8 +7,8 @@ vim.g.base16_shell_path = '~/.dotfiles/output/shell/scripts/'
 
 vim.cmd 'if has("termguicolors") \n set termguicolors\n endif'
 vim.cmd 'source ~/.config/nvim/cursos-tmux.vim'
-vim.cmd 'colorscheme base'
-vim.g.colors_name = "base"
+-- vim.cmd 'colorscheme base'
+-- vim.g.colors_name = "base"
 vim.cmd 'syntax reset'
 
 vim.g.coc_filetype_map = {tex = "latex"}

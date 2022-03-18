@@ -10,6 +10,8 @@
     simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/";
     home-manager.url = "github:nix-community/home-manager/release-21.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    base16.url = "github:alukardbf/base16-nix";
   };
   outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, ... }:
     let
@@ -33,9 +35,26 @@
           ({ config, ... }: lib.mkMerge [{
             services.getty.greetingLine =
               "<<< Welcome to ${config.system.nixos.label} - Please leave\\l >>>";
+          }]
+          )
+        ];
+        specialArgs = { inherit lib; inherit inputs; };
+      };
+
+      nixosConfigurations.GLaDOS = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = lib.flatten [
+          ./hosts/glados/configuration.nix
+          agenix.nixosModule
+          simple-nixos-mailserver.nixosModule
+          home-manager.nixosModules.home-manager
+          (lib.my.mapModulesRec' (toString ./modules) import)
+          ({ config, ... }: lib.mkMerge [{
+            services.getty.greetingLine =
+              "<<< Welcome to ${config.system.nixos.label} - Please leave\\l >>>";
           }])
         ];
-        specialArgs = { inherit lib; };
+        specialArgs = { inherit lib; inherit inputs; };
       };
 
       deploy = {
@@ -46,6 +65,15 @@
             profiles.system = {
               user = "root";
               path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."silbervogel";
+            };
+          };
+          "GLaDOS" = {
+            hostname = "localhost";
+            sshUser = "root";
+            sshOpts = [ "-p" "2222" ];
+            profiles.system = {
+              user = "root";
+              path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."GLaDOS";
             };
           };
         };

@@ -1,32 +1,29 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nixpkgs, ... }:
 {
   imports =
     [
       ./hardware-configuration.nix
     ];
 
+  nixpkgs.config.allowUnfree = true;
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
   boot.loader.grub.device = "/dev/sda";
 
-  nixpkgs.config.allowUnfree = true;
+  jabbi.home.enable = true;
+  jabbi.i3wm.enable = true;
 
-  jabbi.services = {
-    nginx.enable = true;
-    mail.enable = true;
-    nextcloud.enable = true;
-  };
-
-  networking.hostName = "silbervogel";
+  networking.hostName = "GLaDOS";
 
   time.timeZone = "Europe/Amsterdam";
-
 
   users.users.jabbi = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
+    hashedPassword = "$6$rejDSpuy6d$za9N7miMI/XHZNjZ6ib0IcaF511UdBn7QVwIV7MO1MTMO5yjVGwuvVT7kJlnTN165srbPd6rCJxtgdABTuEbj1";
   };
 
+  users.mutableUsers = false;
   users.users."root".openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGQ+BFtjE8D9+wVAnZ7IrhkTPlA62jdEq037+PaKCXkM jabbi@mimo"
   ];
@@ -42,6 +39,7 @@
     permitRootLogin = "yes";
     passwordAuthentication = false;
   };
+
 
   system.stateVersion = "21.11";
 }
