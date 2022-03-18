@@ -11,9 +11,20 @@
     home-manager.url = "github:nix-community/home-manager/release-21.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    base16.url = "github:alukardbf/base16-nix";
+    base16.url = "github:SenchoPens/base16.nix";
+    base16.inputs.nixpkgs.follows = "nixpkgs";
+
+    base16-eva-scheme = {
+      url = github:kjakapat/base16-eva-scheme;
+      flake = false;
+    };
+
+    base16-i3 = {
+      url = github:khamer/base16-i3;
+      flake = false;
+    };
   };
-  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, ... }:
+  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, ... }:
     let
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       lib = nixpkgs.lib.extend (self: super: {
@@ -35,8 +46,7 @@
           ({ config, ... }: lib.mkMerge [{
             services.getty.greetingLine =
               "<<< Welcome to ${config.system.nixos.label} - Please leave\\l >>>";
-          }]
-          )
+          }])
         ];
         specialArgs = { inherit lib; inherit inputs; };
       };
@@ -46,6 +56,8 @@
         modules = lib.flatten [
           ./hosts/glados/configuration.nix
           agenix.nixosModule
+          base16.nixosModule
+          { scheme = "${inputs.base16-eva-scheme}/eva.yaml"; }
           simple-nixos-mailserver.nixosModule
           home-manager.nixosModules.home-manager
           (lib.my.mapModulesRec' (toString ./modules) import)

@@ -23,5 +23,6 @@ in
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;
     home-manager.users.jabbi = hmConfig;
+    home-manager.extraSpecialArgs = { scheme = config.scheme; inputs = inputs; };
   };
 }

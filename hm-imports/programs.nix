@@ -4,6 +4,7 @@
     keepassxc
     timeular
     logseq
+    nerdfonts
   ];
 
   services.nextcloud-client = {

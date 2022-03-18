@@ -37,6 +37,4 @@
       #coc-flutter-tools
     ];
   };
-  home.file.".vim/colors/colors.vim".source =
-    config.lib.base16.base16template "vim";
 }

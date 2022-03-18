@@ -1,4 +1,4 @@
-{ config, pkgs, nixpkgs, ... }:
+{ config, pkgs, nixpkgs, inputs, ... }:
 {
   imports =
     [
@@ -39,7 +39,6 @@
     permitRootLogin = "yes";
     passwordAuthentication = false;
   };
-
 
   system.stateVersion = "21.11";
 }

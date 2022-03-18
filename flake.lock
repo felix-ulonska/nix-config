@@ -20,19 +20,53 @@
     },
     "base16": {
       "inputs": {
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
-        "lastModified": 1632784880,
-        "narHash": "sha256-m2HuPvMwSfi95G4ok0aKhHkAq59WrETfGkqTG611V08=",
-        "owner": "alukardbf",
-        "repo": "base16-nix",
-        "rev": "27351e8d64bf399d24afdf2e436bdecb8f2b9777",
+        "lastModified": 1643556194,
+        "narHash": "sha256-mU/pD30cIRcodLROhbIpRuEoEsO9aV5lDrYav0ZSIUA=",
+        "owner": "SenchoPens",
+        "repo": "base16.nix",
+        "rev": "abc25e69d0e18ce54dbe6d95a531c4d63ed59932",
         "type": "github"
       },
       "original": {
-        "owner": "alukardbf",
-        "repo": "base16-nix",
+        "owner": "SenchoPens",
+        "repo": "base16.nix",
+        "type": "github"
+      }
+    },
+    "base16-eva-scheme": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1589840056,
+        "narHash": "sha256-+52BPv/3f4vqG+p37XSxyf9w0CPkBSvCo6x1O/JE6Lg=",
+        "owner": "kjakapat",
+        "repo": "base16-eva-scheme",
+        "rev": "595ea6eff814ae462709f222e7af3492ee804e88",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kjakapat",
+        "repo": "base16-eva-scheme",
+        "type": "github"
+      }
+    },
+    "base16-i3": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1553624140,
+        "narHash": "sha256-nfg9YC8CO0pydnPfZ0Khqyj7gf35ABu54f4/4zb3cMY=",
+        "owner": "khamer",
+        "repo": "base16-i3",
+        "rev": "78292138812a3f88c3fc4794f615f5b36b0b6d7c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "khamer",
+        "repo": "base16-i3",
         "type": "github"
       }
     },
@@ -55,7 +89,7 @@
     "deploy-rs": {
       "inputs": {
         "flake-compat": "flake-compat",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_2",
         "utils": "utils"
       },
       "locked": {
@@ -127,21 +161,6 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1645296114,
-        "narHash": "sha256-y53N7TyIkXsjMpOG7RhvqJFGDacLs9HlyHeSTBioqYU=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "530a53dcbc9437363471167a5e4762c5fcfa34a1",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "ref": "release-21.05",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_3": {
-      "locked": {
         "lastModified": 1643472818,
         "narHash": "sha256-qzVPxKDUubYIxKRSuDl/JgzXWSmGvUVYny9SxFMfPJM=",
         "owner": "NixOS",
@@ -156,7 +175,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
+    "nixpkgs_3": {
       "locked": {
         "lastModified": 1647297614,
         "narHash": "sha256-ulGq3W5XsrBMU/u5k9d4oPy65pQTkunR4HKKtTq0RwY=",
@@ -172,7 +191,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_5": {
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1642635915,
         "narHash": "sha256-vabPA32j81xBO5m3+qXndWp5aqepe+vu96Wkd9UnngM=",
@@ -191,16 +210,18 @@
       "inputs": {
         "agenix": "agenix",
         "base16": "base16",
+        "base16-eva-scheme": "base16-eva-scheme",
+        "base16-i3": "base16-i3",
         "deploy-rs": "deploy-rs",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_3",
         "simple-nixos-mailserver": "simple-nixos-mailserver"
       }
     },
     "simple-nixos-mailserver": {
       "inputs": {
         "blobs": "blobs",
-        "nixpkgs": "nixpkgs_5",
+        "nixpkgs": "nixpkgs_4",
         "utils": "utils_2"
       },
       "locked": {
