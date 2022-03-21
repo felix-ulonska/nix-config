@@ -11,6 +11,8 @@
     home-manager.url = "github:nix-community/home-manager/release-21.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    nur.url = "github:nix-community/nur";
+
     base16.url = "github:SenchoPens/base16.nix";
     base16.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -24,7 +26,7 @@
       flake = false;
     };
   };
-  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, ... }:
+  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, ... }:
     let
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       lib = nixpkgs.lib.extend (self: super: {
@@ -55,6 +57,7 @@
         system = "x86_64-linux";
         modules = lib.flatten [
           ./hosts/glados/configuration.nix
+          { nixpkgs.overlays = [ nur.overlay ]; }
           agenix.nixosModule
           base16.nixosModule
           { scheme = "${inputs.base16-eva-scheme}/eva.yaml"; }

@@ -8,10 +8,12 @@ let
     imports = [
       ../../hm-imports/nvim/neovim.nix
       ../../hm-imports/i3.nix
+      ../../hm-imports/zsh.nix
       ../../hm-imports/cli.nix
       ../../hm-imports/programs.nix
       ../../hm-imports/programs/alacritty.nix
       ../../hm-imports/theming.nix
+      ../../hm-imports/programs/rofi.nix
     ];
   };
 in

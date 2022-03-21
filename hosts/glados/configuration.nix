@@ -19,8 +19,9 @@
 
   users.users.jabbi = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "audio" ];
     hashedPassword = "$6$rejDSpuy6d$za9N7miMI/XHZNjZ6ib0IcaF511UdBn7QVwIV7MO1MTMO5yjVGwuvVT7kJlnTN165srbPd6rCJxtgdABTuEbj1";
+    shell = pkgs.zsh;
   };
 
   users.mutableUsers = false;
@@ -31,6 +32,9 @@
   environment.systemPackages = with pkgs; [
     vim
   ];
+
+  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.support32Bit = true;
 
   networking.firewall.allowedTCPPorts = [ 80 443 ];
 

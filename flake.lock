@@ -206,6 +206,21 @@
         "type": "indirect"
       }
     },
+    "nur": {
+      "locked": {
+        "lastModified": 1647644593,
+        "narHash": "sha256-R00EBcEZ0c038wB/xeJC98LZFHlhEFuMcJfQBTRNASg=",
+        "owner": "nix-community",
+        "repo": "nur",
+        "rev": "4fa30973755b7841b0a890ad5bb2718b92fff093",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nur",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -215,6 +230,7 @@
         "deploy-rs": "deploy-rs",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_3",
+        "nur": "nur",
         "simple-nixos-mailserver": "simple-nixos-mailserver"
       }
     },

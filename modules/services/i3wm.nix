@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, pkgs, ... }:
 with lib;
 let
   cfg = config.jabbi.i3wm;
@@ -19,7 +19,10 @@ in
           enableXfwm = false;
         };
       };
-      windowManager.i3.enable = true;
+      windowManager.i3 = {
+        enable = true;
+        package = pkgs.i3-gaps;
+      };
     };
   };
 }
