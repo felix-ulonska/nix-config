@@ -13,6 +13,8 @@
 
     nur.url = "github:nix-community/nur";
 
+    impermanence.url = "github:nix-community/impermanence";
+
     base16.url = "github:SenchoPens/base16.nix";
     base16.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -31,7 +33,7 @@
       flake = false;
     };
   };
-  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, ... }:
+  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, impermanence, ... }:
     let
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       lib = nixpkgs.lib.extend (self: super: {
@@ -48,6 +50,7 @@
           ./hosts/silbervogel/configuration.nix
           agenix.nixosModule
           simple-nixos-mailserver.nixosModule
+          impermanence.nixosModule
           home-manager.nixosModules.home-manager
           (lib.my.mapModulesRec' (toString ./modules) import)
           ({ config, ... }: lib.mkMerge [{
@@ -67,6 +70,7 @@
           base16.nixosModule
           { scheme = "${inputs.base16-eva-scheme}/eva.yaml"; }
           simple-nixos-mailserver.nixosModule
+          impermanence.nixosModule
           home-manager.nixosModules.home-manager
           (lib.my.mapModulesRec' (toString ./modules) import)
           ({ config, ... }: lib.mkMerge [{
@@ -111,6 +115,9 @@
           lefthook install
           function deploy() {
             nix run --show-trace github:serokell/deploy-rs
+          }
+          function deployGLaDOS() {
+            nix run --show-trace github:serokell/deploy-rs .#GLaDOS
           }
         '';
       };

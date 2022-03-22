@@ -13,13 +13,39 @@
 
   fileSystems."/" =
     {
-      device = "/dev/disk/by-uuid/7c05328c-3596-4a33-9cbc-d4aba9f30924";
+      device = "none";
+      fsType = "tmpfs";
+    };
+
+  fileSystems."/boot" =
+    {
+      device = "/dev/disk/by-uuid/6b3f6ce6-1b1b-427b-9e4e-060f0df2c75e";
       fsType = "ext4";
     };
 
-  swapDevices =
-    [{ device = "/dev/disk/by-uuid/6ba335a1-45e2-4b6d-960c-2d9cec715947"; }];
+  fileSystems."/nix" =
+    {
+      device = "/dev/disk/by-uuid/8e2e12d3-7a6c-473c-ac86-3c2d2da2e165";
+      fsType = "ext4";
+    };
+
+  fileSystems."/etc/nixos" =
+    {
+      device = "/nix/persist/etc/nixos";
+      fsType = "none";
+      options = [ "bind" ];
+    };
+
+  fileSystems."/var/log" =
+    {
+      device = "/nix/persist/var/log";
+      fsType = "none";
+      options = [ "bind" ];
+    };
+
+  swapDevices = [ ];
 
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   virtualisation.virtualbox.guest.enable = true;
+
 }
