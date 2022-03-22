@@ -1,4 +1,4 @@
-{ pkgs, config, inputs, ... }:
+{ pkgs, config, inputs, scheme, ... }:
 {
   home.packages = [
     pkgs.nodejs
@@ -35,6 +35,15 @@
       coc-explorer
       coc-clangd
       #coc-flutter-tools
+      (base16-vim.overrideAttrs (old:
+        let
+          schemeFile = scheme inputs.base16-vim;
+        in
+        {
+          patchPhase = builtins.trace schemeFile ''
+            cp ${schemeFile} colors/base16-scheme.vim
+          '';
+        }))
     ];
   };
 }

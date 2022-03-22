@@ -10,6 +10,11 @@ vim.cmd 'source ~/.config/nvim/cursos-tmux.vim'
 -- vim.cmd 'colorscheme base'
 -- vim.g.colors_name = "base"
 vim.cmd 'syntax reset'
+vim.cmd [[
+colorscheme base16-scheme
+set background=dark
+let base16colorspace=256
+]]
 
 vim.g.coc_filetype_map = {tex = "latex"}
 

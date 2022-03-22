@@ -25,6 +25,11 @@
       url = github:khamer/base16-i3;
       flake = false;
     };
+
+    base16-vim = {
+      url = github:chriskempson/base16-vim;
+      flake = false;
+    };
   };
   outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, ... }:
     let
