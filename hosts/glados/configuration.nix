@@ -11,6 +11,8 @@
   boot.loader.grub.device = "/dev/sda";
 
   jabbi.home.enable = true;
+  jabbi.home.enableVisualApps = true;
+  jabbi.home.impermanence = true;
   jabbi.i3wm.enable = true;
 
   networking.hostName = "GLaDOS";

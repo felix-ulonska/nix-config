@@ -7,6 +7,8 @@
       "Arbeit"
       "Projects"
       ".logseq"
+      ".config/nextcloud"
+      ".mozilla"
     ];
     files = [ ".zsh_history" ".ssh/known_hosts" ];
   };

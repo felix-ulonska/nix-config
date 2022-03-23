@@ -50,8 +50,6 @@
           ./hosts/silbervogel/configuration.nix
           agenix.nixosModule
           simple-nixos-mailserver.nixosModule
-          impermanence.nixosModule
-          home-manager.nixosModules.home-manager
           (lib.my.mapModulesRec' (toString ./modules) import)
           ({ config, ... }: lib.mkMerge [{
             services.getty.greetingLine =

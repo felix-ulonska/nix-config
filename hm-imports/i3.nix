@@ -25,6 +25,21 @@ in
         { command = "logseq"; notification = false; }
       ];
 
+      window.commands = [
+        {
+          command = "move scratchpad";
+          criteria = { class = "KeePassXC"; };
+        }
+        {
+          command = "move scratchpad";
+          criteria = { class = "Logseq"; };
+        }
+        {
+          command = "move scratchpad";
+          criteria = { class = "Timeular"; };
+        }
+      ];
+
       keybindings = {
         "${modifier}+Return" = "exec alacritty";
         "${modifier}+Shift+q" = "kill";
@@ -95,6 +110,9 @@ in
 
         "${modifier}+r" = "mode resize";
 
+        "${modifier}+p" = ''[class="KeePassXC"] scratchpad show'';
+        "${modifier}+t" = ''[class="Timeular"] scratchpad show'';
+        "${modifier}+l" = ''[class="Logseq"] scratchpad show'';
       };
 
       floating = {

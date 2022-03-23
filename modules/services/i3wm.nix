@@ -10,6 +10,7 @@ in
   config = mkIf cfg.enable {
     services.xserver = {
       enable = true;
+      layout = "eu";
       displayManager.defaultSession = "xfce+i3";
       desktopManager = {
         xterm.enable = false;
