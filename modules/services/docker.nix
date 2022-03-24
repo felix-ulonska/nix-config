@@ -11,9 +11,9 @@ in
     virtualisation.podman.enable = true;
     virtualisation.podman.dockerSocket.enable = true;
     virtualisation.podman.defaultNetwork.dnsname.enable = true;
-    virtualisation.oci-containers.backend = "podman";
+    virtualisation.oci-containers.backend = "docker";
 
     # Use your username instead of `myuser`
-    users.extraUsers.jabbi.extraGroups = [ "podman" ];
+    users.extraUsers.jabbi.extraGroups = [ "docker" ];
   };
 }

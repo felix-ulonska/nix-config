@@ -11,13 +11,16 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  jabbi.home.enable = true;
+  jabbi.home.impermanence = true;
+
   jabbi.services = {
     nginx.enable = true;
     mail.enable = true;
     nextcloud.enable = true;
   };
 
-  networking.hostName = "silbervogel";
+  networking.hostName = "wheatly";
 
   time.timeZone = "Europe/Amsterdam";
 
@@ -42,6 +45,7 @@
     permitRootLogin = "yes";
     passwordAuthentication = false;
   };
+
 
   system.stateVersion = "21.11";
 }

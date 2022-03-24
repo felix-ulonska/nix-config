@@ -39,45 +39,45 @@
       lib = nixpkgs.lib.extend (self: super: {
         my = import ./lib { inherit inputs; lib = self; };
       });
+      modulesList = lib.flatten [
+        agenix.nixosModule
+        simple-nixos-mailserver.nixosModule
+        impermanence.nixosModule
+        base16.nixosModule
+        { scheme = "${inputs.base16-eva-scheme}/eva.yaml"; }
+        home-manager.nixosModules.home-manager
+        (lib.my.mapModulesRec' (toString ./modules) import)
+        ({ config, ... }: lib.mkMerge [{
+          services.getty.greetingLine =
+            "<<< Welcome to ${config.system.nixos.label} - Please leave\\l >>>";
+        }])
+        { nixpkgs.overlays = [ nur.overlay ]; }
+      ];
     in
     {
       lib = lib.my;
       nixosModules = lib.my.mapModulesRec ./modules/services import;
+      outputFoo = (modulesList ++ [ ./hosts/silbervogel/configuration.nix ]);
 
-      nixosConfigurations.silbervogel = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = lib.flatten [
-          ./hosts/silbervogel/configuration.nix
-          agenix.nixosModule
-          simple-nixos-mailserver.nixosModule
-          (lib.my.mapModulesRec' (toString ./modules) import)
-          ({ config, ... }: lib.mkMerge [{
-            services.getty.greetingLine =
-              "<<< Welcome to ${config.system.nixos.label} - Please leave\\l >>>";
-          }])
-        ];
-        specialArgs = { inherit lib; inherit inputs; };
-      };
 
-      nixosConfigurations.GLaDOS = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = lib.flatten [
-          ./hosts/glados/configuration.nix
-          { nixpkgs.overlays = [ nur.overlay ]; }
-          agenix.nixosModule
-          base16.nixosModule
-          { scheme = "${inputs.base16-eva-scheme}/eva.yaml"; }
-          simple-nixos-mailserver.nixosModule
-          impermanence.nixosModule
-          home-manager.nixosModules.home-manager
-          (lib.my.mapModulesRec' (toString ./modules) import)
-          ({ config, ... }: lib.mkMerge [{
-            services.getty.greetingLine =
-              "<<< Welcome to ${config.system.nixos.label} - Please leave\\l >>>";
-          }])
-        ];
-        specialArgs = { inherit lib; inherit inputs; };
-      };
+      nixosConfigurations.silbervogel =
+        nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit lib; inherit inputs; };
+          modules = (modulesList ++ [ ./hosts/silbervogel/configuration.nix ]);
+        };
+      nixosConfigurations.GLaDOS =
+        nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit lib; inherit inputs; };
+          modules = (modulesList ++ [ ./hosts/glados/configuration.nix ]);
+        };
+      nixosConfigurations.wheatly =
+        nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit lib; inherit inputs; };
+          modules = (modulesList ++ [ ./hosts/wheatly/configuration.nix ]);
+        };
 
       deploy = {
         nodes = {
@@ -87,6 +87,14 @@
             profiles.system = {
               user = "root";
               path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."silbervogel";
+            };
+          };
+          "wheatly" = {
+            hostname = "wheatly.webfoo.de";
+            sshUser = "root";
+            profiles.system = {
+              user = "root";
+              path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."wheatly";
             };
           };
           "GLaDOS" = {
@@ -116,6 +124,12 @@
           }
           function deployGLaDOS() {
             nix run --show-trace github:serokell/deploy-rs .#GLaDOS
+          }
+          function deploySilbervogel() {
+            nix run --show-trace github:serokell/deploy-rs .#silbervogel
+          }
+          function deployWheatlh() {
+            nix run --show-trace github:serokell/deploy-rs .#wheatly
           }
         '';
       };

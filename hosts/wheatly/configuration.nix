@@ -11,13 +11,12 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  jabbi.services = {
-    nginx.enable = true;
-    mail.enable = true;
-    nextcloud.enable = true;
-  };
+  jabbi.home.enable = true;
+  jabbi.home.impermanence = true;
+  jabbi.services.minecraft.enable = true;
+  jabbi.docker.enable = true;
 
-  networking.hostName = "silbervogel";
+  networking.hostName = "wheatly";
 
   time.timeZone = "Europe/Amsterdam";
 
@@ -35,12 +34,33 @@
     wget
   ];
 
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.allowedTCPPorts = [ 80 443 25565 ];
 
   services.openssh = {
     enable = true;
     permitRootLogin = "yes";
     passwordAuthentication = false;
+  };
+
+  fileSystems."/" = {
+    device = "none";
+    fsType = "tmpfs";
+    options = [ "defaults" "size=2G" "mode=755" ];
+  };
+
+  environment.persistence."/nix/persist" = {
+    directories = [
+      "/etc/nixos"
+      "/etc/NetworkManager/system-connections"
+      "/var/lib/minecraft"
+    ];
+    files = [
+      "/etc/machine-id"
+      "/etc/ssh/ssh_host_rsa_key"
+      "/etc/ssh/ssh_host_rsa_key.pub"
+      "/etc/ssh/ssh_host_ed25519_key"
+      "/etc/ssh/ssh_host_ed25519_key.pub"
+    ];
   };
 
   system.stateVersion = "21.11";
