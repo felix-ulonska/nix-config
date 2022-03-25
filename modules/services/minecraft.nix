@@ -18,7 +18,7 @@ in
           TYPE = "FORGE";
           VERSION = "1.18.1";
           # FORGEVERSION = "39.0.43"
-          # MEMORY: "10G"
+          MEMORY = "10G";
         };
         volumes = [ "/var/lib/minecraft:/data" ];
       };
@@ -46,6 +46,12 @@ in
         initialize = true; # initializes the repo, don't set if you want manual control
         environmentFile = "/run/agenix/resticSecrets";
         passwordFile = "/run/agenix/restic-minecraft-password";
+        #timerConfig = {
+        #onCalendar = "*-*-* *:00:01";
+        #};
+        timerConfig = {
+          onCalendar = "hourly";
+        };
       };
     };
   };

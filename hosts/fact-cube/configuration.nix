@@ -16,7 +16,7 @@
   jabbi.services.minecraft.enable = true;
   jabbi.docker.enable = true;
 
-  networking.hostName = "wheatly";
+  networking.hostName = "fact-cube";
 
   time.timeZone = "Europe/Amsterdam";
 
@@ -32,10 +32,9 @@
   environment.systemPackages = with pkgs; [
     vim
     wget
-    python3
   ];
 
-  networking.firewall.allowedTCPPorts = [ 80 443 25565 8000 ];
+  networking.firewall.allowedTCPPorts = [ 80 443 25565 ];
 
   services.openssh = {
     enable = true;
@@ -63,6 +62,7 @@
       "/etc/ssh/ssh_host_ed25519_key.pub"
     ];
   };
+
 
   system.stateVersion = "21.11";
 }

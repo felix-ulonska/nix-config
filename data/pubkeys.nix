@@ -5,6 +5,8 @@ let
       hosts = {
         mino = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINelY0qrdPWByck5+BYZW2y/PO91Jmb2yhaZm1tjYBR2 jabbi@pop-os" ];
         silbervogel = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHc8FXgqCpSJaBzKk2cQCNOV0hJZG+k/r6DUJCjsCJff root@nixos" ];
+        wheatly = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHB5A0uxsv9oK04UpKCscoEV6zn1cQVm//boA/DGTtmq root@wheatly" ];
+        fact-cube = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDf3XjI1FyC0ax8lffi9xcR8M4kye6rPeRDSroihme97 root@fact-cube" ];
       };
     in
     {

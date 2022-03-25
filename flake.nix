@@ -66,6 +66,12 @@
           specialArgs = { inherit lib; inherit inputs; };
           modules = (modulesList ++ [ ./hosts/silbervogel/configuration.nix ]);
         };
+      nixosConfigurations.fact-cube =
+        nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit lib; inherit inputs; };
+          modules = (modulesList ++ [ ./hosts/fact-cube/configuration.nix ]);
+        };
       nixosConfigurations.GLaDOS =
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -95,6 +101,14 @@
             profiles.system = {
               user = "root";
               path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."wheatly";
+            };
+          };
+          "fact-cube" = {
+            hostname = "fact-cube.webfoo.de";
+            sshUser = "root";
+            profiles.system = {
+              user = "root";
+              path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."fact-cube";
             };
           };
           "GLaDOS" = {
@@ -130,6 +144,9 @@
           }
           function deployWheatlh() {
             nix run --show-trace github:serokell/deploy-rs .#wheatly
+          }
+          function deployFactCube() {
+            nix run --show-trace github:serokell/deploy-rs .#fact-cube
           }
         '';
       };
