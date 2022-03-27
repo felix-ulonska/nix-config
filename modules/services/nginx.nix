@@ -19,7 +19,7 @@ in
       sslCiphers = "AES256+EECDH:AES256+EDH:!aNULL";
 
       virtualHosts = {
-        "cloud.zapfadventure.de" = {
+        "cloud.webfoo.de" = {
           forceSSL = true;
           enableACME = true;
         };

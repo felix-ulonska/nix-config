@@ -16,6 +16,10 @@
   jabbi.services.minecraft.enable = true;
   jabbi.docker.enable = true;
 
+  jabbi.services.nextcloud.enable = true;
+  jabbi.services.nginx.enable = true;
+  jabbi.services.mail.enable = true;
+
   networking.hostName = "fact-cube";
 
   time.timeZone = "Europe/Amsterdam";
@@ -32,6 +36,8 @@
   environment.systemPackages = with pkgs; [
     vim
     wget
+    restic
+    htop
   ];
 
   networking.firewall.allowedTCPPorts = [ 80 443 25565 ];
@@ -53,6 +59,10 @@
       "/etc/nixos"
       "/etc/NetworkManager/system-connections"
       "/var/lib/minecraft"
+      "/var/lib/nextcloud"
+      "/var/lib/postgresql"
+      "/var/lib/acme"
+      "/big-tmp"
     ];
     files = [
       "/etc/machine-id"

@@ -22,14 +22,12 @@ in
       restic-nextcloud-password = {
         file = ../../secrets/restic-nextcloud-password.age;
       };
-      resticSecrets = {
-        file = ../../secrets/resticSecrets.age;
-      };
     };
 
     services.nextcloud = {
       enable = true;
-      hostName = "cloud.zapfadventure.de";
+      hostName = "cloud.webfoo.de";
+      package = pkgs.nextcloud23;
 
       # Use HTTPS for links
       https = true;
@@ -38,6 +36,8 @@ in
       autoUpdateApps.enable = true;
       # Set what time makes sense for you
       autoUpdateApps.startAt = "05:00:00";
+
+      caching.redis = true;
 
       config = {
         # Further forces Nextcloud to use HTTPS
@@ -53,6 +53,10 @@ in
         adminpassFile = "/run/agenix/nextcloud-admin-pass";
         adminuser = "admin";
       };
+    };
+
+    services.redis = {
+      enable = true;
     };
 
     services.postgresql = {
@@ -86,6 +90,17 @@ in
         rm /var/lib/nextcloud/nextcloud-sqlbkp_*
         ";
       postStop = "/run/current-system/sw/bin/nextcloud-occ maintenance:mode --off";
+    };
+
+    virtualisation.oci-containers.containers = {
+      nextcloud-imaginary = {
+        image = "h2non/imaginary";
+        autoStart = true;
+        ports = [ "127.0.0.1:9000:9000" ];
+        environment = {
+          PORT = "9000";
+        };
+      };
     };
   };
 }

@@ -23,4 +23,12 @@ let pubkeys = import ../data/pubkeys.nix; in
   "mail-password.age" = {
     publicKeys = pubkeys.jabbi.computers;
   };
+
+  "mail-felix-password.age" = {
+    publicKeys = pubkeys.jabbi.computers;
+  };
+
+  "restic-mail-password.age" = {
+    publicKeys = pubkeys.jabbi.computers;
+  };
 }
