@@ -7,7 +7,7 @@ let
 in
 {
   xsession.windowManager.i3 = {
-    enable = true;
+    enable = false;
     config = {
       terminal = alacritty;
       modifier = modifier;

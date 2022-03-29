@@ -5,13 +5,16 @@ let
 in
 {
   options.jabbi.services.mail = {
-    enable = mkEnableOption "Enable ForgeServer";
+    enable = mkEnableOption "Enable Mailserver";
   };
 
   config = mkIf cfg.enable {
     age.secrets = {
       mail-password = {
         file = ../../secrets/mail-password.age;
+      };
+      mail-felix-password = {
+        file = ../../secrets/mail-felix-password.age;
       };
     };
     mailserver = {

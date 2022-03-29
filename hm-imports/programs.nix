@@ -6,6 +6,7 @@
     logseq
     nerdfonts
     pavucontrol
+    discord
   ];
 
   programs.firefox = {

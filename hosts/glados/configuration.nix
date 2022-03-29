@@ -6,16 +6,26 @@
     ];
 
   nixpkgs.config.allowUnfree = true;
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  boot.loader.grub.device = "/dev/sda";
 
   jabbi.home.enable = true;
   jabbi.home.enableVisualApps = true;
   jabbi.home.impermanence = true;
-  jabbi.i3wm.enable = true;
+  #jabbi.i3wm.enable = true;
 
   networking.hostName = "GLaDOS";
+  hardware.opengl.enable = true;
+  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.layout = "eu";
+  services.xserver.enable = true;
+
+  services.printing.enable = true;
+  sound.enable = true;
+  hardware.pulseaudio.enable = true;
+
+  # Enable touchpad support (enabled default in most desktopManager).
+  services.xserver.libinput.enable = true;
 
   time.timeZone = "Europe/Amsterdam";
 
@@ -35,10 +45,13 @@
     vim
   ];
 
-  hardware.pulseaudio.enable = true;
-  hardware.pulseaudio.support32Bit = true;
-
   networking.firewall.allowedTCPPorts = [ 80 443 ];
+  nix = {
+    package = pkgs.nixFlakes; # or versioned attributes like nix_2_7
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
 
   services.openssh = {
     enable = true;
@@ -49,7 +62,7 @@
   fileSystems."/" = {
     device = "none";
     fsType = "tmpfs";
-    options = [ "defaults" "size=2G" "mode=755" ];
+    options = [ "defaults" "size=5G" "mode=755" ];
   };
 
   environment.persistence."/nix/persist" = {
@@ -64,6 +77,20 @@
       "/etc/ssh/ssh_host_ed25519_key"
       "/etc/ssh/ssh_host_ed25519_key.pub"
     ];
+  };
+  boot.loader.grub = {
+    enable = true;
+    version = 2;
+    device = "nodev";
+    efiSupport = true;
+    enableCryptodisk = true;
+  };
+  #boot.loader.efi.efiSysMountPoint = "/boot";
+  boot.initrd.luks.devices = {
+    root = {
+      device = "/dev/disk/by-uuid/2f195b74-2630-4696-94f1-1041cd765bad";
+      preLVM = true;
+    };
   };
 
   system.stateVersion = "21.11";

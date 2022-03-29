@@ -4,28 +4,25 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports = [ ];
+  imports =
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
+    ];
 
-  boot.initrd.availableKernelModules = [ "ata_piix" "ohci_pci" "sd_mod" "sr_mod" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "uas" "usb_storage" "sd_mod" ];
+  boot.initrd.kernelModules = [ "dm-snapshot" ];
+  boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    {
-      device = "none";
-      fsType = "tmpfs";
-    };
 
-  fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-uuid/6b3f6ce6-1b1b-427b-9e4e-060f0df2c75e";
-      fsType = "ext4";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/nvme1n1p1";
+    fsType = "vfat";
+  };
 
   fileSystems."/nix" =
     {
-      device = "/dev/disk/by-uuid/8e2e12d3-7a6c-473c-ac86-3c2d2da2e165";
+      device = "/dev/disk/by-uuid/8c9022a8-d7be-41aa-a355-0d8ed094f575";
       fsType = "ext4";
     };
 
@@ -43,9 +40,5 @@
       options = [ "bind" ];
     };
 
-  swapDevices = [ ];
-
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-  virtualisation.virtualbox.guest.enable = true;
-
 }

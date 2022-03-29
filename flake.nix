@@ -114,10 +114,11 @@
           "GLaDOS" = {
             hostname = "localhost";
             sshUser = "root";
-            sshOpts = [ "-p" "2222" ];
             profiles.system = {
               user = "root";
               path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."GLaDOS";
+              magicRollback = false;
+              sshOpts = [ "-o" "StrictHostKeyChecking=no" ];
             };
           };
         };
