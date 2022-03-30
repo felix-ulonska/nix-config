@@ -28,4 +28,5 @@ in
         "appindicatorsupport@rgcjonas.gmail.com"
       ];
     };
-  }
+  };
+}
