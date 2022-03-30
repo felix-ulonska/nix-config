@@ -7,6 +7,8 @@
     nerdfonts
     pavucontrol
     discord
+    teams
+    thunderbird
   ];
 
   programs.firefox = {

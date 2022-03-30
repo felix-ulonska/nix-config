@@ -11,8 +11,8 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  jabbi.home.enable = true;
-  jabbi.home.impermanence = true;
+  jabbi.home.enable = false;
+  jabbi.home.impermanence = false;
   jabbi.services.minecraft.enable = true;
   jabbi.docker.enable = true;
 
