@@ -9,6 +9,7 @@ let
     ../../hm-imports/i3.nix
     ../../hm-imports/zsh.nix
     ../../hm-imports/cli.nix
+    ../../hm-imports/gnome.nix
   ];
   visualImports = [
     ../../hm-imports/programs.nix

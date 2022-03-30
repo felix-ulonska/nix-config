@@ -1,10 +1,10 @@
-{ lib, config, ... }:
+{ lib, config, pkgs, ... }:
 with lib;
 let
-  cfg = config.jabbi.gnome;
+  cfg = config.jabbi.services.gnome;
 in
 {
-  options.jabbi.gnome = {
+  options.jabbi.services.gnome = {
     enable = mkEnableOption "Enable Gnome";
   };
   config = mkIf cfg.enable {
@@ -23,10 +23,5 @@ in
       gnomeExtensions.appindicator
     ];
 
-    dconf.settings = {
-      "org/gnome/shell"."enabled-extensions" = [
-        "appindicatorsupport@rgcjonas.gmail.com"
-      ];
-    };
   };
 }
