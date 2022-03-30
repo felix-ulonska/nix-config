@@ -9,4 +9,10 @@
       user.email = "git@webfoo.de";
     };
   };
+  programs.tmux = {
+    enable = true;
+    keyMode = "vi";
+    prefix = "C-a";
+    tmuxinator.enable = true;
+  };
 }

@@ -1,4 +1,18 @@
 { config, pkgs, nixpkgs, inputs, ... }:
+let myCustomLayout = pkgs.writeText "xkb-layout" ''
+  ! Map umlauts to RIGHT ALT + <key>
+  keycode 108 = Mode_switch
+  keysym e = e E EuroSign
+  keysym c = c C cent
+  keysym a = a A adiaeresis Adiaeresis
+  keysym o = o O odiaeresis Odiaeresis
+  keysym u = u U udiaeresis Udiaeresis
+  keysym s = s S ssharp
+    
+  ! disable capslock
+  ! remove Lock = Caps_Lock
+'';
+in
 {
   imports =
     [
@@ -17,8 +31,8 @@
   services.xserver.videoDrivers = [ "nvidia" ];
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
-  services.xserver.layout = "eu";
   services.xserver.enable = true;
+  services.udev.packages = with pkgs; [ gnome3.gnome-settings-daemon ];
 
   services.printing.enable = true;
   sound.enable = true;
@@ -43,6 +57,7 @@
 
   environment.systemPackages = with pkgs; [
     vim
+    gnomeExtensions.appindicator
   ];
 
   networking.firewall.allowedTCPPorts = [ 80 443 ];
