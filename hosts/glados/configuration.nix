@@ -1,18 +1,4 @@
 { config, pkgs, nixpkgs, inputs, ... }:
-let myCustomLayout = pkgs.writeText "xkb-layout" ''
-  ! Map umlauts to RIGHT ALT + <key>
-  keycode 108 = Mode_switch
-  keysym e = e E EuroSign
-  keysym c = c C cent
-  keysym a = a A adiaeresis Adiaeresis
-  keysym o = o O odiaeresis Odiaeresis
-  keysym u = u U udiaeresis Udiaeresis
-  keysym s = s S ssharp
-    
-  ! disable capslock
-  ! remove Lock = Caps_Lock
-'';
-in
 {
   imports =
     [
@@ -25,21 +11,13 @@ in
   jabbi.home.enableVisualApps = true;
   jabbi.home.impermanence = true;
   #jabbi.i3wm.enable = true;
+  jabbi.services.gnome.enable = true;
 
   networking.hostName = "GLaDOS";
   hardware.opengl.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  services.xserver.enable = true;
-  services.udev.packages = with pkgs; [ gnome3.gnome-settings-daemon ];
 
   services.printing.enable = true;
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
 
   time.timeZone = "Europe/Amsterdam";
 
@@ -57,7 +35,6 @@ in
 
   environment.systemPackages = with pkgs; [
     vim
-    gnomeExtensions.appindicator
   ];
 
   networking.firewall.allowedTCPPorts = [ 80 443 ];
