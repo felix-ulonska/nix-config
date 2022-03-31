@@ -10,6 +10,7 @@ in
   config = mkIf cfg.enable {
     virtualisation.podman.enable = true;
     virtualisation.podman.dockerSocket.enable = true;
+    virtualisation.podman.dockerCompat = true;
     virtualisation.podman.defaultNetwork.dnsname.enable = true;
     virtualisation.oci-containers.backend = "podman";
 

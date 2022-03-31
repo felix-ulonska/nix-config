@@ -12,7 +12,7 @@
   jabbi.home.impermanence = true;
   #jabbi.i3wm.enable = true;
   jabbi.services.gnome.enable = true;
-  jabbi.docker.gnome.enable = true;
+  jabbi.docker.enable = true;
 
   networking.hostName = "GLaDOS";
   hardware.opengl.enable = true;
@@ -62,6 +62,7 @@
     directories = [
       "/etc/nixos"
       "/etc/NetworkManager/system-connections"
+      "/var/lib/containers"
     ];
     files = [
       "/etc/machine-id"

@@ -13,6 +13,7 @@
     enable = true;
     keyMode = "vi";
     prefix = "C-a";
+    terminal = "screen-256color-bce";
     tmuxinator.enable = true;
   };
 }

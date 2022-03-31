@@ -9,6 +9,8 @@
     discord
     teams
     thunderbird
+    spotify
+    lazydocker
   ];
 
   programs.firefox = {

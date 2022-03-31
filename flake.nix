@@ -2,7 +2,7 @@
   description = "An example NixOS configuration";
 
   inputs = {
-    nixpkgs = { url = "github:nixos/nixpkgs/nixos-unstable"; };
+    nixpkgs = { url = "github:felix-ulonska/nixpkgs/nixos-unstable"; };
     deploy-rs = {
       url = "github:serokell/deploy-rs";
     };
