@@ -18,6 +18,8 @@
     base16.url = "github:SenchoPens/base16.nix";
     base16.inputs.nixpkgs.follows = "nixpkgs";
 
+    itpms-site.url = "gitlab:itpms/website";
+
     base16-eva-scheme = {
       url = github:kjakapat/base16-eva-scheme;
       flake = false;

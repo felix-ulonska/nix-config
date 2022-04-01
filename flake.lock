@@ -138,6 +138,21 @@
         "type": "github"
       }
     },
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1648297722,
+        "narHash": "sha256-W+qlPsiZd8F3XkzXOzAoR+mpFqzm3ekQkJNa+PIh1BQ=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "0f8662f1319ad6abf89b3380dd2722369fc51ade",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -174,6 +189,25 @@
         "type": "github"
       }
     },
+    "itpms-site": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1648839745,
+        "narHash": "sha256-8u6oPJYjWl2kFYnjuCv1ao+YOH5v8RpkShOWFPDg3rg=",
+        "owner": "itpms",
+        "repo": "website",
+        "rev": "32cf4b274efe6a262d46c02c4e90c25e8f6db38f",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "itpms",
+        "repo": "website",
+        "type": "gitlab"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1638587357,
@@ -208,6 +242,21 @@
     },
     "nixpkgs_3": {
       "locked": {
+        "lastModified": 1648756578,
+        "narHash": "sha256-un4iXUwuP0AW/OsiitxMKyUgjPlDbdmFllxH+2e0rJ8=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "8465654f6ab72bb765e584cbb45674d4fd6d8da1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_4": {
+      "locked": {
         "lastModified": 1648805244,
         "narHash": "sha256-G1V1z51Fd8FpBZF0PGXmVmOSaxr71zN5HzogBgs7RZs=",
         "owner": "nixos",
@@ -222,7 +271,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
+    "nixpkgs_5": {
       "locked": {
         "lastModified": 1642635915,
         "narHash": "sha256-vabPA32j81xBO5m3+qXndWp5aqepe+vu96Wkd9UnngM=",
@@ -262,7 +311,8 @@
         "deploy-rs": "deploy-rs",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
-        "nixpkgs": "nixpkgs_3",
+        "itpms-site": "itpms-site",
+        "nixpkgs": "nixpkgs_4",
         "nur": "nur",
         "simple-nixos-mailserver": "simple-nixos-mailserver"
       }
@@ -270,7 +320,7 @@
     "simple-nixos-mailserver": {
       "inputs": {
         "blobs": "blobs",
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_5",
         "utils": "utils_2"
       },
       "locked": {

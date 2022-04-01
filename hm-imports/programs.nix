@@ -13,7 +13,6 @@
     vlc
     lazydocker
     youtube-dl
-    chromium
     patchelf
     languagetool
   ];

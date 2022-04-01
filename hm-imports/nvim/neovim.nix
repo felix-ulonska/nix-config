@@ -22,6 +22,7 @@
       nvim-web-devicons
       coc-nvim
       telescope-nvim
+      vim-sleuth
       toggleterm-nvim
       vim-nix
       coc-tsserver

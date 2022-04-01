@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, config, itpms-site, ... }:
 with lib;
 let
   cfg = config.jabbi.services.nginx;
