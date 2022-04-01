@@ -18,13 +18,27 @@
   hardware.opengl.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
 
+  hardware.bluetooth.enable = true;
+  programs.nix-ld.enable = true;
+
+  # this is needed to get a bridge with DHCP enabled
+  virtualisation.libvirtd.enable = true;
+
+  # reboot your computer after adding those lines
+  boot.extraModprobeConfig = ''
+    options kvm_intel nested=1
+    options kvm_intel emulate_invalid_guest_state=0
+    options kvm ignore_msrs=1
+  '';
+
+
   services.printing.enable = true;
 
   time.timeZone = "Europe/Amsterdam";
 
   users.users.jabbi = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" ];
+    extraGroups = [ "wheel" "audio" "libvirtd" ];
     hashedPassword = "$6$rejDSpuy6d$za9N7miMI/XHZNjZ6ib0IcaF511UdBn7QVwIV7MO1MTMO5yjVGwuvVT7kJlnTN165srbPd6rCJxtgdABTuEbj1";
     shell = pkgs.zsh;
   };
@@ -36,6 +50,8 @@
 
   environment.systemPackages = with pkgs; [
     vim
+    dig
+    steam-run-native
   ];
 
   networking.firewall.allowedTCPPorts = [ 80 443 ];

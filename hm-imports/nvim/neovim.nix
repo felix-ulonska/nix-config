@@ -3,6 +3,7 @@
   home.packages = [
     pkgs.nodejs
     pkgs.lazygit
+    pkgs.jdk
   ];
   home.file.".config/nvim".source = ./config;
   home.file.".config/nvim".recursive = true;

@@ -10,7 +10,12 @@
     teams
     thunderbird
     spotify
+    vlc
     lazydocker
+    youtube-dl
+    chromium
+    patchelf
+    languagetool
   ];
 
   programs.firefox = {

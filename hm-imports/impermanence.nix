@@ -5,6 +5,7 @@
       "Documents"
       "Nextcloud"
       "Arbeit"
+      "opt"
       "Projects"
       ".logseq"
       ".config/Nextcloud"
