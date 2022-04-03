@@ -15,6 +15,7 @@
   jabbi.home.impermanence = false;
   jabbi.services.minecraft.enable = true;
   jabbi.docker.enable = true;
+  jabbi.services.itpms-site.enable = true;
 
   jabbi.services.nextcloud.enable = true;
   jabbi.services.nginx.enable = true;
@@ -62,7 +63,12 @@
       "/var/lib/nextcloud"
       "/var/lib/postgresql"
       "/var/lib/acme"
-      "/big-tmp"
+      "/var/lib/dovecot"
+      "/var/lib/postfix"
+      "/var/lib/redis-rspamd"
+      "/var/lib/rspam"
+      "/var/lib/dkim"
+      "/var/lib/vmail"
     ];
     files = [
       "/etc/machine-id"

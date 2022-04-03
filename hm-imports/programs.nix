@@ -14,7 +14,11 @@
     lazydocker
     youtube-dl
     patchelf
+    sshfs
     languagetool
+
+    nixpkgs-fmt
+    usbmuxd
   ];
 
   programs.firefox = {

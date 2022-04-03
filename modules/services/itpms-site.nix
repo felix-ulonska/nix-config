@@ -12,7 +12,7 @@ in
       "it-projekt-muenster.de" = {
         forceSSL = true;
         enableACME = true;
-        #root = "${inputs.itpms-site}/public";
+        root = "${inputs.itpms-site}/public";
       };
     };
   };

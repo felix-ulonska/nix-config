@@ -14,6 +14,8 @@
   jabbi.services.gnome.enable = true;
   jabbi.docker.enable = true;
 
+  services.usbmuxd.enable = true;
+
   networking.hostName = "GLaDOS";
   hardware.opengl.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
@@ -30,7 +32,6 @@
     options kvm_intel emulate_invalid_guest_state=0
     options kvm ignore_msrs=1
   '';
-
 
   services.printing.enable = true;
 

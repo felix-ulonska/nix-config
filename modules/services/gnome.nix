@@ -8,6 +8,12 @@ in
     enable = mkEnableOption "Enable Gnome";
   };
   config = mkIf cfg.enable {
+    services.xserver = {
+      layout = "de,us";
+      xkbVariant = "us,";
+      xkbOptions = "grp:win_space_toggle";
+    };
+
     services.xserver.displayManager.gdm.enable = true;
     services.xserver.desktopManager.gnome.enable = true;
     services.xserver.enable = true;
