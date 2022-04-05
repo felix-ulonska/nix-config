@@ -30,6 +30,7 @@
     {
       device = "/dev/disk/by-uuid/f90ee2ed-6b6e-4838-8a70-d1b3f67fab17";
       fsType = "ext4";
+      neededForBoot = true;
     };
 
   fileSystems."/etc/nixos" =
@@ -38,6 +39,12 @@
       fsType = "none";
       options = [ "bind" ];
     };
+
+  fileSystems."/etc/ssh" = {
+    depends = [ "/nix" ];
+    device = "/nix/persist/etc/ssh";
+    neededForBoot = true;
+  };
 
   fileSystems."/var/log" =
     {

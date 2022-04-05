@@ -27,7 +27,8 @@ in
       loginAccounts = {
         "felix@webfoo.de" = {
           hashedPasswordFile = "/run/agenix/mail-felix-password";
-          aliases = [ "felix@webfoo.de" ];
+          aliases = [ "felix@webfoo.de" "@webfoo.de" ];
+          catchAll = [ "webfoo.de" ];
         };
       };
 

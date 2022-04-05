@@ -20,6 +20,7 @@
       ".config/spotify"
       ".config/goa-1.0"
       ".config/Logseq"
+      ".config/syncthing"
       #".config"
       ".cache/Cypress"
       ".local/share/containers"

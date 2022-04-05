@@ -32,4 +32,6 @@
   services.nextcloud-client = {
     enable = true;
   };
+
+  services.syncthing.enable = true;
 }

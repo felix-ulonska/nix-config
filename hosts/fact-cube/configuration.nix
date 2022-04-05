@@ -28,6 +28,7 @@
   users.users.jabbi = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
+    initialPassword = "test";
   };
 
   users.users."root".openssh.authorizedKeys.keys = [
@@ -63,22 +64,13 @@
       "/var/lib/nextcloud"
       "/var/lib/postgresql"
       "/var/lib/acme"
-      "/var/lib/dovecot"
-      "/var/lib/postfix"
-      "/var/lib/redis-rspamd"
-      "/var/lib/rspam"
       "/var/lib/dkim"
-      "/var/lib/vmail"
+      "/var/vmail"
     ];
     files = [
       "/etc/machine-id"
-      "/etc/ssh/ssh_host_rsa_key"
-      "/etc/ssh/ssh_host_rsa_key.pub"
-      "/etc/ssh/ssh_host_ed25519_key"
-      "/etc/ssh/ssh_host_ed25519_key.pub"
     ];
   };
-
 
   system.stateVersion = "21.11";
 }

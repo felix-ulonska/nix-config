@@ -14,6 +14,7 @@
     extraConfig = ''
       set runtimepath^=~/.config/nvim
       lua dofile('${./config/init.lua}')
+      file_ignore_patterns = { "node_modules" }
     '';
 
     plugins = with pkgs.vimPlugins; [
@@ -36,6 +37,7 @@
       coc-lua
       coc-explorer
       coc-clangd
+      coc-rust-analyzer
       #coc-flutter-tools
       (base16-vim.overrideAttrs (old:
         let
