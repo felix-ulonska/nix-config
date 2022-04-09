@@ -20,8 +20,8 @@
 
     itpms-site.url = "gitlab:itpms/website";
 
-    base16-eva-scheme = {
-      url = github:kjakapat/base16-eva-scheme;
+    theme = {
+      url = github:alexmirrington/base16-espresso-scheme;
       flake = false;
     };
 
@@ -46,7 +46,7 @@
         simple-nixos-mailserver.nixosModule
         impermanence.nixosModule
         base16.nixosModule
-        { scheme = "${inputs.base16-eva-scheme}/eva.yaml"; }
+        { scheme = "${inputs.theme}/decaf.yaml"; }
         home-manager.nixosModules.home-manager
         (lib.my.mapModulesRec' (toString ./modules) import)
         ({ config, ... }: lib.mkMerge [{

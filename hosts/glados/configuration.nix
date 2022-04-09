@@ -10,11 +10,14 @@
   jabbi.home.enable = true;
   jabbi.home.enableVisualApps = true;
   jabbi.home.impermanence = true;
-  #jabbi.i3wm.enable = true;
+  jabbi.i3wm.enable = true;
   jabbi.services.gnome.enable = true;
   jabbi.docker.enable = true;
 
   services.usbmuxd.enable = true;
+
+  programs.ssh.startAgent = true;
+  programs.steam.enable = true;
 
   networking.hostName = "GLaDOS";
   hardware.opengl.enable = true;

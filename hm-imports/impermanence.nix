@@ -20,6 +20,7 @@
       ".config/spotify"
       ".config/goa-1.0"
       ".config/Logseq"
+      ".config/geary"
       ".config/syncthing"
       #".config"
       ".cache/Cypress"
@@ -27,6 +28,7 @@
       ".local/share/keyrings"
       ".mozilla"
       ".ssh"
+      ".wine"
       #".local/share/gnome-settings-daemon"
       #".local/share/gnome-shell"
     ];

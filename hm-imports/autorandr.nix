@@ -14,6 +14,7 @@
             primary = true;
             mode = "3440x1440";
             rate = "144.00";
+            dpi = 102;
           };
           "DP-4".enable = false;
         };
@@ -27,6 +28,7 @@
             enable = true;
             mode = "2560x1600";
             rate = "165.02";
+            dpi = 102;
           };
         };
       };

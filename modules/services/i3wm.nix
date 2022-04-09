@@ -9,12 +9,12 @@ in
   };
   config = mkIf cfg.enable {
     services.xserver = {
-      enable = true;
-      layout = "eu";
-      displayManager.defaultSession = "none+i3";
-      desktopManager = {
-        xterm.enable = false;
-      };
+      #enable = true;
+      ## layout = "eu";
+      #displayManager.defaultSession = "none+i3";
+      #desktopManager = {
+      #  xterm.enable = false;
+      #};
       windowManager.i3 = {
         enable = true;
         package = pkgs.i3-gaps;

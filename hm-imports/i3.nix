@@ -7,7 +7,7 @@ let
 in
 {
   xsession.windowManager.i3 = {
-    enable = false;
+    enable = true;
     config = {
       terminal = alacritty;
       modifier = modifier;
@@ -20,6 +20,7 @@ in
       defaultWorkspace = "workspace number 1";
 
       startup = [
+        { command = "autorandr -c"; notification = false; always = true; }
         { command = "timeular"; notification = false; }
         { command = "keepassxc"; notification = false; }
         { command = "logseq"; notification = false; }
@@ -50,12 +51,17 @@ in
         "${modifier}+Up" = "focus up";
         "${modifier}+Right" = "focus right";
 
-        "${modifier}+Shift+Left" = "move left";
-        "${modifier}+Shift+Down" = "move down";
-        "${modifier}+Shift+Up" = "move up";
-        "${modifier}+Shift+Right" = "move right";
+        "${modifier}+h" = "focus left";
+        "${modifier}+j" = "focus down";
+        "${modifier}+k" = "focus up";
+        "${modifier}+l" = "focus right";
 
-        "${modifier}+h" = "split h";
+        "${modifier}+Shift+h" = "move left";
+        "${modifier}+Shift+j" = "move down";
+        "${modifier}+Shift+k" = "move up";
+        "${modifier}+Shift+l" = "move right";
+
+        "${modifier}+b" = "split h";
         "${modifier}+v" = "split v";
         "${modifier}+f" = "fullscreen toggle";
 
@@ -112,7 +118,7 @@ in
 
         "${modifier}+p" = ''[class="KeePassXC"] scratchpad show'';
         "${modifier}+t" = ''[class="Timeular"] scratchpad show'';
-        "${modifier}+l" = ''[class="Logseq"] scratchpad show'';
+        "${modifier}+n" = ''[class="Logseq"] scratchpad show'';
       };
 
       floating = {

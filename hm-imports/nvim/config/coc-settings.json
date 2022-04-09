@@ -3,7 +3,7 @@
   "Lua.diagnostics.globals": ["vim"],
 	"html.enable": true,
 	"ltex.enabled": true,
-	"bad.ltex.language": "de-DE",
+	"ltex.language": "de-DE",
 	"html.autoClosingTags": true,
 	"explorer.icon.enableNerdfont": true,
 	"python.linting.mypyEnabled": true,

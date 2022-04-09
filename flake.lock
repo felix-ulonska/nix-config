@@ -38,22 +38,6 @@
         "type": "github"
       }
     },
-    "base16-eva-scheme": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1589840056,
-        "narHash": "sha256-+52BPv/3f4vqG+p37XSxyf9w0CPkBSvCo6x1O/JE6Lg=",
-        "owner": "kjakapat",
-        "repo": "base16-eva-scheme",
-        "rev": "595ea6eff814ae462709f222e7af3492ee804e88",
-        "type": "github"
-      },
-      "original": {
-        "owner": "kjakapat",
-        "repo": "base16-eva-scheme",
-        "type": "github"
-      }
-    },
     "base16-i3": {
       "flake": false,
       "locked": {
@@ -305,7 +289,6 @@
       "inputs": {
         "agenix": "agenix",
         "base16": "base16",
-        "base16-eva-scheme": "base16-eva-scheme",
         "base16-i3": "base16-i3",
         "base16-vim": "base16-vim",
         "deploy-rs": "deploy-rs",
@@ -314,7 +297,8 @@
         "itpms-site": "itpms-site",
         "nixpkgs": "nixpkgs_4",
         "nur": "nur",
-        "simple-nixos-mailserver": "simple-nixos-mailserver"
+        "simple-nixos-mailserver": "simple-nixos-mailserver",
+        "theme": "theme"
       }
     },
     "simple-nixos-mailserver": {
@@ -335,6 +319,22 @@
         "owner": "simple-nixos-mailserver",
         "repo": "nixos-mailserver",
         "type": "gitlab"
+      }
+    },
+    "theme": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1613109805,
+        "narHash": "sha256-oLgAXqRvEC662t0j5CbKqtRsLBTP26yUJclaehUl1Cs=",
+        "owner": "alexmirrington",
+        "repo": "base16-espresso-scheme",
+        "rev": "fbb61a845ca799986e6ac0c45f06050b8544e935",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alexmirrington",
+        "repo": "base16-espresso-scheme",
+        "type": "github"
       }
     },
     "utils": {
