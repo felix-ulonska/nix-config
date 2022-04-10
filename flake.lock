@@ -179,11 +179,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1648839745,
-        "narHash": "sha256-8u6oPJYjWl2kFYnjuCv1ao+YOH5v8RpkShOWFPDg3rg=",
+        "lastModified": 1649585464,
+        "narHash": "sha256-GrmY1bF3mvHWMtYxc8z2rpcSkU8/oap3Wwpi224fUnM=",
         "owner": "itpms",
         "repo": "website",
-        "rev": "32cf4b274efe6a262d46c02c4e90c25e8f6db38f",
+        "rev": "0e6addbbd055aa4e7bb60797945b9d026adeb0bd",
         "type": "gitlab"
       },
       "original": {
