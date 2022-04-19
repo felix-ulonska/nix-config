@@ -2,7 +2,7 @@
   description = "An example NixOS configuration";
 
   inputs = {
-    nixpkgs = { url = "github:nixos/nixpkgs/master"; };
+    nixpkgs = { url = "github:nixos/nixpkgs/nixos-unstable"; };
     deploy-rs = {
       url = "github:serokell/deploy-rs";
     };
@@ -108,6 +108,9 @@
         ];
         shellHook = ''
           lefthook install
+          function deployNoSafe() {
+            nix run --show-trace github:serokell/deploy-rs -- --auto-rollback false
+          }
           function deploy() {
             nix run --show-trace github:serokell/deploy-rs
           }

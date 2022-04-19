@@ -26,6 +26,7 @@
       ".cache/Cypress"
       ".local/share/containers"
       ".local/share/keyrings"
+      ".local/share/Steam"
       ".mozilla"
       ".ssh"
       ".wine"

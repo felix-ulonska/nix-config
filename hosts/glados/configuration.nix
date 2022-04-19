@@ -36,6 +36,8 @@
     options kvm ignore_msrs=1
   '';
 
+  boot.supportedFilesystems = [ "ntfs" ];
+
   services.printing.enable = true;
 
   time.timeZone = "Europe/Amsterdam";

@@ -21,6 +21,8 @@
   jabbi.services.nginx.enable = true;
   jabbi.services.mail.enable = true;
 
+  jabbi.services.jmusicbot.enable = true;
+
   networking.hostName = "fact-cube";
 
   time.timeZone = "Europe/Amsterdam";

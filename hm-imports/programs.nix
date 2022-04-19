@@ -16,6 +16,7 @@
     patchelf
     sshfs
     languagetool
+    glab
 
     nixpkgs-fmt
     usbmuxd
