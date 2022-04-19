@@ -72,6 +72,8 @@ in
         "${modifier}+Shift+space" = "floating toggle";
         "${modifier}+space" = "focus mode_toggle";
 
+        "${modifier}+shift+s" = "sticky toggle";
+
         "${modifier}+a" = "focus parent";
 
         "${modifier}+Shift+minus" = "move scratchpad";

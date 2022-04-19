@@ -25,6 +25,9 @@
       vim-sleuth
       toggleterm-nvim
       vim-nix
+      gitsigns-nvim
+      hop-nvim
+      vim-fugitive
       coc-tsserver
       coc-pairs
       coc-html

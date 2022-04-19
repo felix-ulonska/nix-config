@@ -11,7 +11,6 @@ in
     {
       services.jmusicbot = {
         enable = true;
-      }
+      };
     };
-
 }

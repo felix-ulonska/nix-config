@@ -20,6 +20,7 @@
 
     nixpkgs-fmt
     usbmuxd
+    zoom-us
   ];
 
   programs.firefox = {

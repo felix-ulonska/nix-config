@@ -67,6 +67,7 @@
       "/var/lib/postgresql"
       "/var/lib/acme"
       "/var/lib/dkim"
+      "/var/lib/jmusicbot"
       "/var/vmail"
     ];
     files = [

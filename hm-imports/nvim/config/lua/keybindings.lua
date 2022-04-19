@@ -8,7 +8,7 @@ map {'i', 'jk', '<esc>', noremap = false}
 vim.cmd 'source ~/.config/nvim/tab-magic-coc.vim'
 
 map {'n', 'gd', '<Plug>(coc-definition)', noremap = false}
-map {'n', 'gy', '<Plug>coc-type-definition', noremap = false, silent = true}
+map {'n', 'gt', '<Plug>coc-type-definition', noremap = false, silent = true}
 map {'n', 'gi', '<Plug>coc-implementation', noremap = false, silent = true}
 map {'n', 'gr', '<Plug>coc-references', noremap = false, silent = true}
 
@@ -48,3 +48,6 @@ map {"n", "<leader>l", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent
 map {"n", "<leader>p", "<cmd>lua _pipeline_toggle()<CR>", {noremap = true, silent = true}}
 map {"n", "<leader>i", "<cmd>lua _createIssue_toggle()<CR>", {noremap = true, silent = true}}
 map {"n", "<leader>t", "<cmd>lua _tasks_toggle()<CR>", {noremap = true, silent = true}}
+
+map {"n", "<leader>w", ":HopWord<CR>"}
+map {"n", "<leader>s", ":HopLine<CR>"}
