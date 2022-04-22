@@ -21,6 +21,7 @@
     nixpkgs-fmt
     usbmuxd
     zoom-us
+    keygenme
   ];
 
   programs.firefox = {

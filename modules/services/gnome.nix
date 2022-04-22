@@ -9,6 +9,7 @@ in
   };
   config = mkIf cfg.enable {
     services.xserver = {
+      enable = true;
       layout = "de,us";
       xkbVariant = "us,";
       xkbOptions = "grp:win_space_toggle";
@@ -16,7 +17,6 @@ in
 
     services.xserver.displayManager.gdm.enable = true;
     services.xserver.desktopManager.gnome.enable = true;
-    services.xserver.enable = true;
     services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
 
     sound.enable = true;

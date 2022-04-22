@@ -29,11 +29,15 @@ in
       type = lib.types.bool;
       default = false;
     };
+    userName = lib.mkOption {
+      type = lib.types.string;
+      default = "jabbi";
+    };
   };
   config = mkIf cfg.enable {
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;
-    home-manager.users.jabbi = {
+    home-manager.users."${cfg.userName}" = {
       imports = baseImports ++ optionals cfg.enableVisualApps visualImports ++ optional cfg.impermanence ../../hm-imports/impermanence.nix;
     };
 

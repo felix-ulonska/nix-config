@@ -75,6 +75,13 @@
           modules = (modulesList ++ [ ./hosts/glados/configuration.nix ]);
         };
 
+      nixosConfigurations.edgeless-safety-cube =
+        nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit lib; inherit inputs; };
+          modules = (modulesList ++ [ ./hosts/edgeless-safety-cube/configuration.nix ]);
+        };
+
       deploy = {
         nodes = {
           "fact-cube" = {
@@ -108,6 +115,9 @@
         ];
         shellHook = ''
           lefthook install
+          function buildVM () {
+            sudo nixos-rebuild build-vm --flake .#edgeless-safety-cube
+          }
           function deployNoSafe() {
             nix run --show-trace github:serokell/deploy-rs -- --auto-rollback false
           }
