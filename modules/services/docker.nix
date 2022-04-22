@@ -8,13 +8,9 @@ in
     enable = mkEnableOption "Enable ForgeServer";
   };
   config = mkIf cfg.enable {
-    virtualisation.podman.enable = true;
-    virtualisation.podman.dockerSocket.enable = true;
-    virtualisation.podman.dockerCompat = true;
-    virtualisation.podman.defaultNetwork.dnsname.enable = true;
-    virtualisation.oci-containers.backend = "podman";
+    virtualisation.docker.enable = true;
 
     # Use your username instead of `myuser`
-    users.extraUsers.jabbi.extraGroups = [ "podman" ];
+    users.extraGroups.docker.members = [ "jabbi" ];
   };
 }

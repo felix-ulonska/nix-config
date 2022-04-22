@@ -29,6 +29,12 @@
   # this is needed to get a bridge with DHCP enabled
   virtualisation.libvirtd.enable = true;
 
+  programs.fuse.userAllowOther = true;
+  networking.firewall.enable = true;
+
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "jabbi" ];
+
   # reboot your computer after adding those lines
   boot.extraModprobeConfig = ''
     options kvm_intel nested=1
@@ -61,9 +67,10 @@
     dig
     htop
     steam-run-native
+    wireguard-tools
   ];
 
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.allowedTCPPorts = [ 80 443 1433 ];
   nix = {
     package = pkgs.nixFlakes; # or versioned attributes like nix_2_7
     extraOptions = ''
@@ -80,7 +87,7 @@
   fileSystems."/" = {
     device = "none";
     fsType = "tmpfs";
-    options = [ "defaults" "size=5G" "mode=755" ];
+    options = [ "defaults" "size=1G" "mode=755" ];
   };
 
   environment.persistence."/nix/persist" = {
@@ -88,6 +95,8 @@
       "/etc/nixos"
       "/etc/NetworkManager/system-connections"
       "/var/lib/containers"
+      "/var/lib/docker"
+      "/etc/wireguard"
     ];
     files = [
       "/etc/machine-id"

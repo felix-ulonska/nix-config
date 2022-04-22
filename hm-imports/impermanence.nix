@@ -27,6 +27,7 @@
       ".local/share/containers"
       ".local/share/keyrings"
       ".local/share/Steam"
+      ".local/share/geary"
       ".mozilla"
       ".ssh"
       ".wine"
@@ -34,5 +35,6 @@
       #".local/share/gnome-shell"
     ];
     files = [ ".zsh_history" ".config/gnome-initial-setu-done" ".npmrc" ];
+    allowOther = true;
   };
 }
