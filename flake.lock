@@ -324,16 +324,16 @@
     "theme": {
       "flake": false,
       "locked": {
-        "lastModified": 1613109805,
-        "narHash": "sha256-oLgAXqRvEC662t0j5CbKqtRsLBTP26yUJclaehUl1Cs=",
-        "owner": "alexmirrington",
-        "repo": "base16-espresso-scheme",
-        "rev": "fbb61a845ca799986e6ac0c45f06050b8544e935",
+        "lastModified": 1538613261,
+        "narHash": "sha256-l0WzTUSvLgsL+ExcgdMzXoJnfVQvKr8Jk5uKI6Li8CU=",
+        "owner": "ajlende",
+        "repo": "base16-atlas-scheme",
+        "rev": "55fe308a8d93a31c1bd55e80ff573b11511b6cf3",
         "type": "github"
       },
       "original": {
-        "owner": "alexmirrington",
-        "repo": "base16-espresso-scheme",
+        "owner": "ajlende",
+        "repo": "base16-atlas-scheme",
         "type": "github"
       }
     },

@@ -33,3 +33,4 @@ require('telescope').setup {
 require('hop').setup()
 
 require('gitsigns').setup()
+require('lualine').setup()

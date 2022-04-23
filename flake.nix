@@ -21,7 +21,7 @@
     itpms-site.url = "gitlab:itpms/website";
 
     theme = {
-      url = github:alexmirrington/base16-espresso-scheme;
+      url = github:ajlende/base16-atlas-scheme;
       flake = false;
     };
 
@@ -46,7 +46,7 @@
         simple-nixos-mailserver.nixosModule
         impermanence.nixosModule
         base16.nixosModule
-        { scheme = "${inputs.theme}/decaf.yaml"; }
+        { scheme = "${inputs.theme}/atlas.yaml"; }
         home-manager.nixosModules.home-manager
         (lib.my.mapModulesRec' (toString ./modules) import)
         ({ config, ... }: lib.mkMerge [{

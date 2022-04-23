@@ -17,7 +17,7 @@
     '';
 
     plugins = with pkgs.vimPlugins; [
-      galaxyline-nvim
+      #galaxyline-nvim
       barbar-nvim
       nvim-web-devicons
       coc-nvim
@@ -41,6 +41,7 @@
       coc-clangd
       coc-rust-analyzer
       #coc-flutter-tools
+      lualine-nvim
       (base16-vim.overrideAttrs (old:
         let
           schemeFile = scheme inputs.base16-vim;
