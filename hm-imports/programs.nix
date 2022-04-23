@@ -22,6 +22,8 @@
     nixpkgs-fmt
     usbmuxd
     zoom-us
+
+    networkmanagerapplet
   ];
 
   programs.firefox = {

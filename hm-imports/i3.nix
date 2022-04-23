@@ -26,6 +26,7 @@ in
         { command = "logseq"; notification = false; }
         { command = "xclip"; notification = false; }
         { command = "flameshot"; notification = false; }
+        { command = "nm-applet"; notification = false; }
       ];
 
       window.commands = [
