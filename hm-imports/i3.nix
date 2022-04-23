@@ -21,9 +21,11 @@ in
 
       startup = [
         { command = "autorandr -c"; notification = false; always = true; }
-        { command = "timeular"; notification = false; }
+        { command = "timeular --disable-gpu-sandbox"; notification = false; }
         { command = "keepassxc"; notification = false; }
         { command = "logseq"; notification = false; }
+        { command = "xclip"; notification = false; }
+        { command = "flameshot"; notification = false; }
       ];
 
       window.commands = [

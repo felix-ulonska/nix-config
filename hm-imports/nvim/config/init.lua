@@ -30,6 +30,8 @@ require('telescope').setup {
 	}
 }
 
+require('telescope').load_extension('coc')
+
 require('hop').setup()
 
 require('gitsigns').setup()

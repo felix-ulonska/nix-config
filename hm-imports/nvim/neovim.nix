@@ -4,7 +4,12 @@
     pkgs.nodejs
     pkgs.lazygit
     pkgs.jdk
+
+    # Livesearch
     pkgs.ripgrep
+
+    # Clipboard
+    pkgs.xclip
   ];
   home.file.".config/nvim".source = ./config;
   home.file.".config/nvim".recursive = true;
@@ -23,6 +28,7 @@
       nvim-web-devicons
       coc-nvim
       telescope-nvim
+      telescope-coc-nvim
       vim-sleuth
       toggleterm-nvim
       vim-nix
@@ -36,7 +42,7 @@
       coc-eslint
       coc-prettier
       coc-json
-      # coc-angular -- TODO add coc-angular
+      # coc-angular 
       coc-lua
       coc-explorer
       coc-clangd

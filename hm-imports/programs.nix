@@ -17,6 +17,7 @@
     sshfs
     languagetool
     glab
+    flameshot
 
     nixpkgs-fmt
     usbmuxd
