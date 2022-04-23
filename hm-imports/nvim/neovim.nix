@@ -4,6 +4,7 @@
     pkgs.nodejs
     pkgs.lazygit
     pkgs.jdk
+    pkgs.ripgrep
   ];
   home.file.".config/nvim".source = ./config;
   home.file.".config/nvim".recursive = true;
