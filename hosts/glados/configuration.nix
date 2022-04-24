@@ -30,7 +30,7 @@
   virtualisation.libvirtd.enable = true;
 
   programs.fuse.userAllowOther = true;
-  networking.firewall.enable = true;
+  networking.firewall.enable = false;
 
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "jabbi" ];
@@ -71,6 +71,7 @@
   ];
 
   networking.firewall.allowedTCPPorts = [ 80 443 1433 ];
+  networking.firewall.allowedUDPPorts = [ 51820 ];
   nix = {
     package = pkgs.nixFlakes; # or versioned attributes like nix_2_7
     extraOptions = ''
