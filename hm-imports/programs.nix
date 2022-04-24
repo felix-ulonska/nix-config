@@ -24,6 +24,8 @@
     zoom-us
 
     networkmanagerapplet
+    flutter
+    obs-studio
   ];
 
   programs.firefox = {
