@@ -13,6 +13,63 @@
   ];
   home.file.".config/nvim".source = ./config;
   home.file.".config/nvim".recursive = true;
+  home.file.".config/nvim/coc-settings.json".text ='' 
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "scss",
+    "golang",
+    "go",
+    "html",
+    "typescript",
+    "dart",
+    "python"
+  ],
+  "Lua.diagnostics.globals": ["vim"],
+  "html.enable": true,
+  "ltex.enabled": true,
+  "ltex.language": "de-DE",
+  "html.autoClosingTags": true,
+  "explorer.icon.enableNerdfont": true,
+  "python.linting.mypyEnabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.formatting.provider": "black",
+  "pydocstring.formatter": "numpy",
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "usePlaceholders": true
+      }
+    },
+    "haskell": {
+      "command": "haskell-language-server-wrapper",
+      "args": ["--lsp"],
+      "rootPatterns": [
+        "*.cabal",
+        "stack.yaml",
+        "cabal.project",
+        "package.yaml",
+        "hie.yaml"
+      ],
+      "filetypes": ["haskell", "lhaskell"]
+    },
+    "graphql": {
+      "command": "graphql-lsp",
+      "args": ["server", "-m", "stream"],
+      "filetypes": ["typescript", "typescriptreact", "graphql"]
+    }
+  },
+  "coc.preferences.extensionUpdateCheck": "daily",
+  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/13.0.0/clangd_13.0.0/bin/clangd",
+  "outline": {
+    "sortBy": "position"
+  },
+  "explorer.width": 80,
+  "flutter.sdk.path": "${pkgs.flutter}"
+}
+    '';
   programs.neovim = {
     enable = true;
     vimAlias = true;
@@ -47,7 +104,8 @@
       coc-explorer
       coc-clangd
       coc-rust-analyzer
-      #coc-flutter-tools
+      #coc-flutter
+      dart-vim-plugin
       lualine-nvim
       (base16-vim.overrideAttrs (old:
         let
