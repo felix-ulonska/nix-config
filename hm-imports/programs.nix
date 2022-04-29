@@ -26,6 +26,7 @@
     networkmanagerapplet
     flutter
     obs-studio
+    android-studio
   ];
 
   programs.firefox = {

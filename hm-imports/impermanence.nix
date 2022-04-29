@@ -1,4 +1,5 @@
 { ... }: {
+  # FUSE Mounts are painfully slow!
   home.persistence."/nix/persist/home/jabbi" = {
     directories = [
       "Downloads"
@@ -29,8 +30,9 @@
       ".local/share/Steam"
       ".local/share/geary"
       ".mozilla"
-      ".ssh"
       ".wine"
+      ".ssh"
+      "Android"
       #".local/share/gnome-settings-daemon"
       #".local/share/gnome-shell"
     ];

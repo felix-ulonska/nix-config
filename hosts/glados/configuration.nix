@@ -9,7 +9,7 @@
 
   jabbi.home.enable = true;
   jabbi.home.enableVisualApps = true;
-  jabbi.home.impermanence = true;
+  #jabbi.home.impermanence = true;
   jabbi.i3wm.enable = true;
   jabbi.services.gnome.enable = true;
   jabbi.docker.enable = true;
@@ -98,6 +98,7 @@
       "/var/lib/containers"
       "/var/lib/docker"
       "/etc/wireguard"
+      "/tmp"
     ];
     files = [
       "/etc/machine-id"
@@ -107,6 +108,47 @@
       "/etc/ssh/ssh_host_ed25519_key.pub"
     ];
   };
+
+  environment.persistence."/nix/persist/home/jabbi" = {
+    directories = map (x: "/home/jabbi/" + x) [
+      "Downloads"
+      "Documents"
+      "Nextcloud"
+      "Arbeit"
+      "opt"
+      "Projects"
+      ".logseq"
+      ".config/Nextcloud"
+      ".config/keepassxc"
+      ".config/discord"
+      ".config/Timeular"
+      ".config/nautilus"
+      ".config/pulse"
+      ".config/Microsoft Teams - Preview"
+      ".config/Microsoft"
+      ".config/team"
+      ".config/spotify"
+      ".config/goa-1.0"
+      ".config/Logseq"
+      ".config/geary"
+      ".config/syncthing"
+      #".config"
+      ".cache/Cypress"
+      ".local/share/containers"
+      ".local/share/keyrings"
+      ".local/share/Steam"
+      ".local/share/geary"
+      ".mozilla"
+      ".wine"
+      ".ssh"
+      "Android"
+      #".local/share/gnome-settings-daemon"
+      #".local/share/gnome-shell"
+    ];
+    files = map (x: "/home/jabbi/" + x) [ ".zsh_history" ".config/gnome-initial-setu-done" ".npmrc" ];
+    allowOther = true;
+  };
+
   boot.loader.grub = {
     enable = true;
     version = 2;
