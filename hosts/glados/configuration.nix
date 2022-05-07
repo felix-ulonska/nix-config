@@ -102,8 +102,8 @@
       "/tmp"
       "/var/lib/flatpak"
       "/root/.cache/nix"
-    ] ++ 
-     map (x: "/home/jabbi/" + x) [
+    ] ++
+    map (x: "/home/jabbi/" + x) [
       "Downloads"
       "Documents"
       "Nextcloud"
@@ -146,7 +146,7 @@
       #".local/share/gnome-shell"
     ];
 
-    
+
     files = [
       "/etc/machine-id"
       "/etc/ssh/ssh_host_rsa_key"

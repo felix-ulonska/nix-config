@@ -11,7 +11,7 @@ in
     virtualisation.oci-containers.containers = {
       minecraft = {
         image = "itzg/minecraft-server";
-        autostart = true;
+        autoStart = true;
         ports = [ "25565:25565" ];
         environment = {
           eula = "true";

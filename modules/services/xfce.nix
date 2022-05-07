@@ -8,9 +8,9 @@ in
     enable = mkEnableOption "Enable XFCe";
   };
   config = mkIf cfg.enable {
-  nixpkgs.config.pulseaudio = true;
+    nixpkgs.config.pulseaudio = true;
 
-  services.xserver = {
+    services.xserver = {
       enable = true;
       desktopManager = {
         xterm.enable = false;

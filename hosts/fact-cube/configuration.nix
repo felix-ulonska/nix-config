@@ -20,6 +20,7 @@
   jabbi.services.nextcloud.enable = true;
   jabbi.services.nginx.enable = true;
   jabbi.services.mail.enable = true;
+  jabbi.services.uptime-kuma.enable = true;
 
   jabbi.services.jmusicbot.enable = true;
 
@@ -68,7 +69,9 @@
       "/var/lib/acme"
       "/var/lib/dkim"
       "/var/lib/jmusicbot"
+      "/var/lib/uptime-kuma"
       "/var/lib/old-itpms"
+      "/var/lib/docker"
       "/var/vmail"
     ];
     files = [

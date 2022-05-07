@@ -27,7 +27,7 @@ with lib;
       diskSize = 15000; # MB
       memorySize = 8048; # MB
       writableStoreUseTmpfs = false;
-      resolution = {x = 1920; y = 1080; };
+      resolution = { x = 1920; y = 1080; };
       cores = 6;
       # Prevent read of host nixstore
       # true to prevent read of /nix/store but takes storage
@@ -40,7 +40,7 @@ with lib;
         #};
       };
       qemu = {
-        networkingOptions = lib.mkForce ["-nic none"];
+        networkingOptions = lib.mkForce [ "-nic none" ];
       };
       writableStore = false;
       graphics = false;
@@ -67,7 +67,8 @@ with lib;
     programs.wireshark.enable = true;
 
     environment.systemPackages = with pkgs;
-      [ # some relevant packages here
+      [
+        # some relevant packages here
         firefox
         neovim
         htop

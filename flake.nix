@@ -135,7 +135,8 @@
       };
     } // flake-utils.lib.eachDefaultSystem (system:
       let pkgs = nixpkgs.legacyPackages.${system};
-      in {
+      in
+      {
         # I re-export deploy-rs due to an issue with running `nix flake github:serokell/deploy-rs ...`
         # per a conversation I had here: https://github.com/serokell/deploy-rs/issues/155
         apps.deploy-rs = deploy-rs.defaultApp."${system}";

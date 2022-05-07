@@ -9,11 +9,11 @@ in
   };
   config = mkIf cfg.enable {
 
-    services.nginx.virtualhosts = {
+    services.nginx.virtualHosts = {
       "it-projekt-muenster.de" = {
-        forcessl = true;
-        enableacme = true;
-        root = "${inputs.itpms-site.defaultpackage.x86_64-linux}/public";
+        forceSSL = true;
+        enableACME = true;
+        root = "${inputs.itpms-site.defaultPackage.x86_64-linux}/public";
       };
       "old.it-projekt-muenster.de" = {
         forceSSL = true;

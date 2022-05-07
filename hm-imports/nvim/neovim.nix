@@ -16,7 +16,7 @@
 
   home.file.".config/nvim".source = ./config;
   home.file.".config/nvim".recursive = true;
-  home.file.".config/nvim/coc-settings.json".text ='' 
+  home.file.".config/nvim/coc-settings.json".text = '' 
 {
   "coc.preferences.formatOnSaveFiletypes": [
     "scss",
