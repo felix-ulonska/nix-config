@@ -15,6 +15,11 @@ in
         enableACME = true;
         root = "${inputs.itpms-site.defaultPackage.x86_64-linux}/public";
       };
+      "old.it-projekt-muenster.de" = {
+        forceSSL = true;
+        enableACME = true;
+        root = "/var/lib/old-itpms";
+      };
     };
   };
 }

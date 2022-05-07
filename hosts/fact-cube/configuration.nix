@@ -68,6 +68,7 @@
       "/var/lib/acme"
       "/var/lib/dkim"
       "/var/lib/jmusicbot"
+      "/var/lib/old-itpms"
       "/var/vmail"
     ];
     files = [
