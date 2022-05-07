@@ -13,6 +13,7 @@
   jabbi.i3wm.enable = true;
   jabbi.services.gnome.enable = true;
   jabbi.docker.enable = true;
+  services.flatpak.enable = true;
 
   services.usbmuxd.enable = true;
 
@@ -99,18 +100,10 @@
       "/var/lib/docker"
       "/etc/wireguard"
       "/tmp"
-    ];
-    files = [
-      "/etc/machine-id"
-      "/etc/ssh/ssh_host_rsa_key"
-      "/etc/ssh/ssh_host_rsa_key.pub"
-      "/etc/ssh/ssh_host_ed25519_key"
-      "/etc/ssh/ssh_host_ed25519_key.pub"
-    ];
-  };
-
-  environment.persistence."/nix/persist/home/jabbi" = {
-    directories = map (x: "/home/jabbi/" + x) [
+      "/var/lib/flatpak"
+      "/root/.cache/nix"
+    ] ++ 
+     map (x: "/home/jabbi/" + x) [
       "Downloads"
       "Documents"
       "Nextcloud"
@@ -132,8 +125,14 @@
       ".config/Logseq"
       ".config/geary"
       ".config/syncthing"
+      ".config/UnityHub"
+      ".config/unity3d"
+      ".gradle"
       #".config"
       ".cache/Cypress"
+      ".cache/firebase"
+      ".cache/unityhub-updater"
+      ".cache/nix"
       ".local/share/containers"
       ".local/share/keyrings"
       ".local/share/Steam"
@@ -142,11 +141,19 @@
       ".wine"
       ".ssh"
       "Android"
+      ".local/share/flatpak"
       #".local/share/gnome-settings-daemon"
       #".local/share/gnome-shell"
     ];
-    files = map (x: "/home/jabbi/" + x) [ ".zsh_history" ".config/gnome-initial-setu-done" ".npmrc" ];
-    allowOther = true;
+
+    
+    files = [
+      "/etc/machine-id"
+      "/etc/ssh/ssh_host_rsa_key"
+      "/etc/ssh/ssh_host_rsa_key.pub"
+      "/etc/ssh/ssh_host_ed25519_key"
+      "/etc/ssh/ssh_host_ed25519_key.pub"
+    ] ++ map (x: "/home/jabbi/" + x) [ ".zsh_history" ".config/gnome-initial-setu-done" ".npmrc" ];
   };
 
   boot.loader.grub = {

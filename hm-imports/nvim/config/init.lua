@@ -18,8 +18,8 @@ let base16colorspace=256
 
 vim.g.coc_filetype_map = {tex = "latex"}
 
-vim.opt.signcolumn = 'number'
-vim.opt.relativenumber = true
+-- vim.opt.signcolumn = 'number'
+-- vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2

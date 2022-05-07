@@ -1,16 +1,19 @@
 { pkgs, config, inputs, scheme, ... }:
 {
-  home.packages = [
-    pkgs.nodejs
-    pkgs.lazygit
-    pkgs.jdk
+  home.packages = with pkgs; [
+    nodejs
+    lazygit
+    jdk
 
     # Livesearch
-    pkgs.ripgrep
+    ripgrep
 
     # Clipboard
-    pkgs.xclip
+    xclip
+    # clangd
+    clang-tools
   ];
+
   home.file.".config/nvim".source = ./config;
   home.file.".config/nvim".recursive = true;
   home.file.".config/nvim/coc-settings.json".text ='' 
@@ -43,26 +46,10 @@
         "usePlaceholders": true
       }
     },
-    "haskell": {
-      "command": "haskell-language-server-wrapper",
-      "args": ["--lsp"],
-      "rootPatterns": [
-        "*.cabal",
-        "stack.yaml",
-        "cabal.project",
-        "package.yaml",
-        "hie.yaml"
-      ],
-      "filetypes": ["haskell", "lhaskell"]
-    },
-    "graphql": {
-      "command": "graphql-lsp",
-      "args": ["server", "-m", "stream"],
-      "filetypes": ["typescript", "typescriptreact", "graphql"]
-    }
   },
   "coc.preferences.extensionUpdateCheck": "daily",
-  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/13.0.0/clangd_13.0.0/bin/clangd",
+  "clangd.path": "${pkgs.clang-tools}/bin/clangd",
+  // "clangd.arguments": ["--cuda-gpu-arch SM_86"],
   "outline": {
     "sortBy": "position"
   },
