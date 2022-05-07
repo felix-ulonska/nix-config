@@ -11,14 +11,14 @@ in
     virtualisation.oci-containers.containers = {
       minecraft = {
         image = "itzg/minecraft-server";
-        autoStart = true;
+        autostart = true;
         ports = [ "25565:25565" ];
         environment = {
-          EULA = "TRUE";
-          TYPE = "FORGE";
-          VERSION = "1.18.1";
-          # FORGEVERSION = "39.0.43"
-          MEMORY = "10G";
+          eula = "true";
+          type = "forge";
+          version = "1.18.1";
+          # forgeversion = "39.0.43"
+          memory = "10g";
         };
         volumes = [ "/var/lib/minecraft:/data" ];
       };

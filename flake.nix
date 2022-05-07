@@ -34,8 +34,9 @@
       url = github:chriskempson/base16-vim;
       flake = false;
     };
+    flake-utils.url = "github:numtide/flake-utils";
   };
-  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, impermanence, ... }:
+  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, impermanence, flake-utils, ... }:
     let
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       lib = nixpkgs.lib.extend (self: super: {
@@ -132,5 +133,15 @@
           }
         '';
       };
-    };
+    } // flake-utils.lib.eachDefaultSystem (system:
+      let pkgs = nixpkgs.legacyPackages.${system};
+      in {
+        # I re-export deploy-rs due to an issue with running `nix flake github:serokell/deploy-rs ...`
+        # per a conversation I had here: https://github.com/serokell/deploy-rs/issues/155
+        apps.deploy-rs = deploy-rs.defaultApp."${system}";
+
+        devShells.default = pkgs.mkShell {
+          buildInputs = [ deploy-rs.defaultPackage."${system}" ];
+        };
+      });
 }
