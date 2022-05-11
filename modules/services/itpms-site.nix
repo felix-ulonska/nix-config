@@ -19,6 +19,9 @@ in
         forceSSL = true;
         enableACME = true;
         root = "/var/lib/old-itpms";
+        locations."/" = {
+          root = "/var/lib/old-itpms/it-projekt-muenster.de";
+        };
       };
     };
   };

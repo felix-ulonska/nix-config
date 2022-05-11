@@ -27,6 +27,9 @@
     flutter
     obs-studio
     android-studio
+
+    gimp
+    libreoffice
   ];
 
   programs.firefox = {
