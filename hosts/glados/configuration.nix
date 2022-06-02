@@ -96,13 +96,17 @@
     directories = [
       "/etc/nixos"
       "/etc/NetworkManager/system-connections"
-      "/var/lib/containers"
-      "/var/lib/docker"
       "/etc/wireguard"
       "/tmp"
-      "/var/lib/flatpak"
       "/root/.cache/nix"
-    ] ++
+    ]
+    ++ (map (x: "/var/lib/" + x) [
+      "bluetooth"
+      "docker"
+      "containers"
+      "flatpak"
+    ])
+    ++
     map (x: "/home/jabbi/" + x) [
       "Downloads"
       "Documents"

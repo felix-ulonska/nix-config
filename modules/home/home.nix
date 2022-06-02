@@ -15,6 +15,7 @@ let
   visualImports = [
     ../../hm-imports/programs.nix
     ../../hm-imports/programs/alacritty.nix
+    ../../hm-imports/programs/zathura.nix
     ../../hm-imports/programs/rofi.nix
   ];
 in

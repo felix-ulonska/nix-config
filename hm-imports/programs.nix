@@ -30,6 +30,8 @@
 
     gimp
     libreoffice
+
+    zathura
   ];
 
   programs.firefox = {

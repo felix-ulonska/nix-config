@@ -21,7 +21,9 @@
     itpms-site.url = "gitlab:itpms/website";
 
     theme = {
-      url = github:ajlende/base16-atlas-scheme;
+      #url = github:ajlende/base16-atlas-scheme;
+      #url = "github:hakatashi/base16-colors-scheme";
+      url = "github:atelierbram/base16-atelier-schemes";
       flake = false;
     };
 
@@ -32,6 +34,10 @@
 
     base16-vim = {
       url = github:chriskempson/base16-vim;
+      flake = false;
+    };
+    base16-zathura = {
+      url = github:haozeke/base16-zathura;
       flake = false;
     };
     flake-utils.url = "github:numtide/flake-utils";
@@ -47,7 +53,8 @@
         simple-nixos-mailserver.nixosModule
         impermanence.nixosModule
         base16.nixosModule
-        { scheme = "${inputs.theme}/atlas.yaml"; }
+        #{ scheme = "${inputs.theme}/atlas.yaml"; }
+        { scheme = "${inputs.theme}/atelier-cave-light.yaml"; }
         home-manager.nixosModules.home-manager
         (lib.my.mapModulesRec' (toString ./modules) import)
         ({ config, ... }: lib.mkMerge [{

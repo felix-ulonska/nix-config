@@ -70,6 +70,22 @@
         "type": "github"
       }
     },
+    "base16-zathura": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1643130739,
+        "narHash": "sha256-nVJoygnytYN40VHXpAFwO7ruVbaSydeR547MU45VSuY=",
+        "owner": "haozeke",
+        "repo": "base16-zathura",
+        "rev": "9f148b4001dc67d399e645919225943d47e50125",
+        "type": "github"
+      },
+      "original": {
+        "owner": "haozeke",
+        "repo": "base16-zathura",
+        "type": "github"
+      }
+    },
     "blobs": {
       "flake": false,
       "locked": {
@@ -306,6 +322,7 @@
         "base16": "base16",
         "base16-i3": "base16-i3",
         "base16-vim": "base16-vim",
+        "base16-zathura": "base16-zathura",
         "deploy-rs": "deploy-rs",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
@@ -340,16 +357,16 @@
     "theme": {
       "flake": false,
       "locked": {
-        "lastModified": 1538613261,
-        "narHash": "sha256-l0WzTUSvLgsL+ExcgdMzXoJnfVQvKr8Jk5uKI6Li8CU=",
-        "owner": "ajlende",
-        "repo": "base16-atlas-scheme",
-        "rev": "55fe308a8d93a31c1bd55e80ff573b11511b6cf3",
+        "lastModified": 1495956440,
+        "narHash": "sha256-tKOPV4uStfEM6xBa+3sOLtpkpi/ykEiLlybt+3g09WQ=",
+        "owner": "atelierbram",
+        "repo": "base16-atelier-schemes",
+        "rev": "212179fded98ecfa7d88ad7a756d81297a3371c2",
         "type": "github"
       },
       "original": {
-        "owner": "ajlende",
-        "repo": "base16-atlas-scheme",
+        "owner": "atelierbram",
+        "repo": "base16-atelier-schemes",
         "type": "github"
       }
     },
