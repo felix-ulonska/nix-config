@@ -94,6 +94,7 @@
       #coc-flutter
       dart-vim-plugin
       lualine-nvim
+      vimspector
       (base16-vim.overrideAttrs (old:
         let
           schemeFile = scheme inputs.base16-vim;
