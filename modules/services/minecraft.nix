@@ -17,7 +17,7 @@ in
           eula = "true";
           type = "forge";
           version = "1.18.1";
-          # forgeversion = "39.0.43"
+          forgeversion = "39.0.43";
           memory = "10g";
         };
         volumes = [ "/var/lib/minecraft:/data" ];

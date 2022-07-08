@@ -53,7 +53,7 @@
 
   users.users.jabbi = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "libvirtd" "adbusers" ];
+    extraGroups = [ "wheel" "audio" "libvirtd" "adbusers" "scanner" "lp" ];
     hashedPassword = "$6$rejDSpuy6d$za9N7miMI/XHZNjZ6ib0IcaF511UdBn7QVwIV7MO1MTMO5yjVGwuvVT7kJlnTN165srbPd6rCJxtgdABTuEbj1";
     shell = pkgs.zsh;
   };
@@ -62,6 +62,10 @@
   users.users."root".openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGQ+BFtjE8D9+wVAnZ7IrhkTPlA62jdEq037+PaKCXkM jabbi@mimo"
   ];
+
+  hardware.sane.enable = true;
+  hardware.sane.brscan4.enable = true;
+  hardware.sane.brscan5.enable = true;
 
   environment.systemPackages = with pkgs; [
     vim
@@ -129,6 +133,7 @@
       ".config/Logseq"
       ".config/geary"
       ".config/syncthing"
+      ".config/JetBrains"
       ".config/UnityHub"
       ".config/unity3d"
       ".gradle"
@@ -146,6 +151,8 @@
       ".ssh"
       "Android"
       ".local/share/flatpak"
+      ".cargo"
+      ".var"
       #".local/share/gnome-settings-daemon"
       #".local/share/gnome-shell"
     ];
@@ -159,6 +166,8 @@
       "/etc/ssh/ssh_host_ed25519_key.pub"
     ] ++ map (x: "/home/jabbi/" + x) [ ".zsh_history" ".config/gnome-initial-setu-done" ".npmrc" ];
   };
+  services.xserver.desktopManager.plasma5.enable = true;
+  programs.ssh.askPassword = pkgs.lib.mkForce "";
 
   boot.loader.grub = {
     enable = true;

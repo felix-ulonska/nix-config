@@ -4,10 +4,8 @@
     nodejs
     lazygit
     jdk
-
     # Livesearch
     ripgrep
-
     # Clipboard
     xclip
     # clangd

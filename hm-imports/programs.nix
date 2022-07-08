@@ -32,6 +32,7 @@
     libreoffice
 
     zathura
+    jetbrains.clion
   ];
 
   programs.firefox = {
