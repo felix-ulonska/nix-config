@@ -70,7 +70,7 @@
   nix = {
     settings = {
       substituters = [
-        "http://cache.webfoo.de"
+        "ssh://root@cache.webfoo.de"
       ];
       trusted-public-keys = [
         "cache.webfoo.de:9zIefd8f6KaimDoy2spawTm6JCzsMlSQtm2yPW5v7DM="
