@@ -67,6 +67,17 @@
   hardware.sane.brscan4.enable = true;
   hardware.sane.brscan5.enable = true;
 
+  nix = {
+    settings = {
+      substituters = [
+        "http://cache.webfoo.de"
+      ];
+      trusted-public-keys = [
+        "cache.webfoo.de:9zIefd8f6KaimDoy2spawTm6JCzsMlSQtm2yPW5v7DM="
+      ];
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     vim
     dig
