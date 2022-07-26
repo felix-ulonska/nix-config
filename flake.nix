@@ -54,8 +54,8 @@
         impermanence.nixosModule
         base16.nixosModule
         #{ scheme = "${inputs.theme}/atlas.yaml"; }
-        { scheme = "${inputs.theme}/atelier-cave.yaml"; }
-        #{ scheme = "${inputs.theme}/atelier-savanna-light.yaml"; }
+        { scheme = "${inputs.theme.outPath}/atelier-cave.yaml"; }
+        #{ scheme = "${inputs.theme}/atelier-savanna.yaml"; }
         home-manager.nixosModules.home-manager
         (lib.my.mapModulesRec' (toString ./modules) import)
         ({ config, ... }: lib.mkMerge [{
@@ -147,7 +147,10 @@
       {
         # I re-export deploy-rs due to an issue with running `nix flake github:serokell/deploy-rs ...`
         # per a conversation I had here: https://github.com/serokell/deploy-rs/issues/155
-        apps.deploy-rs = deploy-rs.defaultApp."${system}";
+        apps.deploy-rs = {
+          program = deploy-rs.defaultApp."${system}";
+          type = "app";
+        };
 
         devShells.default = pkgs.mkShell {
           buildInputs = [ deploy-rs.defaultPackage."${system}" ];

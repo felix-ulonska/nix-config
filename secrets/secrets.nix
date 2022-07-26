@@ -31,4 +31,8 @@ let pubkeys = import ../data/pubkeys.nix; in
   "restic-mail-password.age" = {
     publicKeys = pubkeys.jabbi.computers;
   };
+
+  "gitlab-runner.age" = {
+    publicKeys = pubkeys.jabbi.computers;
+  };
 }

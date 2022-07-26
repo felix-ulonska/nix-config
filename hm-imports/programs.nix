@@ -33,6 +33,7 @@
 
     zathura
     jetbrains.clion
+    inkscape
   ];
 
   programs.firefox = {

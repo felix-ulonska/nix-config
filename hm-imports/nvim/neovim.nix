@@ -10,6 +10,7 @@
     xclip
     # clangd
     clang-tools
+    ltex-ls
   ];
 
   home.file.".config/nvim".source = ./config;
@@ -92,6 +93,8 @@
       #coc-flutter
       dart-vim-plugin
       lualine-nvim
+      coc-vimtex
+      vimtex
       vimspector
       (base16-vim.overrideAttrs (old:
         let
