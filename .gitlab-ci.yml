@@ -1,4 +1,4 @@
-image: nixos/nix:latest
+image: alpine
 
 variables:
   NIX_PATH: "nixpkgs=channel:nixos-unstable"
