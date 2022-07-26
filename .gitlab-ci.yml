@@ -6,7 +6,7 @@ stages:
   - deploy
 build:
   script:
-    - nix --experimental-features "nix-command flakes" check
+    - nix --experimental-features "nix-command flakes" flake check
   tags:
     - nix
 
