@@ -81,4 +81,8 @@
   };
 
   system.stateVersion = "21.11";
+
+  nix.sshServe.enable = true;
+  nix.sshServe.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGQ+BFtjE8D9+wVAnZ7IrhkTPlA62jdEq037+PaKCXkM jabbi@mimo" ];
+  nix.sshServe.protocol = "ssh-ng";
 }

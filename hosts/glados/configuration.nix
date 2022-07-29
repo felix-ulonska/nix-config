@@ -67,16 +67,16 @@
   hardware.sane.brscan4.enable = true;
   hardware.sane.brscan5.enable = true;
 
-  nix = {
-    settings = {
-      substituters = [
-        "ssh://root@cache.webfoo.de"
-      ];
-      trusted-public-keys = [
-        "cache.webfoo.de:9zIefd8f6KaimDoy2spawTm6JCzsMlSQtm2yPW5v7DM="
-      ];
-    };
-  };
+  #nix = {
+  #  settings = {
+  #    substituters = [
+  #      "ssh://root@cache.webfoo.de"
+  #    ];
+  #    trusted-public-keys = [
+  #      "cache.webfoo.de:9zIefd8f6KaimDoy2spawTm6JCzsMlSQtm2yPW5v7DM="
+  #    ];
+  #  };
+  #};
 
   environment.systemPackages = with pkgs; [
     vim
@@ -179,6 +179,9 @@
   };
   services.xserver.desktopManager.plasma5.enable = true;
   programs.ssh.askPassword = pkgs.lib.mkForce "";
+
+  # Webkit
+  environment.variables.WEBKIT_DISABLE_COMPOSITING_MODE = "1";
 
   boot.loader.grub = {
     enable = true;
