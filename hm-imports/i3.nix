@@ -168,29 +168,29 @@ in
         );
       };
       bars = [
-        {
-          id = "bottom";
+        #{
+        #  id = "bottom";
 
-          colors = with scheme.withHashtag; let
-            default = {
-              background = base00;
-              border = base00;
-            };
-          in
-          {
-            background = default.background;
-            statusline = base04;
-            separator = base04;
-            focusedWorkspace = default // { background = base01; text = base04; };
-            activeWorkspace = default // { background = base01; text = base03; };
-            inactiveWorkspace = default // { text = base04; };
-            urgentWorkspace = default // { text = orange; };
-            bindingMode = default // { text = yellow; };
-          };
+        #  colors = with scheme.withHashtag; let
+        #    default = {
+        #      background = base00;
+        #      border = base00;
+        #    };
+        #  in
+        #  {
+        #    background = default.background;
+        #    statusline = base04;
+        #    separator = base04;
+        #    focusedWorkspace = default // { background = base01; text = base04; };
+        #    activeWorkspace = default // { background = base01; text = base03; };
+        #    inactiveWorkspace = default // { text = base04; };
+        #    urgentWorkspace = default // { text = orange; };
+        #    bindingMode = default // { text = yellow; };
+        #  };
 
-          # see ../i3blocks for i3block configuration
-          #statusCommand = "${pkgs.i3blocks}/bin/i3blocks";
-        }
+        #  # see ../i3blocks for i3block configuration
+        #  #statusCommand = "${pkgs.i3blocks}/bin/i3blocks";
+        #}
       ];
     };
   };

@@ -35,7 +35,7 @@ let pubkeys = import ../data/pubkeys.nix; in
   "gitlab-runner.age" = {
     publicKeys = pubkeys.jabbi.computers;
   };
-  
+
   "cache-priv-key.age" = {
     publicKeys = pubkeys.jabbi.computers;
   };

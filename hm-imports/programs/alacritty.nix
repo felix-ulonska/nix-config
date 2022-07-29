@@ -11,11 +11,12 @@
         size = 12;
       };
       colors =
-        with scheme.withHashtag; let default = {
-          black = base00;
-          white = base07;
-          inherit red green yellow blue cyan magenta;
-        };
+        with scheme.withHashtag; let
+          default = {
+            black = base00;
+            white = base07;
+            inherit red green yellow blue cyan magenta;
+          };
         in
         {
           primary = { background = base00; foreground = base07; };
