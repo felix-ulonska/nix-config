@@ -18,7 +18,7 @@
         line-color = base07;
         border-color = base0E;
         module-margin = 1;
-        font-0 = "FiraCode Nerd Font Mono:size=13";
+        font-0 = "agave Nerd Font Mono:size=13;5";
         separator = "|";
         tray-position = "right";
       };
@@ -59,12 +59,11 @@
       };
       "module/i3" = {
         type = "internal/i3"; 
-        label-focused-background = base01;
-        label-separator = ''|'';
+        label-focused-background = base08;
         label-focused-padding = 2;
         label-unfocused-padding = 2;
         label-visible-padding = 2;
-        label-separator-padding = 2;
+        label-separator-padding = 0;
         format = "<label-state>";
         label-focused = "%name%";
         label-unfocused = "%name%";

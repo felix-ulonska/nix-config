@@ -373,16 +373,16 @@
     "theme": {
       "flake": false,
       "locked": {
-        "lastModified": 1495956440,
-        "narHash": "sha256-tKOPV4uStfEM6xBa+3sOLtpkpi/ykEiLlybt+3g09WQ=",
-        "owner": "atelierbram",
-        "repo": "base16-atelier-schemes",
-        "rev": "212179fded98ecfa7d88ad7a756d81297a3371c2",
+        "lastModified": 1538613261,
+        "narHash": "sha256-l0WzTUSvLgsL+ExcgdMzXoJnfVQvKr8Jk5uKI6Li8CU=",
+        "owner": "ajlende",
+        "repo": "base16-atlas-scheme",
+        "rev": "55fe308a8d93a31c1bd55e80ff573b11511b6cf3",
         "type": "github"
       },
       "original": {
-        "owner": "atelierbram",
-        "repo": "base16-atelier-schemes",
+        "owner": "ajlende",
+        "repo": "base16-atlas-scheme",
         "type": "github"
       }
     },
