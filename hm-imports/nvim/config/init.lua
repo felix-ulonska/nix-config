@@ -35,4 +35,8 @@ require('telescope').load_extension('coc')
 require('hop').setup()
 
 require('gitsigns').setup()
-require('lualine').setup()
+require('lualine').setup {
+	options = {
+		theme = 'auto'
+	}
+}

@@ -72,7 +72,7 @@ in
         "${modifier}+w" = "layout tabbed";
         "${modifier}+e" = "layout toggle split";
 
-        "${modifier}+Shift+space" = "floating toggle";
+        "${modifier}+Shift+f" = "floating toggle";
         "${modifier}+space" = "focus mode_toggle";
 
         "${modifier}+shift+s" = "sticky toggle";

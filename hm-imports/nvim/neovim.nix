@@ -52,6 +52,7 @@
   "outline": {
     "sortBy": "position"
   },
+  "ltex.ltex-ls.path": "${pkgs.ltex-ls}",
   "explorer.width": 80,
   "flutter.sdk.path": "${pkgs.flutter}"
 }
