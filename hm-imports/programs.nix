@@ -24,7 +24,7 @@
     zoom-us
 
     networkmanagerapplet
-    flutter
+    #flutter
     obs-studio
     android-studio
 

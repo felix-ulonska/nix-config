@@ -19,6 +19,13 @@
     base16.inputs.nixpkgs.follows = "nixpkgs";
 
     itpms-site.url = "gitlab:itpms/website";
+    fix-ms-backend.url = "github:Fix-MS/backend/deployment";
+    fix-ms-frontend.url = "github:Fix-MS/app";
+
+    fix-ms-prasentation = {
+      url = "github:Fix-MS/prasentation";
+      flake = false;
+    };
 
     theme = {
       #url = github:ajlende/base16-atlas-scheme;
@@ -45,7 +52,7 @@
     };
     flake-utils.url = "github:numtide/flake-utils";
   };
-  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, impermanence, flake-utils, ... }:
+  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, impermanence, flake-utils, fix-ms-backend, ... }:
     let
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       lib = nixpkgs.lib.extend (self: super: {

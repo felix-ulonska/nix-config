@@ -22,7 +22,7 @@
   jabbi.services.nginx.enable = true;
   jabbi.services.mail.enable = true;
   jabbi.services.uptime-kuma.enable = true;
-  jabbi.services.cvat.enable = true;
+  jabbi.services.fix-ms.enable = true;
 
   jabbi.services.jmusicbot.enable = true;
 
@@ -73,6 +73,7 @@
       "/var/lib/jmusicbot"
       "/var/lib/uptime-kuma"
       "/var/lib/old-itpms"
+      "/var/lib/fixms-frontend"
       "/var/lib/docker"
       "/var/lib/cvat"
       "/var/vmail"

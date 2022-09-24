@@ -8,9 +8,9 @@ map {'i', 'jk', '<esc>', noremap = false}
 vim.cmd 'source ~/.config/nvim/tab-magic-coc.vim'
 
 map {'n', 'gd', '<Plug>(coc-definition)', noremap = false}
-map {'n', 'gt', '<Plug>coc-type-definition', noremap = false, silent = true}
-map {'n', 'gi', '<Plug>coc-implementation', noremap = false, silent = true}
-map {'n', 'gr', '<Plug>coc-references', noremap = false, silent = true}
+map {'n', 'gt', '<Plug>(coc-type-definition)', noremap = false}
+map {'n', 'gi', '<Plug>(coc-implementation)', noremap = false}
+map {'n', 'gr', '<Plug>(coc-references)', noremap = false}
 
 map {'n', '<leader>rn', '<Plug>(coc-rename)'}
 
