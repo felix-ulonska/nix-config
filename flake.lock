@@ -148,11 +148,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1664016493,
-        "narHash": "sha256-WDfH4PxBkh3ZV+h3yFnv6BtPNwVB+LLDtm0Tc3qaolM=",
+        "lastModified": 1664033116,
+        "narHash": "sha256-VDaPNtZ5BVmOPU46Z1XH/c9EFm4IPtj27hXGZc+NDjI=",
         "owner": "Fix-MS",
         "repo": "app",
-        "rev": "34983527088779f3912dce78ebfef4e68bc99de6",
+        "rev": "af1589bb3a0653c37e65157c74f8a282b8c4890e",
         "type": "github"
       },
       "original": {
@@ -164,11 +164,11 @@
     "fix-ms-prasentation": {
       "flake": false,
       "locked": {
-        "lastModified": 1664022213,
-        "narHash": "sha256-bzZTdjcyCDKy3cS3i046WxJylpTT2h5qBDA3hH+zhvs=",
+        "lastModified": 1664032723,
+        "narHash": "sha256-JsjhCMD1BRko+xCliXezBHgtxzgIysoV7uZfI2pljiU=",
         "owner": "Fix-MS",
         "repo": "prasentation",
-        "rev": "a03f6573af6ec1788937f7adb07e3c17c970c908",
+        "rev": "6af451b46057794f3a2424926bc489fb505da531",
         "type": "github"
       },
       "original": {

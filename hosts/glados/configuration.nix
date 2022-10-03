@@ -34,6 +34,7 @@
   networking.firewall.enable = false;
 
   virtualisation.virtualbox.host.enable = true;
+  virtualisation.docker.enableNvidia = true;
   users.extraGroups.vboxusers.members = [ "jabbi" ];
 
   # reboot your computer after adding those lines
@@ -66,6 +67,17 @@
   hardware.sane.enable = true;
   hardware.sane.brscan4.enable = true;
   hardware.sane.brscan5.enable = true;
+
+  systemd.services.swapon = {
+    path = [ pkgs.util-linux ];
+    script = ''
+      swapon /nix/swapfile
+    '';
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+    };
+  };
 
   #nix = {
   #  settings = {
