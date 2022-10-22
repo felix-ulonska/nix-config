@@ -64,8 +64,9 @@
         impermanence.nixosModule
         base16.nixosModule
         { scheme = "${inputs.theme}/woodland.yaml"; }
-        #{ scheme = "${inputs.theme.outPath}/atelier-cave-light.yaml"; }
+        #{ scheme = "${inputs.theme.outPath}/atelier-cave.yaml"; }
         #{ scheme = "${inputs.theme}/atelier-savanna.yaml"; }
+        #{ scheme = "${inputs.theme}/nebula.yaml"; }
         home-manager.nixosModules.home-manager
         (lib.my.mapModulesRec' (toString ./modules) import)
         ({ config, ... }: lib.mkMerge [{

@@ -18,6 +18,7 @@
     languagetool
     glab
     flameshot
+    chromium
 
     nixpkgs-fmt
     usbmuxd

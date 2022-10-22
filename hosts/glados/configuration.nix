@@ -101,7 +101,7 @@
   networking.firewall.allowedTCPPorts = [ 80 443 1433 ];
   networking.firewall.allowedUDPPorts = [ 51820 ];
   nix = {
-    package = pkgs.nixFlakes; # or versioned attributes like nix_2_7
+    package = pkgs.nixVersions.stable; # or versioned attributes like nix_2_7
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
@@ -167,6 +167,7 @@
       ".cache/nix"
       ".local/share/containers"
       ".local/share/keyrings"
+      ".local/share/chromium"
       ".local/share/Steam"
       ".local/share/geary"
       ".mozilla"
