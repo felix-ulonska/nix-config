@@ -19,6 +19,7 @@
     glab
     flameshot
     chromium
+    scrcpy
 
     nixpkgs-fmt
     usbmuxd
@@ -33,7 +34,7 @@
     libreoffice
 
     zathura
-    jetbrains.clion
+    bitwarden
     inkscape
   ];
 

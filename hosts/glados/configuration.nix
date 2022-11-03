@@ -9,7 +9,6 @@
 
   jabbi.home.enable = true;
   jabbi.home.enableVisualApps = true;
-  #jabbi.home.impermanence = true;
   jabbi.i3wm.enable = true;
   jabbi.services.gnome.enable = true;
   jabbi.docker.enable = true;
@@ -36,6 +35,7 @@
   virtualisation.virtualbox.host.enable = true;
   virtualisation.docker.enableNvidia = true;
   users.extraGroups.vboxusers.members = [ "jabbi" ];
+  networking.wireless.userControlled.enable = true;
 
   # reboot your computer after adding those lines
   boot.extraModprobeConfig = ''
@@ -68,28 +68,6 @@
   hardware.sane.brscan4.enable = true;
   hardware.sane.brscan5.enable = true;
 
-  systemd.services.swapon = {
-    path = [ pkgs.util-linux ];
-    script = ''
-      swapon /nix/swapfile
-    '';
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig = {
-      Type = "oneshot";
-    };
-  };
-
-  #nix = {
-  #  settings = {
-  #    substituters = [
-  #      "ssh://root@cache.webfoo.de"
-  #    ];
-  #    trusted-public-keys = [
-  #      "cache.webfoo.de:9zIefd8f6KaimDoy2spawTm6JCzsMlSQtm2yPW5v7DM="
-  #    ];
-  #  };
-  #};
-
   environment.systemPackages = with pkgs; [
     vim
     dig
@@ -113,100 +91,27 @@
     passwordAuthentication = false;
   };
 
-  fileSystems."/" = {
-    device = "none";
-    fsType = "tmpfs";
-    options = [ "defaults" "size=1G" "mode=755" ];
-  };
-
-  environment.persistence."/nix/persist" = {
-    directories = [
-      "/etc/nixos"
-      "/etc/NetworkManager/system-connections"
-      "/etc/wireguard"
-      "/tmp"
-      "/root/.cache/nix"
-    ]
-    ++ (map (x: "/var/lib/" + x) [
-      "bluetooth"
-      "docker"
-      "containers"
-      "flatpak"
-    ])
-    ++
-    map (x: "/home/jabbi/" + x) [
-      "Downloads"
-      "Documents"
-      "Nextcloud"
-      "Arbeit"
-      "opt"
-      "Projects"
-      ".logseq"
-      ".config/Nextcloud"
-      ".config/keepassxc"
-      ".config/discord"
-      ".config/Timeular"
-      ".config/nautilus"
-      ".config/pulse"
-      ".config/Microsoft Teams - Preview"
-      ".config/Microsoft"
-      ".config/team"
-      ".config/spotify"
-      ".config/goa-1.0"
-      ".config/Logseq"
-      ".config/geary"
-      ".config/syncthing"
-      ".config/JetBrains"
-      ".config/UnityHub"
-      ".config/unity3d"
-      ".gradle"
-      #".config"
-      ".cache/Cypress"
-      ".cache/firebase"
-      ".cache/unityhub-updater"
-      ".cache/nix"
-      ".local/share/containers"
-      ".local/share/keyrings"
-      ".local/share/chromium"
-      ".local/share/Steam"
-      ".local/share/geary"
-      ".mozilla"
-      ".wine"
-      ".ssh"
-      "Android"
-      ".local/share/flatpak"
-      ".cargo"
-      ".var"
-      #".local/share/gnome-settings-daemon"
-      #".local/share/gnome-shell"
-    ];
-
-
-    files = [
-      "/etc/machine-id"
-      "/etc/ssh/ssh_host_rsa_key"
-      "/etc/ssh/ssh_host_rsa_key.pub"
-      "/etc/ssh/ssh_host_ed25519_key"
-      "/etc/ssh/ssh_host_ed25519_key.pub"
-    ] ++ map (x: "/home/jabbi/" + x) [ ".zsh_history" ".config/gnome-initial-setu-done" ".npmrc" ];
-  };
   services.xserver.desktopManager.plasma5.enable = true;
   programs.ssh.askPassword = pkgs.lib.mkForce "";
 
   # Webkit
   environment.variables.WEBKIT_DISABLE_COMPOSITING_MODE = "1";
 
-  boot.loader.grub = {
-    enable = true;
-    version = 2;
-    device = "nodev";
-    efiSupport = true;
-    enableCryptodisk = true;
-  };
+  #boot.loader.grub = {
+  #  enable = true;
+  #  version = 2;
+  #  device = "nodev";
+  #  efiSupport = true;
+  #  enableCryptodisk = true;
+  #};
+
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
   #boot.loader.efi.efiSysMountPoint = "/boot";
   boot.initrd.luks.devices = {
     root = {
-      device = "/dev/disk/by-uuid/2f195b74-2630-4696-94f1-1041cd765bad";
+      device = "/dev/disk/by-uuid/e7a87461-a0d4-470d-ba3b-d9a7ca417d2e";
       preLVM = true;
     };
   };
