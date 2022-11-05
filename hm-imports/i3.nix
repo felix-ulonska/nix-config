@@ -6,6 +6,7 @@ let
   alacritty = "${pkgs.alacritty}/bin/alacritty";
 in
 {
+  scheme = scheme;
   xsession.windowManager.i3 = {
     enable = true;
     config = {

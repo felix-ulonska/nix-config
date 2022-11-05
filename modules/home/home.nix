@@ -5,6 +5,7 @@ let
   cfg = config.jabbi.home;
   baseImports = [
     "${inputs.impermanence}/home-manager.nix"
+    inputs.base16.homeManagerModule 
     ../../hm-imports/nvim/neovim.nix
     ../../hm-imports/i3.nix
     ../../hm-imports/zsh.nix
@@ -37,13 +38,16 @@ in
     };
   };
   config = mkIf cfg.enable {
-    home-manager.useGlobalPkgs = true;
-    home-manager.useUserPackages = true;
+    #home-manager.useGlobalPkgs = true;
+    #home-manager.useUserPackages = true;
     home-manager.users."${cfg.userName}" = {
+      home.stateVersion = "22.05";
       imports = baseImports ++ optionals cfg.enableVisualApps visualImports ++ optional cfg.impermanence ../../hm-imports/impermanence.nix;
+      nixpkgs.config.allowUnfree = true;
     };
 
-    home-manager.extraSpecialArgs = { scheme = config.scheme; inputs = inputs; };
+    #home-manager.extraSpecialArgs = { config.scheme = config.scheme; config.targets.darwin = {search = null; keybindings = null; defaults = {}; currentHostDefaults = {};}; inputs = inputs; };
+    home-manager.extraSpecialArgs = { scheme = config.scheme ;inputs = inputs; };
 
     systemd.services.persistence-folder = {
       script = ''
