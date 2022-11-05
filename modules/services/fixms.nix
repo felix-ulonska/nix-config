@@ -10,8 +10,8 @@ in
   config = mkIf cfg.enable {
     systemd.services."fixms" = {
       path = [
-       inputs.fix-ms-backend.defaultPackage.x86_64-linux 
-       pkgs.nodejs-16_x
+        inputs.fix-ms-backend.defaultPackage.x86_64-linux
+        pkgs.nodejs-16_x
       ];
       script = "rm -rf /tmp/foo ; cp -r ${inputs.fix-ms-backend.defaultPackage.x86_64-linux} /tmp/foo; cd /tmp/foo/; npm i; node src/server.js";
       wantedBy = [ "multi-user.target" ];
@@ -19,8 +19,8 @@ in
 
     systemd.services."fixms-frontend" = {
       path = [
-       inputs.fix-ms-frontend
-       pkgs.docker
+        inputs.fix-ms-frontend
+        pkgs.docker
       ];
       script = ''
         rm -rf /tmp/fixms-frontend/*;
@@ -41,8 +41,8 @@ in
 
     systemd.services."fix-ms-prasentation" = {
       path = [
-       inputs.fix-ms-prasentation
-       pkgs.nodejs-16_x
+        inputs.fix-ms-prasentation
+        pkgs.nodejs-16_x
       ];
       script = ''
         rm -rf /var/lib/fixms-prasentation/*;

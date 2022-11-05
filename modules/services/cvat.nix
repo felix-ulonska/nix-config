@@ -28,7 +28,7 @@ in
     systemd.services."create-dockernet-${serviceName}" = {
       script = "docker network create ${serviceName} || true";
       path = [ pkgs.docker ];
-        
+
       wantedBy = [ "multi-user.target" ];
       after = [ "docker.service" "docker.socket" ];
       before = [ "docker-${serviceName}-db.service" ];
@@ -37,7 +37,7 @@ in
 
     systemd.services."fix-file-prems-${serviceName}" = {
       script = "chmod 700 -R ${cfg.path}; chown 1000:1000 -R ${cfg.path}";
-        
+
       wantedBy = [ "multi-user.target" ];
       after = [ "docker.service" "docker.socket" ];
       before = [ "docker-${serviceName}-db.service" ];

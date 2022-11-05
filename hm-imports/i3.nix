@@ -134,7 +134,7 @@ in
         ];
       };
 
-      colors = with scheme.withHashtag; rec {
+      colors = with config.scheme.withHashtag; rec {
         background = base00;
 
         unfocused = {

@@ -99,7 +99,7 @@
       vimspector
       (base16-vim.overrideAttrs (old:
         let
-          schemeFile = scheme inputs.base16-vim;
+          schemeFile = config.scheme inputs.base16-vim;
         in
         {
           patchPhase = builtins.trace schemeFile ''

@@ -1,7 +1,7 @@
 # see https://github.com/SenchoPens/senixos/blob/master/profiles/sway/default.nix
 { config, lib, pkgs, inputs, scheme, ... }:
 {
-  config.services.polybar = with scheme.withHashtag; {
+  config.services.polybar = with config.scheme.withHashtag; {
     enable = true;
     package = pkgs.polybarFull;
     config = {
@@ -58,7 +58,7 @@
         label-full = "Fully charged %consumption% W";
       };
       "module/i3" = {
-        type = "internal/i3"; 
+        type = "internal/i3";
         label-focused-background = base08;
         label-focused-padding = 2;
         label-unfocused-padding = 2;
@@ -83,7 +83,7 @@
         ramp-coreload-5 = "▆";
         ramp-coreload-6 = "▇";
         ramp-coreload-7 = "█";
-      };                    
+      };
       "module/memory" = {
         type = "internal/memory";
         format = "<label>";
@@ -105,7 +105,7 @@
         type = "internal/network";
         interface = "wlp4s0";
       };
-      "colors" =  {
+      "colors" = {
         base00 = base00;
         base01 = base01;
         base02 = base02;

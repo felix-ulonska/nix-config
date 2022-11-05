@@ -8,7 +8,7 @@
     };
     agenix.url = "github:ryantm/agenix";
     simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/";
-    home-manager.url = "github:nix-community/home-manager/release-21.05";
+    home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nur.url = "github:nix-community/nur";
@@ -101,6 +101,32 @@
           specialArgs = { inherit lib; inherit inputs; };
           modules = (modulesList ++ [ ./hosts/edgeless-safety-cube/configuration.nix ]);
         };
+
+      homeConfigurations.jabbi = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          inputs.base16.homeManagerModule 
+          ./hm-imports/nvim/neovim.nix
+          ./hm-imports/i3.nix
+          ./hm-imports/zsh.nix
+          ./hm-imports/cli.nix
+          ./hm-imports/autorandr.nix
+          ./hm-imports/polybar.nix
+          ./hm-imports/gnome.nix
+          {
+            home.stateVersion = "22.05";
+            home.username = "jabbi";
+            home.homeDirectory = "/home/jabbi";
+            scheme = "${inputs.theme}/woodland.yaml" ;
+          }
+        ];
+        extraSpecialArgs = {
+          scheme = "${inputs.theme}/woodland.yaml" ;
+          inputs = inputs;
+        };
+        #homeDirectory = "/home/jabbi";
+        #username = "jabbi";
+      };
 
       deploy = {
         nodes = {
