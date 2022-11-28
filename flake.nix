@@ -31,9 +31,12 @@
       #url = github:ajlende/base16-atlas-scheme;
       #url = github:b3nj5m1n/base16-pinky-scheme;
       #url = github:Misterio77/base16-nebula-scheme;
-      url = github:jcornwall/base16-woodland-scheme;
+      #url = github:jcornwall/base16-woodland-scheme;
+      #url = github:vic/base16-rebecca;
+      #url = github.com:chriskempson/base16-vim;
       #url = "github:hakatashi/base16-colors-scheme";
       #url = "github:atelierbram/base16-atelier-schemes";
+      url = github:kjakapat/base16-eva-scheme;
       flake = false;
     };
 
@@ -63,7 +66,7 @@
         simple-nixos-mailserver.nixosModule
         impermanence.nixosModule
         base16.nixosModule
-        { scheme = "${inputs.theme}/woodland.yaml"; }
+        { scheme = "${inputs.theme}/eva.yaml"; }
         #{ scheme = "${inputs.theme.outPath}/atelier-cave.yaml"; }
         #{ scheme = "${inputs.theme}/atelier-savanna.yaml"; }
         #{ scheme = "${inputs.theme}/nebula.yaml"; }

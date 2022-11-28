@@ -32,6 +32,8 @@
   "ltex.language": "de-DE",
   "html.autoClosingTags": true,
   "explorer.icon.enableNerdfont": true,
+  "java.format.enabled": true,
+  "java.format.onType.enabled": true,
   "python.linting.mypyEnabled": true,
   "python.linting.flake8Enabled": true,
   "python.formatting.provider": "black",
@@ -86,6 +88,7 @@
       coc-eslint
       coc-prettier
       coc-json
+      coc-java
       # coc-angular 
       coc-lua
       coc-explorer
