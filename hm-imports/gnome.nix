@@ -46,7 +46,7 @@
       "toggle-tiled-right" = [ ];
     };
     "org/gnome/desktop/input-sources"."sources" = [ ''("xkb", "de+us")'' ];
-    "org/gnome/desktop/interface"."color-scheme" = "prefer-dark";
+    #"org/gnome/desktop/interface"."color-scheme" = "prefer-dark";
     "org/gnome/desktop/peripherals/touchpad" = {
       "two-finger-scrolling-enabled" = true;
       "tap-to-click" = true;

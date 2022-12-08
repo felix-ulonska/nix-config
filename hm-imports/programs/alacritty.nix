@@ -4,11 +4,11 @@
     enable = true;
     settings = {
       font = {
-        normal = {
-          family = "agave Nerd Font Mono";
-          style = "regular";
-        };
-        size = 12;
+        #normal = {
+        #  family = "agave Nerd Font Mono";
+        #  style = "regular";
+        #};
+        #size = 12;
       };
       colors =
         with scheme.withHashtag; let

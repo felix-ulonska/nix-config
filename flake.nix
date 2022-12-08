@@ -22,6 +22,13 @@
     fix-ms-backend.url = "github:Fix-MS/backend/deployment";
     fix-ms-frontend.url = "github:Fix-MS/app";
 
+    stylix.url = "github:danth/stylix";
+
+    background = {
+      url = "https://i.redd.it/vl9u5xprcvv61.jpg";
+      flake = false;
+    };
+
     fix-ms-prasentation = {
       url = "github:Fix-MS/prasentation";
       flake = false;
@@ -55,7 +62,7 @@
     };
     flake-utils.url = "github:numtide/flake-utils";
   };
-  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, impermanence, flake-utils, fix-ms-backend, ... }:
+  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, impermanence, flake-utils, fix-ms-backend, stylix, background, ... }:
     let
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       lib = nixpkgs.lib.extend (self: super: {
@@ -66,15 +73,19 @@
         simple-nixos-mailserver.nixosModule
         impermanence.nixosModule
         base16.nixosModule
-        { scheme = "${inputs.theme}/eva.yaml"; }
+        #{ scheme = "${inputs.theme}/eva.yaml"; }
         #{ scheme = "${inputs.theme.outPath}/atelier-cave.yaml"; }
         #{ scheme = "${inputs.theme}/atelier-savanna.yaml"; }
         #{ scheme = "${inputs.theme}/nebula.yaml"; }
         home-manager.nixosModules.home-manager
+        stylix.nixosModules.stylix
         (lib.my.mapModulesRec' (toString ./modules) import)
         ({ config, ... }: lib.mkMerge [{
           services.getty.greetingLine =
             "<<< Welcome to ${config.system.nixos.label} - Please leave\\l >>>";
+          stylix.image = inputs.background.outPath;
+          stylix.polarity = "dark";
+          scheme = config.lib.stylix.colors;
         }])
         { nixpkgs.overlays = [ nur.overlay ]; }
       ];
