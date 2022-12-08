@@ -4,6 +4,8 @@
       "enabled-extensions" = [
         "appindicatorsupport@rgcjonas.gmail.com"
         "pop-shell@system76.com"
+        "dash-to-dock@micxgx.gmail.com"
+        "org.keepassxc.KeePassXC.desktop"
       ];
       "favorite-apps" = [
         "org.gnome.Geary.desktop"
@@ -15,7 +17,7 @@
       ];
       "welcome-dialog-last-shown-version" = "41.4";
     };
-    "org/gnome/shell/extensions/pop-shell"."tile-by-default" = true;
+    "org/gnome/shell/extensions/pop-shell"."tile-by-default" = false;
     "org/gnome/desktop/wm/keybindings" = {
       "maximize" = [ ];
       "minimize" = [ ];

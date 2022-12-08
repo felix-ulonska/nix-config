@@ -28,6 +28,7 @@ in
     environment.systemPackages = with pkgs; [
       gnomeExtensions.appindicator
       gnomeExtensions.pop-shell
+      gnomeExtensions.dash-to-dock
     ];
   };
 }

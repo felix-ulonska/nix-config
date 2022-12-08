@@ -7,7 +7,6 @@
     nerdfonts
     pavucontrol
     discord
-    teams
     thunderbird
     spotify
     vlc
@@ -36,6 +35,8 @@
     zathura
     bitwarden
     inkscape
+    azuredatastudio
+    ranger
   ];
 
   programs.firefox = {
