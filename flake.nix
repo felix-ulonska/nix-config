@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs = { url = "github:nixos/nixpkgs/master"; };
+    nixpkgsUnity.url = "github:huantianad/nixpkgs/unityhub";
     deploy-rs = {
       url = "github:serokell/deploy-rs";
     };
@@ -26,6 +27,8 @@
 
     background = {
       url = "https://i.redd.it/vl9u5xprcvv61.jpg";
+      #url = "https://i.redd.it/yuxe7ow1wyy91.png"; # Sanfransico
+      #url = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/bee6c9a9-78f2-4294-ad27-6ca52060f5a5/dbiqzig-0abf178a-d1a1-4d28-b784-7227b9270002.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2JlZTZjOWE5LTc4ZjItNDI5NC1hZDI3LTZjYTUyMDYwZjVhNVwvZGJpcXppZy0wYWJmMTc4YS1kMWExLTRkMjgtYjc4NC03MjI3YjkyNzAwMDIuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Qj7BCzby4xtuQzB55bNo2Z8IamghVdgHMknsewpWkr4";
       flake = false;
     };
 
@@ -62,7 +65,7 @@
     };
     flake-utils.url = "github:numtide/flake-utils";
   };
-  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, impermanence, flake-utils, fix-ms-backend, stylix, background, ... }:
+  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, impermanence, flake-utils, fix-ms-backend, stylix, background, nixpkgsUnity, ... }:
     let
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       lib = nixpkgs.lib.extend (self: super: {
@@ -85,6 +88,10 @@
             "<<< Welcome to ${config.system.nixos.label} - Please leave\\l >>>";
           stylix.image = inputs.background.outPath;
           stylix.polarity = "dark";
+          stylix.fonts.monospace = {
+            package = pkgs.nerdfonts;
+            name = "agave Nerd Font Mono";
+          };
           scheme = config.lib.stylix.colors;
         }])
         { nixpkgs.overlays = [ nur.overlay ]; }

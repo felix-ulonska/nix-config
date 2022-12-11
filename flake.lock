@@ -416,6 +416,22 @@
         "type": "indirect"
       }
     },
+    "nixpkgsUnity": {
+      "locked": {
+        "lastModified": 1669931239,
+        "narHash": "sha256-h5pk6iE6WTFxOGQWrbj1PCN3+dLJs273atGNLZzgkjY=",
+        "owner": "huantianad",
+        "repo": "nixpkgs",
+        "rev": "efb5267bcbcf5ac8265eda9a7be0c083820ebc00",
+        "type": "github"
+      },
+      "original": {
+        "owner": "huantianad",
+        "ref": "unityhub",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1648219316,
@@ -557,6 +573,7 @@
         "impermanence": "impermanence",
         "itpms-site": "itpms-site",
         "nixpkgs": "nixpkgs_6",
+        "nixpkgsUnity": "nixpkgsUnity",
         "nur": "nur",
         "simple-nixos-mailserver": "simple-nixos-mailserver",
         "stylix": "stylix",

@@ -1,4 +1,4 @@
-{ pkgs, config, inputs, ... }:
+{ pkgs, config, inputs,  ... }:
 {
   home.packages = with pkgs; [
     keepassxc
@@ -37,6 +37,8 @@
     inkscape
     azuredatastudio
     ranger
+    element-desktop
+    ((import inputs.nixpkgsUnity {system = "x86_64-linux"; config.allowUnfree = true;}).unityhub)
   ];
 
   programs.firefox = {
