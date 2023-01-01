@@ -7,6 +7,11 @@ let
 in
 {
   scheme = scheme;
+
+  home.packages = with pkgs; [
+      brightnessctl
+  ];
+   
   xsession.windowManager.i3 = {
     enable = true;
     config = {

@@ -29,6 +29,7 @@ in
       gnomeExtensions.appindicator
       gnomeExtensions.pop-shell
       gnomeExtensions.dash-to-dock
+      gnomeExtensions.x11-gestures
     ];
   };
 }

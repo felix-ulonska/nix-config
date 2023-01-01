@@ -4,6 +4,7 @@
     enableCompletion = true;
     sessionVariables = {
       "NIXPKGS_ALLOW_UNFREE" = 1;
+      "EDITOR" = "nvim";
     };
     initExtra = "setopt appendhistory\nunsetopt HIST_SAVE_BY_COPY";
     oh-my-zsh = {

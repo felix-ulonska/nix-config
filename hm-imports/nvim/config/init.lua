@@ -40,3 +40,8 @@ require('lualine').setup {
 		theme = 'auto'
 	}
 }
+
+
+vim.cmd [[
+	set guifont=agave\ Nerd\ Font\ Mono:h16
+]]
