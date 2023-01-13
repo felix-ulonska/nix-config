@@ -5,7 +5,7 @@ let
   cfg = config.jabbi.home;
   baseImports = [
     "${inputs.impermanence}/home-manager.nix"
-    inputs.base16.homeManagerModule 
+    inputs.base16.homeManagerModule
     ../../hm-imports/nvim/neovim.nix
     ../../hm-imports/i3.nix
     ../../hm-imports/zsh.nix
@@ -47,7 +47,7 @@ in
     };
 
     #home-manager.extraSpecialArgs = { config.scheme = config.scheme; config.targets.darwin = {search = null; keybindings = null; defaults = {}; currentHostDefaults = {};}; inputs = inputs; };
-    home-manager.extraSpecialArgs = { scheme = config.scheme ;inputs = inputs; };
+    home-manager.extraSpecialArgs = { scheme = config.scheme; inputs = inputs; };
 
     systemd.services.persistence-folder = {
       script = ''

@@ -9,9 +9,9 @@ in
   scheme = scheme;
 
   home.packages = with pkgs; [
-      brightnessctl
+    brightnessctl
   ];
-   
+
   xsession.windowManager.i3 = {
     enable = true;
     config = {
@@ -28,6 +28,7 @@ in
       startup = [
         { command = "autorandr -c"; notification = false; always = true; }
         { command = "timeular --disable-gpu-sandbox"; notification = false; }
+        { command = "systemctl restart polybar --user"; notification = false; }
         { command = "keepassxc"; notification = false; }
         { command = "logseq"; notification = false; }
         { command = "xclip"; notification = false; }

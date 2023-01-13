@@ -25,6 +25,7 @@
   jabbi.services.fix-ms.enable = true;
 
   jabbi.services.jmusicbot.enable = true;
+  jabbi.services.wordpress.enable = true;
 
   networking.hostName = "fact-cube";
 
@@ -75,6 +76,8 @@
       "/var/lib/old-itpms"
       "/var/lib/fixms-frontend"
       "/var/lib/docker"
+      "/var/lib/wordpress"
+      "/var/lib/mysql"
       "/var/lib/cvat"
       "/var/vmail"
     ];

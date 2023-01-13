@@ -43,4 +43,8 @@ let pubkeys = import ../data/pubkeys.nix; in
   "cache-pub-key.age" = {
     publicKeys = pubkeys.jabbi.computers;
   };
+
+  "restic-wordpress-password.age" = {
+    publicKeys = pubkeys.jabbi.computers;
+  };
 }

@@ -25,6 +25,7 @@
     fix-ms-frontend.url = "github:Fix-MS/app";
 
     stylix.url = "github:danth/stylix";
+    hyprland.url = "github:hyprwm/Hyprland";
 
     background = {
       url = "https://i.redd.it/vl9u5xprcvv61.jpg";
@@ -114,7 +115,11 @@
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit lib; inherit inputs; };
-          modules = (modulesList ++ [ ./hosts/glados/configuration.nix ]);
+          modules = (modulesList ++ [
+            ./hosts/glados/configuration.nix
+            inputs.hyprland.nixosModules.default
+            { programs.hyprland.enable = true; }
+          ]);
         };
 
       nixosConfigurations.edgeless-safety-cube =
@@ -127,7 +132,7 @@
       homeConfigurations.jabbi = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          inputs.base16.homeManagerModule 
+          inputs.base16.homeManagerModule
           ./hm-imports/nvim/neovim.nix
           ./hm-imports/i3.nix
           ./hm-imports/zsh.nix
@@ -139,11 +144,11 @@
             home.stateVersion = "22.05";
             home.username = "jabbi";
             home.homeDirectory = "/home/jabbi";
-            scheme = "${inputs.theme}/woodland.yaml" ;
+            scheme = "${inputs.theme}/woodland.yaml";
           }
         ];
         extraSpecialArgs = {
-          scheme = "${inputs.theme}/woodland.yaml" ;
+          scheme = "${inputs.theme}/woodland.yaml";
           inputs = inputs;
         };
         #homeDirectory = "/home/jabbi";

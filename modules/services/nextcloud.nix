@@ -81,7 +81,7 @@ in
     systemd.services."backup-nextcloud" = {
       serviceConfig.Type = "oneshot";
       startAt = "*-*-* 00:03:00";
-      path = [ pkgs.restic pkgs.sudo ];
+      path = [ pkgs.restic pkgs.sudo pkgs.curl ];
       script = "
         export $(grep -v '^#' /run/agenix/resticSecrets | xargs)
         /run/current-system/sw/bin/nextcloud-occ maintenance:mode --on

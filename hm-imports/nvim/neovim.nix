@@ -68,47 +68,60 @@
       lua dofile('${./config/init.lua}')
     '';
 
-    plugins = with pkgs.vimPlugins; [
-      #galaxyline-nvim
-      barbar-nvim
-      nvim-web-devicons
-      coc-nvim
-      telescope-nvim
-      telescope-coc-nvim
-      vim-sleuth
-      toggleterm-nvim
-      vim-nix
-      gitsigns-nvim
-      hop-nvim
-      vim-fugitive
-      coc-tsserver
-      coc-pairs
-      coc-html
-      coc-css
-      coc-eslint
-      coc-prettier
-      coc-json
-      coc-java
-      # coc-angular 
-      coc-lua
-      coc-explorer
-      coc-clangd
-      coc-rust-analyzer
-      #coc-flutter
-      dart-vim-plugin
-      lualine-nvim
-      coc-vimtex
-      vimtex
-      vimspector
-      (base16-vim.overrideAttrs (old:
-        let
-          schemeFile = config.scheme inputs.base16-vim;
-        in
-        {
-          patchPhase = builtins.trace schemeFile ''
-            cp ${schemeFile} colors/base16-scheme.vim
-          '';
-        }))
-    ];
+    plugins =
+      let
+        riscv-asm-vim = pkgs.vimUtils.buildVimPlugin {
+          name = "riscv-asm-vim";
+          src = pkgs.fetchFromGitHub {
+            owner = "henry-hsieh";
+            repo = "riscv-asm-vim";
+            rev = "a99581f182aae0bf6ca2d2a5e7438c405a3ddc0d";
+            sha256 = "IRXrK5uq9yFRuyz4AHVKKOgIIpcUfi1ZnhFcBR8wHb8=";
+          };
+        };
+      in
+      with pkgs.vimPlugins; [
+        #galaxyline-nvim
+        riscv-asm-vim
+        barbar-nvim
+        nvim-web-devicons
+        coc-nvim
+        telescope-nvim
+        telescope-coc-nvim
+        vim-sleuth
+        toggleterm-nvim
+        vim-nix
+        gitsigns-nvim
+        hop-nvim
+        vim-fugitive
+        coc-tsserver
+        coc-pairs
+        coc-html
+        coc-css
+        coc-eslint
+        coc-prettier
+        coc-json
+        coc-java
+        # coc-angular 
+        coc-lua
+        coc-explorer
+        coc-clangd
+        coc-rust-analyzer
+        #coc-flutter
+        dart-vim-plugin
+        lualine-nvim
+        coc-vimtex
+        vimtex
+        vimspector
+        (base16-vim.overrideAttrs (old:
+          let
+            schemeFile = config.scheme inputs.base16-vim;
+          in
+          {
+            patchPhase = builtins.trace schemeFile ''
+              cp ${schemeFile} colors/base16-scheme.vim
+            '';
+          }))
+      ];
   };
 }

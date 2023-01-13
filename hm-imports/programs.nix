@@ -1,4 +1,4 @@
-{ pkgs, config, inputs,  ... }:
+{ pkgs, config, inputs, ... }:
 {
   home.packages = with pkgs; [
     keepassxc
@@ -38,7 +38,7 @@
     azuredatastudio
     ranger
     element-desktop
-    ((import inputs.nixpkgsUnity {system = "x86_64-linux"; config.allowUnfree = true;}).unityhub)
+    ((import inputs.nixpkgsUnity { system = "x86_64-linux"; config.allowUnfree = true; }).unityhub)
     # ((import inputs.nixpkgsFlake {system = "x86_64-linux"; config.allowUnfree = true;}).hochwasser)
     gnome.gnome-boxes
     libxml2
