@@ -30,7 +30,7 @@
     android-studio
 
     gimp
-    libreoffice
+    #libreoffice
 
     zathura
     bitwarden

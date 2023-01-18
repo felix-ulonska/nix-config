@@ -11,6 +11,8 @@
     # clangd
     clang-tools
     ltex-ls
+    nil
+    rnix-lsp
   ];
 
   home.file.".config/nvim".source = ./config;
@@ -47,6 +49,17 @@
         "usePlaceholders": true
       }
     },
+    "nix": {
+      "command": "nil",
+      "filetypes": ["nix"],
+      "rootPatterns":  ["flake.nix"],
+      Uncomment these to tweak settings.
+      "settings": {
+        "nil": {
+          "formatting": { "command": ["nixpkgs-fmt"] }
+        }
+      }
+    }
   },
   "coc.preferences.extensionUpdateCheck": "daily",
   "clangd.path": "${pkgs.clang-tools}/bin/clangd",
@@ -79,9 +92,19 @@
             sha256 = "IRXrK5uq9yFRuyz4AHVKKOgIIpcUfi1ZnhFcBR8wHb8=";
           };
         };
+        jesterVIM = pkgs.vimUtils.buildVimPlugin {
+          name = "jester";
+          src = pkgs.fetchFromGitHub {
+            owner = "David-Kunz";
+            repo = "jester";
+            rev = "3065b2139c4cc26b4cea1bdab98016c60b4f48de";
+            sha256 = "sha256-7bw7Y3KrvCmLpuLfLfUhpUXwpHAZE1kifG2IA1lRO1s=";
+          };
+        };
       in
       with pkgs.vimPlugins; [
         #galaxyline-nvim
+        jesterVIM
         riscv-asm-vim
         barbar-nvim
         nvim-web-devicons
@@ -113,6 +136,7 @@
         coc-vimtex
         vimtex
         vimspector
+        nvim-treesitter.withAllGrammars
         (base16-vim.overrideAttrs (old:
           let
             schemeFile = config.scheme inputs.base16-vim;

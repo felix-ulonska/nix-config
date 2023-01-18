@@ -141,39 +141,39 @@ in
         ];
       };
 
-      colors = with config.scheme.withHashtag; rec {
-        background = base00;
+      #colors = with config.scheme.withHashtag; rec {
+      #  background = base00;
 
-        unfocused = {
-          text = base04;
-          indicator = base07;
+      #  unfocused = {
+      #    text = base04;
+      #    indicator = base07;
 
-          border = background;
-          inherit background;
-          childBorder = background;
-        };
-        focusedInactive = unfocused;
+      #    border = background;
+      #    inherit background;
+      #    childBorder = background;
+      #  };
+      #  focusedInactive = unfocused;
 
-        urgent = unfocused // {
-          text = base07;
+      #  urgent = unfocused // {
+      #    text = base07;
 
-          border = orange;
-          childBorder = orange;
-        };
+      #    border = orange;
+      #    childBorder = orange;
+      #  };
 
-        focused = unfocused // (
-          let
-            focused-bg = base01;
-          in
-          {
-            text = base04;
+      #  focused = unfocused // (
+      #    let
+      #      focused-bg = base01;
+      #    in
+      #    {
+      #      text = base04;
 
-            childBorder = focused-bg;
-            border = focused-bg;
-            background = focused-bg;
-          }
-        );
-      };
+      #      childBorder = focused-bg;
+      #      border = focused-bg;
+      #      background = focused-bg;
+      #    }
+      #  );
+      #};
       bars = [
         #{
         #  id = "bottom";
