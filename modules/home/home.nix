@@ -47,7 +47,7 @@ in
     };
 
     #home-manager.extraSpecialArgs = { config.scheme = config.scheme; config.targets.darwin = {search = null; keybindings = null; defaults = {}; currentHostDefaults = {};}; inputs = inputs; };
-    home-manager.extraSpecialArgs = { scheme = config.scheme; inputs = inputs; };
+    home-manager.extraSpecialArgs = { inherit (config) scheme; inherit inputs; };
 
     systemd.services.persistence-folder = {
       script = ''

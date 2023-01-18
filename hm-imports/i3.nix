@@ -6,7 +6,7 @@ let
   alacritty = "${pkgs.alacritty}/bin/alacritty";
 in
 {
-  scheme = scheme;
+  inherit scheme;
 
   home.packages = with pkgs; [
     brightnessctl
@@ -16,7 +16,7 @@ in
     enable = true;
     config = {
       terminal = alacritty;
-      modifier = modifier;
+      inherit modifier;
 
       gaps = {
         smartBorders = "on";

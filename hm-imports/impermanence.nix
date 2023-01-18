@@ -1,4 +1,4 @@
-{ ... }: {
+_: {
   # FUSE Mounts are painfully slow!
   home.persistence."/nix/persist/home/jabbi" = {
     directories = [

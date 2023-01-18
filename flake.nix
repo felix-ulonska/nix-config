@@ -53,16 +53,16 @@
     };
 
     base16-i3 = {
-      url = github:khamer/base16-i3;
+      url = "github:khamer/base16-i3";
       flake = false;
     };
 
     base16-vim = {
-      url = github:chriskempson/base16-vim;
+      url = "github:chriskempson/base16-vim";
       flake = false;
     };
     base16-zathura = {
-      url = github:haozeke/base16-zathura;
+      url = "github:haozeke/base16-zathura";
       flake = false;
     };
     flake-utils.url = "github:numtide/flake-utils";
@@ -104,31 +104,31 @@
     {
       lib = lib.my;
       nixosModules = lib.my.mapModulesRec ./modules/services import;
-      outputFoo = (modulesList ++ [ ./hosts/silbervogel/configuration.nix ]);
+      outputFoo = modulesList ++ [ ./hosts/silbervogel/configuration.nix ];
 
 
       nixosConfigurations.fact-cube =
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit lib; inherit inputs; };
-          modules = (modulesList ++ [ ./hosts/fact-cube/configuration.nix ]);
+          modules = modulesList ++ [ ./hosts/fact-cube/configuration.nix ];
         };
       nixosConfigurations.GLaDOS =
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit lib; inherit inputs; };
-          modules = (modulesList ++ [
+          modules = modulesList ++ [
             ./hosts/glados/configuration.nix
             inputs.hyprland.nixosModules.default
             { programs.hyprland.enable = true; }
-          ]);
+          ];
         };
 
       nixosConfigurations.edgeless-safety-cube =
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit lib; inherit inputs; };
-          modules = (modulesList ++ [ ./hosts/edgeless-safety-cube/configuration.nix ]);
+          modules = modulesList ++ [ ./hosts/edgeless-safety-cube/configuration.nix ];
         };
 
       homeConfigurations.jabbi = home-manager.lib.homeManagerConfiguration {
@@ -151,7 +151,7 @@
         ];
         extraSpecialArgs = {
           scheme = "${inputs.theme}/woodland.yaml";
-          inputs = inputs;
+          inherit inputs;
         };
         #homeDirectory = "/home/jabbi";
         #username = "jabbi";
