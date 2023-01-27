@@ -2,7 +2,7 @@
   description = "An example NixOS configuration";
 
   inputs = {
-    nixpkgs = { url = "github:nixos/nixpkgs/master"; };
+    nixpkgs = { url = "github:nixos/nixpkgs/nixos-unstable"; };
     nixpkgsFlake = { url = "github:felix-ulonska/nixpkgs/master"; };
     nixpkgsUnity.url = "github:huantianad/nixpkgs/unityhub";
     deploy-rs = {
@@ -39,6 +39,9 @@
       flake = false;
     };
 
+    darwin.url = "github:lnl7/nix-darwin/master";
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
+
     theme = {
       #url = github:ajlende/base16-atlas-scheme;
       #url = github:b3nj5m1n/base16-pinky-scheme;
@@ -67,7 +70,7 @@
     };
     flake-utils.url = "github:numtide/flake-utils";
   };
-  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, impermanence, flake-utils, fix-ms-backend, stylix, background, nixpkgsUnity, ... }:
+  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, impermanence, flake-utils, fix-ms-backend, stylix, background, nixpkgsUnity, darwin, ... }:
     let
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       lib = nixpkgs.lib.extend (self: super: {
@@ -123,6 +126,21 @@
             { programs.hyprland.enable = true; }
           ];
         };
+
+      darwinConfigurations = rec {
+      j-one = darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [ ./hosts/atlas ];
+          #home-manager.darwinModules.home-manager
+          #{
+          #  nixpkgs = nixpkgsConfig;
+          #  # `home-manager` config
+          #  home-manager.useGlobalPkgs = true;
+          #  home-manager.useUserPackages = true;
+          #  home-manager.users.jun = import ./home.nix;            
+          #}
+      };
+    };
 
       nixosConfigurations.edgeless-safety-cube =
         nixpkgs.lib.nixosSystem {

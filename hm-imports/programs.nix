@@ -19,6 +19,7 @@
     flameshot
     chromium
     scrcpy
+    libreoffice
 
     nixpkgs-fmt
     usbmuxd
