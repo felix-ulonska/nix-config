@@ -128,7 +128,7 @@
         };
 
       darwinConfigurations = rec {
-      j-one = darwin.lib.darwinSystem {
+      atlas = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [ ./hosts/atlas ];
           #home-manager.darwinModules.home-manager
