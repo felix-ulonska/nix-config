@@ -13,12 +13,12 @@ in
       "old-site.it-projekt-muenster.de" = {
         forceSSL = true;
         enableACME = true;
-        root = "${inputs.itpms-site.defaultPackage.x86_64-linux}/public";
+        #root = "${inputs.itpms-site.defaultPackage.x86_64-linux}/public";
       };
-      "www.it-projekt-muenster.de" = {
+      "ooolld.it-projekt-muenster.de" = {
         forceSSL = true;
         enableACME = true;
-        root = "${inputs.itpms-site.defaultPackage.x86_64-linux}/public";
+        #root = "${inputs.itpms-site.defaultPackage.x86_64-linux}/public";
       };
       "old.it-projekt-muenster.de" = {
         forceSSL = true;

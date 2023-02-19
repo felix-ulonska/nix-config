@@ -30,9 +30,6 @@
     obs-studio
     android-studio
 
-    gimp
-    #libreoffice
-
     zathura
     bitwarden
     inkscape

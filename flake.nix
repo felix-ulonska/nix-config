@@ -1,5 +1,5 @@
 {
-  description = "An example NixOS configuration";
+ description = "An example NixOS configuration";
 
   inputs = {
     nixpkgs = { url = "github:nixos/nixpkgs/nixos-unstable"; };
@@ -77,7 +77,7 @@
         my = import ./lib { inherit inputs; lib = self; };
       });
       modulesList = lib.flatten [
-        agenix.nixosModule
+        agenix.nixosModules.default
         simple-nixos-mailserver.nixosModule
         impermanence.nixosModule
         base16.nixosModule
@@ -204,7 +204,7 @@
         buildInputs = [
           pkgs.lefthook
           pkgs.nixpkgs-fmt
-          agenix.defaultPackage.x86_64-linux
+          #agenix.nixosModules.default
         ];
         shellHook = ''
           lefthook install
@@ -239,7 +239,7 @@
         devShells.default = pkgs.mkShell {
           buildInputs = [
             deploy-rs.defaultPackage."${system}"
-            agenix.defaultPackage."${system}"
+            #agenix.defaultPackage
           ];
         };
       });

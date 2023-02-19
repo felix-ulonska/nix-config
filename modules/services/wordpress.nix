@@ -9,19 +9,23 @@ in
   };
   config = mkIf cfg.enable {
     services.wordpress.webserver = "nginx";
-    services.wordpress.sites."wordpress.it-projekt-muenster.de" = {
+    services.wordpress.sites."it-projekt-muenster.de" = {
       extraConfig = ''
         @ini_set( 'upload_max_size' , '64M' );
         @ini_set( 'post_max_size', '64M');
         @ini_set( 'max_execution_time', '300' );
       '';
+      settings = {
+           WP_SITEURL = "https://it-projekt-muenster.de";
+           WP_HOME = "https://it-projekt-muenster.de";
+         };
     };
     services.phpfpm.phpOptions = ''
       upload_max_filesize = 64M
       post_max_size = 128M
       memory_limit = 264M
     '';
-    services.nginx.virtualHosts."wordpress.it-projekt-muenster.de" = {
+    services.nginx.virtualHosts."it-projekt-muenster.de" = {
       forceSSL = true;
       enableACME = true;
       extraConfig = ''
