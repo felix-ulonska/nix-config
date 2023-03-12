@@ -7,15 +7,18 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  jabbi.home.enable = true;
-  jabbi.home.enableVisualApps = true;
-  jabbi.i3wm.enable = true;
-  jabbi.services.gnome.enable = true;
-  jabbi.docker.enable = true;
-  services.flatpak.enable = true;
-  jabbi.hardware.nvidia = true;
-
-  services.usbmuxd.enable = true;
+  jabbi = {
+    home = {
+      enable = true;
+      enableVisualApps = true;
+    };
+    i3wm.enable = true;
+    services = {
+      gnome.enable = true;
+    };
+    docker.enable = true;
+    hardware.nvidia.enable = true;
+  };
 
   programs.ssh.startAgent = true;
   programs.steam.enable = true;

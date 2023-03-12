@@ -16,9 +16,9 @@ in
         @ini_set( 'max_execution_time', '300' );
       '';
       settings = {
-           WP_SITEURL = "https://it-projekt-muenster.de";
-           WP_HOME = "https://it-projekt-muenster.de";
-         };
+        WP_SITEURL = "https://it-projekt-muenster.de";
+        WP_HOME = "https://it-projekt-muenster.de";
+      };
     };
     services.phpfpm.phpOptions = ''
       upload_max_filesize = 64M
@@ -29,7 +29,7 @@ in
       forceSSL = true;
       enableACME = true;
       extraConfig = ''
-       client_max_body_size 100M;
+        client_max_body_size 100M;
       '';
     };
     services.restic.backups.wordpress = {

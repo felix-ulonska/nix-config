@@ -1,5 +1,5 @@
 {
- description = "An example NixOS configuration";
+  description = "An example NixOS configuration";
 
   inputs = {
     nixpkgs = { url = "github:nixos/nixpkgs/nixos-unstable"; };
@@ -128,9 +128,9 @@
         };
 
       darwinConfigurations = rec {
-      atlas = darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        modules = [ ./hosts/atlas ];
+        atlas = darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          modules = [ ./hosts/atlas ];
           #home-manager.darwinModules.home-manager
           #{
           #  nixpkgs = nixpkgsConfig;
@@ -139,8 +139,8 @@
           #  home-manager.useUserPackages = true;
           #  home-manager.users.jun = import ./home.nix;            
           #}
+        };
       };
-    };
 
       nixosConfigurations.edgeless-safety-cube =
         nixpkgs.lib.nixosSystem {
@@ -239,7 +239,7 @@
         devShells.default = pkgs.mkShell {
           buildInputs = [
             deploy-rs.defaultPackage."${system}"
-            #agenix.defaultPackage
+            agenix.packages.x86_64-linux.default
           ];
         };
       });
