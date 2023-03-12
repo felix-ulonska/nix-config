@@ -43,6 +43,7 @@
     arandr
     touchegg
     neovide
+    libreoffice
   ];
 
   programs.firefox = {
