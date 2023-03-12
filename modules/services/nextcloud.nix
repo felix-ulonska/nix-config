@@ -81,7 +81,7 @@ in
     systemd.services."backup-nextcloud" = {
       serviceConfig.Type = "oneshot";
       startAt = "*-*-* 00:03:00";
-      path = [ pkgs.restic pkgs.sudo pkgs.curl ];
+      path = [ pkgs.restic pkgs.sudo pkgs.curl pkgs.jq ];
       script = "
         export $(grep -v '^#' /run/agenix/resticSecrets | xargs)
         /run/current-system/sw/bin/nextcloud-occ maintenance:mode --on
@@ -89,6 +89,7 @@ in
         sudo -u nextcloud /run/current-system/sw/bin/pg_dump nextcloud -U nextcloud -f /var/lib/nextcloud/nextcloud-sqlbkp_`date +\"%Y%m%d\"`.bak
         restic --cache-dir /nix/persist/restic-cache -p /run/agenix/restic-nextcloud-password -r b2:silberpfeil:/nextcloud backup /var/lib/nextcloud
         rm /var/lib/nextcloud/nextcloud-sqlbkp_*
+        curl $(cat ${config.age.secrets.secret1.path} | jq -r '.nextcloud')
         ";
       postStop = "/run/current-system/sw/bin/nextcloud-occ maintenance:mode --off";
     };
