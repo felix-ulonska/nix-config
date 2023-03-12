@@ -93,7 +93,7 @@
             "<<< Welcome to ${config.system.nixos.label} - Please leave\\l >>>";
           #stylix.image = ./assets/sad_station.jpg; # inputs.background.outPath;
           stylix.image = inputs.background.outPath;
-          stylix.base16Scheme = "${inputs.theme.outPath}/atelier-cave.yaml";
+          stylix.base16Scheme = "${inputs.theme.outPath}/atelier-heath-light.yaml";
           stylix.polarity = "dark";
           stylix.fonts.monospace = {
             package = pkgs.nerdfonts;
