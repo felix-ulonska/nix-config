@@ -19,15 +19,12 @@
     flameshot
     chromium
     scrcpy
-    libreoffice
 
     nixpkgs-fmt
     usbmuxd
     zoom-us
 
     networkmanagerapplet
-    #flutter
-    obs-studio
     android-studio
 
     zathura
@@ -36,14 +33,13 @@
     azuredatastudio
     ranger
     element-desktop
-    (import inputs.nixpkgsUnity { system = "x86_64-linux"; config.allowUnfree = true; }).unityhub
-    # ((import inputs.nixpkgsFlake {system = "x86_64-linux"; config.allowUnfree = true;}).hochwasser)
     gnome.gnome-boxes
     libxml2
     arandr
     touchegg
     neovide
     libreoffice
+    signal-desktop
   ];
 
   programs.firefox = {

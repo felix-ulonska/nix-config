@@ -13,6 +13,7 @@
   jabbi.services.gnome.enable = true;
   jabbi.docker.enable = true;
   services.flatpak.enable = true;
+  jabbi.hardware.nvidia = true;
 
   services.usbmuxd.enable = true;
 
@@ -20,28 +21,6 @@
   programs.steam.enable = true;
 
   networking.hostName = "GLaDOS";
-  hardware.opengl.enable = true;
-
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia.modesetting.enable = true;
-  # hardware.nvidia.powerManagement.finegrained = true;
-  #hardware.nvidia.nvidiaPersistenced = true;
-  #hardware.nvidia.prime = {
-  #  offload.enable = true;
-  #  # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA
-  #  nvidiaBusId = "PCI:1:0:0";
-  #  amdgpuBusId = "PCI:6:0:0";
-  #};
-
-  #hardware.nvidia.powerManagement.enable = true;
-
-  #specialisation = {
-  #  external-display.configuration = {
-  #    system.nixos.tags = [ "external-display" ];
-  #    hardware.nvidia.prime.offload.enable = lib.mkForce false;
-  #    hardware.nvidia.powerManagement.enable = lib.mkForce false;
-  #  };
-  #};
 
   hardware.bluetooth.enable = true;
   programs.nix-ld.enable = true;
@@ -85,26 +64,17 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGQ+BFtjE8D9+wVAnZ7IrhkTPlA62jdEq037+PaKCXkM jabbi@mimo"
   ];
 
-  hardware.sane.enable = true;
-  hardware.sane.brscan4.enable = true;
-  hardware.sane.brscan5.enable = true;
-
   environment.systemPackages = with pkgs; [
     vim
     dig
     htop
     steam-run-native
     wireguard-tools
-    ( pkgs.writeShellScriptBin "nvidia-offload" ''
-    export __NV_PRIME_RENDER_OFFLOAD=1
-    export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
-    export __GLX_VENDOR_LIBRARY_NAME=nvidia
-    export __VK_LAYER_NV_optimus=NVIDIA_only
-    exec "$@" '')
   ];
 
-  networking.firewall.allowedTCPPorts = [ 80 443 1433 ];
-  networking.firewall.allowedUDPPorts = [ 51820 ];
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.allowedUDPPorts = [ ];
+
   nix = {
     package = pkgs.nixVersions.stable; # or versioned attributes like nix_2_7
     extraOptions = ''
@@ -118,19 +88,10 @@
     passwordAuthentication = false;
   };
 
-  services.xserver.desktopManager.plasma5.enable = true;
   programs.ssh.askPassword = pkgs.lib.mkForce "";
 
   # Webkit
   environment.variables.WEBKIT_DISABLE_COMPOSITING_MODE = "1";
-
-  #boot.loader.grub = {
-  #  enable = true;
-  #  version = 2;
-  #  device = "nodev";
-  #  efiSupport = true;
-  #  enableCryptodisk = true;
-  #};
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
