@@ -89,7 +89,7 @@ in
         sudo -u nextcloud /run/current-system/sw/bin/pg_dump nextcloud -U nextcloud -f /var/lib/nextcloud/nextcloud-sqlbkp_`date +\"%Y%m%d\"`.bak
         restic --cache-dir /nix/persist/restic-cache -p /run/agenix/restic-nextcloud-password -r b2:silberpfeil:/nextcloud backup /var/lib/nextcloud
         rm /var/lib/nextcloud/nextcloud-sqlbkp_*
-        curl $(cat /run/agenix/healthckecks-urls | jq -r '.nextcloud')
+        curl $(cat /run/agenix/heatlhchecks-url | jq -r '.nextcloud')
         ";
       postStop = "/run/current-system/sw/bin/nextcloud-occ maintenance:mode --off";
     };
