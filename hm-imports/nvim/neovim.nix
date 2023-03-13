@@ -40,6 +40,8 @@
   "python.linting.flake8Enabled": true,
   "python.formatting.provider": "black",
   "pydocstring.formatter": "numpy",
+  "eslint.trace.server": "verbose",
+  "eslint.execArgv": ["--max_old_space_size=8192"],
   "languageserver": {
     "golang": {
       "command": "gopls",
@@ -53,7 +55,6 @@
       "command": "nil",
       "filetypes": ["nix"],
       "rootPatterns":  ["flake.nix"],
-      Uncomment these to tweak settings.
       "settings": {
         "nil": {
           "formatting": { "command": ["nixpkgs-fmt"] }
@@ -63,7 +64,6 @@
   },
   "coc.preferences.extensionUpdateCheck": "daily",
   "clangd.path": "${pkgs.clang-tools}/bin/clangd",
-  // "clangd.arguments": ["--cuda-gpu-arch SM_86"],
   "outline": {
     "sortBy": "position"
   },
