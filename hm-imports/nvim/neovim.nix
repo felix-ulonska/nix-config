@@ -40,6 +40,7 @@
   "python.linting.flake8Enabled": true,
   "python.formatting.provider": "black",
   "pydocstring.formatter": "numpy",
+  "typescript.preferences.importModuleSpecifier": "relative",
   "eslint.trace.server": "verbose",
   "eslint.execArgv": ["--max_old_space_size=8192"],
   "languageserver": {
