@@ -21,6 +21,7 @@
   };
 
   programs.ssh.startAgent = true;
+  programs.zsh.enable = true;
   programs.steam.enable = true;
 
   networking.hostName = "GLaDOS";

@@ -22,7 +22,8 @@
   jabbi.services.nginx.enable = true;
   jabbi.services.mail.enable = true;
   jabbi.services.uptime-kuma.enable = true;
-  jabbi.services.fix-ms.enable = true;
+  # jabbi.services.fix-ms.enable = true;
+  jabbi.services.paperless.enable = true;
 
   jabbi.services.jmusicbot.enable = true;
   jabbi.services.wordpress.enable = true;
@@ -77,6 +78,7 @@
       "/var/lib/fixms-frontend"
       "/var/lib/docker"
       "/var/lib/wordpress"
+      "/var/lib/paperless"
       "/var/lib/mysql"
       "/var/lib/cvat"
       "/var/vmail"
