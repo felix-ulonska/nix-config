@@ -4,7 +4,7 @@ let
   cfg = config.jabbi.services.paperless;
 in
 {
-  options.jabbi.services.nginx = {
+  options.jabbi.services.paperless = {
     enable = mkEnableOption "Enable Paperless";
   };
   config = mkIf cfg.enable {
@@ -23,20 +23,20 @@ in
       };
     };
 
-    services.restic.backups = {
-      mail = {
-        repository = "b2:silberpfeil:/paperless";
-        paths = [ "/var/dkim" "/var/paperless" ];
-        initialize = true; # initializes the repo, don't set if you want manual control
-        environmentFile = "/run/agenix/resticSecrets";
-        passwordFile = "/run/agenix/restic-mail-password";
-        #timerConfig = {
-        #onCalendar = "*-*-* *:00:01";
-        #};
-        timerConfig = {
-          onCalendar = "hourly";
-        };
-      };
-    };
+    #services.restic.backups = {
+    #  mail = {
+    #    repository = "b2:silberpfeil:/paperless";
+    #    paths = [ "/var/dkim" "/var/paperless" ];
+    #    initialize = true; # initializes the repo, don't set if you want manual control
+    #    environmentFile = "/run/agenix/resticSecrets";
+    #    passwordFile = "/run/agenix/restic-mail-password";
+    #    #timerConfig = {
+    #    #onCalendar = "*-*-* *:00:01";
+    #    #};
+    #    timerConfig = {
+    #      onCalendar = "hourly";
+    #    };
+    #  };
+    #};
   };
 }

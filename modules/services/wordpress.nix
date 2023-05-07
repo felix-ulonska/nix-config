@@ -19,6 +19,7 @@ in
         WP_SITEURL = "https://it-projekt-muenster.de";
         WP_HOME = "https://it-projekt-muenster.de";
       };
+      themes = { inherit (pkgs.wordpressPackages.themes) twentytwentytwo; };
     };
     services.phpfpm.phpOptions = ''
       upload_max_filesize = 64M
@@ -31,6 +32,11 @@ in
       extraConfig = ''
         client_max_body_size 100M;
       '';
+    };
+    services.nginx.virtualHosts."www.it-projekt-muenster.de" = {
+      forceSSL = true;
+      enableACME = true;
+      globalRedirect = "it-projekt-muenster.de";
     };
     services.restic.backups.wordpress = {
       repository = "b2:silberpfeil:/wordpress";

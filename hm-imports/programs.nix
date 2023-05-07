@@ -40,6 +40,12 @@
     neovide
     libreoffice
     signal-desktop
+    ( (import (fetchFromGitHub {
+      owner = "NixOS";
+      repo= "nixpkgs";
+      rev ="077648b1a7a890c87d521cada0eb561571ef8d7b";
+      sha256 = "sha256-PxCjEPoKzHX6boFpjNBoWWVZYpNbVIYAdU9kf67HlSY=";
+    })) {system = "x86_64-linux"; }).vagrant
   ];
 
   programs.firefox = {
