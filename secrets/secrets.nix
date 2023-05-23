@@ -20,6 +20,10 @@ let pubkeys = import ../data/pubkeys.nix; in
     publicKeys = pubkeys.jabbi.computers;
   };
 
+  "restic-paperless-password.age" = {
+    publicKeys = pubkeys.jabbi.computers;
+  };
+
   "mail-password.age" = {
     publicKeys = pubkeys.jabbi.computers;
   };
