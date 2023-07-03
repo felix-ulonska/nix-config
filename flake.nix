@@ -4,7 +4,6 @@
   inputs = {
     nixpkgs = { url = "github:nixos/nixpkgs/nixos-unstable"; };
     nixpkgsFlake = { url = "github:felix-ulonska/nixpkgs/master"; };
-    nixpkgsUnity.url = "github:huantianad/nixpkgs/unityhub";
     deploy-rs = {
       url = "github:serokell/deploy-rs";
     };
@@ -70,7 +69,7 @@
     };
     flake-utils.url = "github:numtide/flake-utils";
   };
-  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, impermanence, flake-utils, fix-ms-backend, stylix, background, nixpkgsUnity, darwin, ... }:
+  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, impermanence, flake-utils, fix-ms-backend, stylix, background, darwin, ... }:
     let
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       lib = nixpkgs.lib.extend (self: super: {

@@ -13,7 +13,7 @@
 
   jabbi.home.enable = false;
   jabbi.home.impermanence = false;
-  jabbi.services.minecraft.enable = true;
+  jabbi.services.minecraft.enable = false;
   jabbi.services.gitlab-runner.enable = true;
   jabbi.docker.enable = true;
   jabbi.services.itpms-site.enable = true;
@@ -25,7 +25,7 @@
   # jabbi.services.fix-ms.enable = true;
   jabbi.services.paperless.enable = true;
 
-  jabbi.services.jmusicbot.enable = true;
+  jabbi.services.jmusicbot.enable = false;
   jabbi.services.wordpress.enable = true;
 
   networking.hostName = "fact-cube";
