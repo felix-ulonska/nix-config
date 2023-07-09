@@ -137,6 +137,7 @@
         coc-vimtex
         vimtex
         vimspector
+        nvim-treesitter-context
         nvim-treesitter.withAllGrammars
         (base16-vim.overrideAttrs (old:
           let

@@ -779,16 +779,16 @@
     "theme": {
       "flake": false,
       "locked": {
-        "lastModified": 1495956440,
-        "narHash": "sha256-tKOPV4uStfEM6xBa+3sOLtpkpi/ykEiLlybt+3g09WQ=",
-        "owner": "atelierbram",
-        "repo": "base16-atelier-schemes",
-        "rev": "212179fded98ecfa7d88ad7a756d81297a3371c2",
+        "lastModified": 1509897429,
+        "narHash": "sha256-pZNzlcLsyl4M0wSKeg4lhptZAOaw1R+roheZaPMQryY=",
+        "owner": "joshwlewis",
+        "repo": "base16-unikitty",
+        "rev": "28362f3a37a0e81b04d844aa5b2923ad63140734",
         "type": "github"
       },
       "original": {
-        "owner": "atelierbram",
-        "repo": "base16-atelier-schemes",
+        "owner": "joshwlewis",
+        "repo": "base16-unikitty",
         "type": "github"
       }
     },

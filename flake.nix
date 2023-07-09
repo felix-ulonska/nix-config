@@ -49,8 +49,9 @@
       #url = github:vic/base16-rebecca;
       #url = github.com:chriskempson/base16-vim;
       #url = "github:hakatashi/base16-colors-scheme";
-      url = "github:atelierbram/base16-atelier-schemes";
-      #url = github:kjakapat/base16-eva-scheme;
+      #url = "github:atelierbram/base16-atelier-schemes";
+      url = "github:joshwlewis/base16-unikitty";
+      #url = github:kjakapat/base16-eva-scheme;;
       flake = false;
     };
 
@@ -90,9 +91,9 @@
         ({ config, ... }: lib.mkMerge [{
           services.getty.greetingLine =
             "<<< Welcome to ${config.system.nixos.label} - Please leave\\l >>>";
-          #stylix.image = ./assets/sad_station.jpg; # inputs.background.outPath;
-          stylix.image = inputs.background.outPath;
-          #stylix.base16Scheme = "${inputs.theme.outPath}/atelier-heath-light.yaml";
+          stylix.image = ./assets/sad_station.jpg; # inputs.background.outPath;
+          #stylix.image = inputs.background.outPath;
+          stylix.base16Scheme = "${inputs.theme.outPath}/unikitty-dark.yaml";
           stylix.polarity = "dark";
           stylix.fonts.monospace = {
             package = pkgs.nerdfonts;
