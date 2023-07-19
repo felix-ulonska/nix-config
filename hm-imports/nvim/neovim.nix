@@ -70,7 +70,8 @@
   },
   "ltex.ltex-ls.path": "${pkgs.ltex-ls}",
   "explorer.width": 80,
-  "flutter.sdk.path": "${pkgs.flutter}"
+  "flutter.sdk.path": "${pkgs.flutter}",
+  "coc.source.vimtex.filetypes": ["tex", "latex", "markdown", "md"]
 }
     '';
   programs.neovim = {
