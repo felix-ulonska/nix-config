@@ -12,6 +12,7 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nur.url = "github:nix-community/nur";
 
     impermanence.url = "github:nix-community/impermanence";
@@ -70,7 +71,7 @@
     };
     flake-utils.url = "github:numtide/flake-utils";
   };
-  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, impermanence, flake-utils, fix-ms-backend, stylix, background, darwin, ... }:
+  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, impermanence, flake-utils, fix-ms-backend, stylix, background, darwin, nixos-hardware, ... }:
     let
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       lib = nixpkgs.lib.extend (self: super: {
@@ -81,6 +82,7 @@
         simple-nixos-mailserver.nixosModule
         impermanence.nixosModule
         base16.nixosModule
+        nixos-hardware.nixosModules.lenovo-legion-16ach6h
         #{ scheme = "${inputs.theme}/eva.yaml"; }
         #{ scheme = "${inputs.theme.outPath}/atelier-cave.yaml"; }
         #{ scheme = "${inputs.theme}/atelier-savanna.yaml"; }
