@@ -19,6 +19,7 @@ let
     ../../hm-imports/programs/alacritty.nix
     ../../hm-imports/programs/zathura.nix
     ../../hm-imports/programs/rofi.nix
+    ../../hm-imports/hyprland.nix
   ];
 in
 {
@@ -33,7 +34,7 @@ in
       default = false;
     };
     userName = lib.mkOption {
-      type = lib.types.string;
+      type = lib.types.str;
       default = "jabbi";
     };
   };

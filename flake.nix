@@ -39,9 +39,6 @@
       flake = false;
     };
 
-    darwin.url = "github:lnl7/nix-darwin/master";
-    darwin.inputs.nixpkgs.follows = "nixpkgs";
-
     theme = {
       #url = github:ajlende/base16-atlas-scheme;
       #url = github:b3nj5m1n/base16-pinky-scheme;
@@ -71,7 +68,7 @@
     };
     flake-utils.url = "github:numtide/flake-utils";
   };
-  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, impermanence, flake-utils, fix-ms-backend, stylix, background, darwin, nixos-hardware, ... }:
+  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, impermanence, flake-utils, fix-ms-backend, stylix, background, nixos-hardware, ... }:
     let
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       lib = nixpkgs.lib.extend (self: super: {
@@ -116,7 +113,12 @@
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit lib; inherit inputs; };
-          modules = modulesList ++ [ ./hosts/fact-cube/configuration.nix ];
+          modules = lib.flatten [
+              agenix.nixosModules.default
+              simple-nixos-mailserver.nixosModule
+              impermanence.nixosModule
+              (lib.my.mapModulesRec' (toString ./modules/services) import)
+              ./hosts/fact-cube/configuration.nix ];
         };
       nixosConfigurations.GLaDOS =
         nixpkgs.lib.nixosSystem {
@@ -129,26 +131,15 @@
           ];
         };
 
-      darwinConfigurations = rec {
-        atlas = darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
-          modules = [ ./hosts/atlas ];
-          #home-manager.darwinModules.home-manager
-          #{
-          #  nixpkgs = nixpkgsConfig;
-          #  # `home-manager` config
-          #  home-manager.useGlobalPkgs = true;
-          #  home-manager.useUserPackages = true;
-          #  home-manager.users.jun = import ./home.nix;            
-          #}
-        };
-      };
-
       nixosConfigurations.edgeless-safety-cube =
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit lib; inherit inputs; };
-          modules = modulesList ++ [ ./hosts/edgeless-safety-cube/configuration.nix ];
+          modules =  [
+              agenix.nixosModules.default
+              simple-nixos-mailserver.nixosModule
+              impermanence.nixosModule
+            ./hosts/edgeless-safety-cube/configuration.nix ];
         };
 
       homeConfigurations.jabbi = home-manager.lib.homeManagerConfiguration {

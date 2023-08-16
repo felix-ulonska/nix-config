@@ -16,11 +16,14 @@ in
       mail-felix-password = {
         file = ../../secrets/mail-felix-password.age;
       };
+      mail-itpms-password = {
+        file = ../../secrets/mail-itpms-password.age;
+      };
     };
     mailserver = {
       enable = true;
       fqdn = "mail.webfoo.de";
-      domains = [ "webfoo.de" ];
+      domains = [ "webfoo.de" "it-projekt-muenster.de" ];
 
       # A list of all login accounts. To create the password hashes, use
       # nix run nixpkgs.apacheHttpd -c htpasswd -nbB "" "super secret password" | cut -d: -f2
@@ -29,6 +32,11 @@ in
           hashedPasswordFile = "/run/agenix/mail-felix-password";
           aliases = [ "felix@webfoo.de" "@webfoo.de" ];
           catchAll = [ "webfoo.de" ];
+        };
+        "info@it-projekt-muenster.de" = {
+          hashedPasswordFile = "/run/agenix/mail-itpms-password";
+          aliases = [ "info@it-projekt-muenster.de" "@it-projekt-muenster.de" ];
+          catchAll = [ "it-projekt-muenster.de" ];
         };
       };
 
