@@ -133,18 +133,24 @@ bindm = $mainMod, mouse:273, resizewindow
     enable = true;
     systemd.enable = true;
     settings = [{
+      style = ''
+      *{ 
+        font-family: agave Nerd Font Mono;
+      }
+      '';
       height = 30;
       layer = "top";
       position = "bottom";
       tray = { spacing = 10; };
-      modules-center = [ "sway/window" ];
-      modules-left = [ "sway/workspaces" "sway/mode" ];
+      modules-center = [ "hyprland/window" ];
+      modules-left = [ "hyprland/workspaces" ];
       modules-right = [
         "pulseaudio"
         "network"
         "cpu"
         "memory"
         "temperature"
+        "battery"
       ] 
       ++ [
         "clock"

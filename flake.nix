@@ -82,7 +82,7 @@
         nixos-hardware.nixosModules.lenovo-legion-16ach6h
         #{ scheme = "${inputs.theme}/eva.yaml"; }
         #{ scheme = "${inputs.theme.outPath}/atelier-cave.yaml"; }
-        #{ scheme = "${inputs.theme}/atelier-savanna.yaml"; }
+        #Jk{ scheme = "${inputs.theme}/atelier-savanna.yaml"; }
         #{ scheme = "${inputs.theme}/nebula.yaml"; }
         home-manager.nixosModules.home-manager
         stylix.nixosModules.stylix
@@ -92,7 +92,7 @@
             "<<< Welcome to ${config.system.nixos.label} - Please leave\\l >>>";
           stylix.image = ./assets/sad_station.jpg; # inputs.background.outPath;
           #stylix.image = inputs.background.outPath;
-          stylix.base16Scheme = "${inputs.theme.outPath}/unikitty-dark.yaml";
+          stylix.base16Scheme = "${inputs.theme.outPath}/unikitty-light.yaml";
           stylix.polarity = "dark";
           stylix.fonts.monospace = {
             package = pkgs.nerdfonts;
