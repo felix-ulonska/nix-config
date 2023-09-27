@@ -1,14 +1,20 @@
-{config, pkgs, ...}: {
+{config, pkgs, inputs, ...}: {
   home.packages = with pkgs; [
     nwg-dock-hyprland
     swaylock
   ];
+  home.sessionVariables = {
+    WLR_NO_HARDWARE_CURSORS = 1;
+  };
+
 wayland.windowManager.hyprland.enable = true;
+wayland.windowManager.hyprland.enableNvidiaPatches = true;
   wayland.windowManager.hyprland.extraConfig = ''
     $mod = SUPER
     bind=$mod,F,fullscreen
     bind=$mod,M, exec, swaylock
     bind = , Print, exec, grimblast copy area
+    env = WLR_NO_HARDWARE_CURSORS,1
 
     # workspaces
     # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
@@ -43,7 +49,7 @@ monitor=,highres,auto,1
 
 # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
 input {
-    kb_layout = eu
+    kb_layout = de
     kb_variant =
     kb_model =
     kb_options =

@@ -117,6 +117,7 @@
 
   # Webkit
   environment.variables.WEBKIT_DISABLE_COMPOSITING_MODE = "1";
+  environment.variables.WLR_NO_HARDWARE_CURSORS = "1";
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

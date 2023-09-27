@@ -31,7 +31,8 @@
   "Lua.diagnostics.globals": ["vim"],
   "html.enable": true,
   "ltex.enabled": true,
-  "ltex.language": "de-DE",
+  "ltex.language": "en-US",
+  "svelte.plugin.typescript.enable": "true",
   "html.autoClosingTags": true,
   "explorer.icon.enableNerdfont": true,
   "java.format.enabled": true,
@@ -42,6 +43,7 @@
   "pydocstring.formatter": "numpy",
   "typescript.preferences.importModuleSpecifier": "relative",
   "eslint.trace.server": "verbose",
+  "tailwindCSS.includeLanguages": {"html", "svelte"}
   "eslint.execArgv": ["--max_old_space_size=8192"],
   "languageserver": {
     "golang": {
@@ -68,12 +70,13 @@
   "outline": {
     "sortBy": "position"
   },
-  "ltex.ltex-ls.path": "${pkgs.ltex-ls}",
+  
   "explorer.width": 80,
   "flutter.sdk.path": "${pkgs.flutter}",
   "coc.source.vimtex.filetypes": ["tex", "latex", "markdown", "md"]
 }
     '';
+    ##"ltex.ltex-ls.path": "${pkgs.ltex-ls}",
   programs.neovim = {
     enable = true;
     vimAlias = true;
@@ -85,15 +88,6 @@
 
     plugins =
       let
-        riscv-asm-vim = pkgs.vimUtils.buildVimPlugin {
-          name = "riscv-asm-vim";
-          src = pkgs.fetchFromGitHub {
-            owner = "henry-hsieh";
-            repo = "riscv-asm-vim";
-            rev = "a99581f182aae0bf6ca2d2a5e7438c405a3ddc0d";
-            sha256 = "IRXrK5uq9yFRuyz4AHVKKOgIIpcUfi1ZnhFcBR8wHb8=";
-          };
-        };
         jesterVIM = pkgs.vimUtils.buildVimPlugin {
           name = "jester";
           src = pkgs.fetchFromGitHub {
@@ -107,10 +101,10 @@
       with pkgs.vimPlugins; [
         #galaxyline-nvim
         jesterVIM
-        riscv-asm-vim
         barbar-nvim
         nvim-web-devicons
         coc-nvim
+        coc-svelte
         telescope-nvim
         telescope-coc-nvim
         vim-sleuth
@@ -127,15 +121,14 @@
         coc-prettier
         coc-json
         coc-java
-        # coc-angular 
+        #coc-angular 
         coc-lua
         coc-explorer
         coc-clangd
         coc-rust-analyzer
-        #coc-flutter
-        dart-vim-plugin
         lualine-nvim
         coc-vimtex
+        coc-ltex
         vimtex
         vimspector
         nvim-treesitter-context
