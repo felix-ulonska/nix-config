@@ -11,6 +11,7 @@ in
     services.paperless = {
       enable = true;
       port = 9212;
+      dataDir="/var/lib/paperless";
     };
 
     services.nginx.virtualHosts = {

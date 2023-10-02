@@ -79,6 +79,7 @@
       "/var/lib/mysql"
       "/var/lib/cvat"
       "/var/vmail"
+      "/var/lib/files"
     ];
     files = [
       "/etc/machine-id"

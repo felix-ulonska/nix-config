@@ -23,6 +23,11 @@ in
           forceSSL = true;
           enableACME = true;
         };
+        "files.webfoo.de" = {
+          forceSSL = true;
+          enableACME = true;
+          root = "/var/lib/files/";
+        };
       };
     };
 
