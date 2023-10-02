@@ -8,7 +8,7 @@ in
     enable = mkEnableOption "Enable Paperless";
   };
   config = mkIf cfg.enable {
-    services.paperless = {
+    services.paperless-fixed = {
       enable = true;
       port = 9212;
       dataDir="/var/lib/paperless";
