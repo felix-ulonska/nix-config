@@ -77,10 +77,6 @@ in
 {
   meta.maintainers = with maintainers; [ erikarvstedt Flakebi leona ];
 
-  imports = [
-    (mkRenamedOptionModule [ "services" "paperless-ng" ] [ "services" "paperless" ])
-  ];
-
   options.services.paperless-fixed = {
     enable = mkOption {
       type = lib.types.bool;

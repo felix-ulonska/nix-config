@@ -31,7 +31,6 @@
   "Lua.diagnostics.globals": ["vim"],
   "html.enable": true,
   "ltex.enabled": true,
-  "ltex.language": "en-US",
   "svelte.plugin.typescript.enable": "true",
   "html.autoClosingTags": true,
   "explorer.icon.enableNerdfont": true,
@@ -43,7 +42,7 @@
   "pydocstring.formatter": "numpy",
   "typescript.preferences.importModuleSpecifier": "relative",
   "eslint.trace.server": "verbose",
-  "tailwindCSS.includeLanguages": {"html", "svelte"}
+  "tailwindCSS.includeLanguages": ["html", "svelte"],
   "eslint.execArgv": ["--max_old_space_size=8192"],
   "languageserver": {
     "golang": {
