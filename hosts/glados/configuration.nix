@@ -35,6 +35,7 @@
 
   programs.fuse.userAllowOther = true;
   networking.firewall.enable = false;
+  #hardware.opentabletdriver.enable = true;
 
   virtualisation.virtualbox.host.enable = true;
   virtualisation.virtualbox.host.enableExtensionPack = true;
@@ -108,6 +109,12 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
+    binaryCaches = [
+      "https://formosa-crypto.cachix.org"
+    ];
+    binaryCachePublicKeys = [
+      "formosa-crypto.cachix.org-1:Ds5Tmop43AtcuyZfnoYecemtwLd7DldUruCv5ZV/JUM="
+    ];
   };
 
   services.openssh = {

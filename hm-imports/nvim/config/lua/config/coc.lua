@@ -9,7 +9,7 @@ vim.g.coc_global_extensions = {
 	'coc-angular',
 	'coc-lua',
 	'coc-explorer',
-	-- 'coc-go',
+	'coc-go',
 	'coc-clangd',
 	'coc-restclient',
 	'coc-rest',

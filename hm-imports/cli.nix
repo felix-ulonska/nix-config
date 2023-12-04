@@ -8,6 +8,7 @@
       user.name = "Felix Ulonska";
       user.email = "git@webfoo.de";
       url."https://github.com/".insteadOf = "git://github.com/";
+      safe.directory = "*";
     };
   };
   programs.tmux = {
