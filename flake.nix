@@ -2,17 +2,17 @@
   description = "An example NixOS configuration";
 
   inputs = {
-    nixpkgs = { url = "github:nixos/nixpkgs/nixos-unstable"; };
-    nixpkgsFlake = { url = "github:felix-ulonska/nixpkgs/master"; };
+    nixpkgs = { url = "github:nixos/nixpkgs/nixos-23.11"; };
+    nixpkgsMaster = { url = "/tmp/nixpkgs"; };
     deploy-rs = {
       url = "github:serokell/deploy-rs";
     };
     agenix.url = "github:ryantm/agenix";
     simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/";
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixos-hardware.url = "github:felix-ulonska/nixos-hardware/master";
     nur.url = "github:nix-community/nur";
 
     impermanence.url = "github:nix-community/impermanence";
@@ -23,6 +23,8 @@
     itpms-site.url = "gitlab:itpms/website";
     fix-ms-backend.url = "github:Fix-MS/backend/deployment";
     fix-ms-frontend.url = "github:Fix-MS/app";
+
+    felixnixvim.url = "github:felix-ulonska/vim";
 
     stylix.url = "github:danth/stylix";
     hyprland.url = "github:hyprwm/Hyprland";
@@ -68,7 +70,7 @@
     };
     flake-utils.url = "github:numtide/flake-utils";
   };
-  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, impermanence, flake-utils, fix-ms-backend, stylix, background, nixos-hardware, ... }:
+  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, impermanence, flake-utils, fix-ms-backend, stylix, background, nixos-hardware, nixpkgsMaster, felixnixvim, ... }:
     let
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       lib = nixpkgs.lib.extend (self: super: {
@@ -127,7 +129,7 @@
           modules = modulesList ++ [
             ./hosts/glados/configuration.nix
             inputs.hyprland.nixosModules.default
-            { programs.hyprland.enable = true; programs.hyprland.nvidiaPatches = true;}
+            { programs.hyprland.enable = true; }
           ];
         };
 

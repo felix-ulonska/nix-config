@@ -77,7 +77,7 @@
     '';
     ##"ltex.ltex-ls.path": "${pkgs.ltex-ls}",
   programs.neovim = {
-    enable = true;
+    enable = false;
     vimAlias = true;
     viAlias = true;
     extraConfig = ''

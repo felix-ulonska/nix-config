@@ -22,7 +22,6 @@
   # jabbi.services.fix-ms.enable = true;
   jabbi.services.paperless.enable = true;
 
-  jabbi.services.jmusicbot.enable = false;
   jabbi.services.wordpress.enable = true;
 
   networking.hostName = "fact-cube";

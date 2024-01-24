@@ -2,13 +2,13 @@
   home.packages = with pkgs; [
     nwg-dock-hyprland
     swaylock
+    dunst
   ];
   home.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = 1;
   };
 
 wayland.windowManager.hyprland.enable = true;
-wayland.windowManager.hyprland.enableNvidiaPatches = true;
   wayland.windowManager.hyprland.extraConfig = ''
     $mod = SUPER
     bind=$mod,F,fullscreen
@@ -43,6 +43,7 @@ monitor=,highres,auto,1
 
 # Execute your favorite apps at launch
 # exec-once = waybar & hyprpaper & firefox
+exec-once = dunst
 
 # Source a file (multi-file configs)
 # source = ~/.config/hypr/myColors.conf

@@ -13,6 +13,9 @@ let
     ../../hm-imports/autorandr.nix
     ../../hm-imports/polybar.nix
     ../../hm-imports/gnome.nix
+    {
+    stylix.targets.kde.enable = false;
+    }
   ];
   visualImports = [
     ../../hm-imports/programs.nix

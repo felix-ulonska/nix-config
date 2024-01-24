@@ -9,18 +9,18 @@ in
   };
 
   config = mkIf cfg.enable {
-    hardware.opengl.enable = true;
+    #hardware.opengl.enable = true;
 
     services.xserver.videoDrivers = [ "nvidia" ];
-    hardware.nvidia.modesetting.enable = true;
+    #hardware.nvidia.modesetting.enable = true;
     # hardware.nvidia.powerManagement.finegrained = true;
     #hardware.nvidia.nvidiaPersistenced = true;
-    hardware.nvidia.prime = {
-      offload.enable = true;
-      # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA
-      nvidiaBusId = "PCI:1:0:0";
-      amdgpuBusId = "PCI:6:0:0";
-    };
+    #hardware.nvidia.prime = {
+    #  offload.enable = true;
+    #  # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA
+    #  nvidiaBusId = "PCI:1:0:0";
+    #  amdgpuBusId = "PCI:6:0:0";
+    #};
 
     #hardware.nvidia.powerManagement.enable = true;
 
@@ -31,6 +31,8 @@ in
     #    hardware.nvidia.powerManagement.enable = lib.mkForce false;
     #  };
     #};
+
+
 
     environment.systemPackages = [
       (pkgs.writeShellScriptBin "nvidia-offload" ''

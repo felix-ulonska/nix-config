@@ -26,9 +26,8 @@ in
 
     services.nextcloud = {
       enable = true;
-      enableBrokenCiphersForSSE = false;
       hostName = "cloud.webfoo.de";
-      package = pkgs.nextcloud27;
+      package = pkgs.nextcloud28;
 
       # Use HTTPS for links
       https = true;
