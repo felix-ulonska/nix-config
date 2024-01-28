@@ -2,14 +2,14 @@
   description = "An example NixOS configuration";
 
   inputs = {
-    nixpkgs = { url = "github:nixos/nixpkgs/nixos-23.11"; };
-    nixpkgsMaster = { url = "/tmp/nixpkgs"; };
+    nixpkgs = { url = "github:nixos/nixpkgs/master"; };
+    nixpkgsMaster = { url = "github:nixos/nixpkgs/master"; };
     deploy-rs = {
       url = "github:serokell/deploy-rs";
     };
     agenix.url = "github:ryantm/agenix";
     simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/";
-    home-manager.url = "github:nix-community/home-manager/release-23.11";
+    home-manager.url = "github:nix-community/home-manager/";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nixos-hardware.url = "github:felix-ulonska/nixos-hardware/master";

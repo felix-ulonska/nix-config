@@ -15,6 +15,8 @@ let
     ../../hm-imports/gnome.nix
     {
     stylix.targets.kde.enable = false;
+    # Just broken, I do not use that tool?!
+    stylix.targets.bemenu.enable = false;
     }
   ];
   visualImports = [

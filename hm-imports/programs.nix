@@ -2,7 +2,8 @@
 {
   home.packages = with pkgs; [
     keepassxc
-    inputs.nixpkgsMaster.legacyPackages."x86_64-linux".logseq
+    #inputs.nixpkgsMaster.legacyPackages."x86_64-linux".logseq
+    #logseq
     vscode
     nerdfonts
     pavucontrol

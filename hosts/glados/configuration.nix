@@ -19,6 +19,7 @@
     docker.enable = true;
     #hardware.nvidia.enable = true;
   };
+  #boot.tmp.useTmpfs = true;
 
   services.xserver.desktopManager.plasma5.enable = true;
   programs.ssh.startAgent = true;
