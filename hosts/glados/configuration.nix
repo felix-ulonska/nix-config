@@ -44,8 +44,8 @@
   networking.firewall.enable = false;
   #hardware.opentabletdriver.enable = true;
 
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.enableExtensionPack = true;
+  #virtualisation.virtualbox.host.enable = true;
+  #virtualisation.virtualbox.host.enableExtensionPack = true;
   virtualisation.docker.enableNvidia = true;
   users.extraGroups.vboxusers.members = [ "jabbi" ];
   networking.wireless.userControlled.enable = true;

@@ -44,6 +44,8 @@ in
       # down nginx and opens port 80.
       certificateScheme = 3;
     };
+	# Seesimple-nixos-mailserver/nixos-mailserver#275 
+	services.dovecot2.sieve.extensions = [ "fileinto" ];
     services.restic.backups = {
       mail = {
         repository = "b2:silberpfeil:/mail";
