@@ -59,4 +59,7 @@ let pubkeys = import ../data/pubkeys.nix; in
   "healthckecksurls.age" = {
     publicKeys = pubkeys.jabbi.computers;
   };
+  "mail-nextcloud-password.age" = {
+    publicKeys = pubkeys.jabbi.computers;
+  };
 }

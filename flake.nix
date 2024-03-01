@@ -17,7 +17,7 @@
 
     impermanence.url = "github:nix-community/impermanence";
 
-    base16.url = "github:SenchoPens/base16.nix";
+    base16.url = "github:SenchoPens/base16.nix/def69d6edc32792562975aec863dbef757f832cf";
     base16.inputs.nixpkgs.follows = "nixpkgs";
 
     itpms-site.url = "gitlab:itpms/website";
