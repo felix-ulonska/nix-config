@@ -19,7 +19,11 @@ in
       mail-itpms-password = {
         file = ../../secrets/mail-itpms-password.age;
       };
+      mail-nextcloud-password = {
+        file = ../../secrets/mail-nextcloud-password.age;
+      };
     };
+services.dovecot2.sieve.extensions = [ "fileinto" ];
     mailserver = {
       enable = true;
       fqdn = "mail.webfoo.de";
