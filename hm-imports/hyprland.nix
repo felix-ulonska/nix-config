@@ -111,11 +111,6 @@ gestures {
     workspace_swipe = on
 }
 
-# Example per-device config
-# See https://wiki.hyprland.org/Configuring/Keywords/#executing for more
-device:epic mouse V1 {
-    sensitivity = -0.5
-}
 
 $mainMod = SUPER
 
