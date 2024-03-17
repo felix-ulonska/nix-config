@@ -6,13 +6,14 @@ let
   baseImports = [
     "${inputs.impermanence}/home-manager.nix"
     inputs.base16.homeManagerModule
-    ../../hm-imports/nvim/neovim.nix
+    inputs.felixnixvim.homeManagerModules.default
     ../../hm-imports/i3.nix
     ../../hm-imports/zsh.nix
     ../../hm-imports/cli.nix
     ../../hm-imports/autorandr.nix
     ../../hm-imports/polybar.nix
     ../../hm-imports/gnome.nix
+    ../../hm-imports/nixvim.nix
     {
     stylix.targets.kde.enable = false;
     # Just broken, I do not use that tool?!

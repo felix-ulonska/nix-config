@@ -50,9 +50,9 @@
       #url = github:vic/base16-rebecca;
       #url = github.com:chriskempson/base16-vim;
       #url = "github:hakatashi/base16-colors-scheme";
-      url = "github:atelierbram/base16-atelier-schemes";
-      #url = "github:joshwlewis/base16-unikitty";
-      #url = github:kjakapat/base16-eva-scheme;;
+      #url = "github:atelierbram/base16-atelier-schemes";
+      url = "github:joshwlewis/base16-unikitty";
+      #url = github:kjakapat/base16-eva-scheme;
       flake = false;
     };
 
@@ -84,7 +84,7 @@
         base16.nixosModule
         nixos-hardware.nixosModules.lenovo-legion-16ach6h
         #{ scheme = "${inputs.theme}/eva.yaml"; }
-        { scheme = "${inputs.theme.outPath}/atelier-cave.yaml"; }
+        #{ scheme = "${inputs.theme.outPath}/atelier-cave.yaml"; }
         #Jk{ scheme = "${inputs.theme}/atelier-savanna.yaml"; }
         #{ scheme = "${inputs.theme}/nebula.yaml"; }
         home-manager.nixosModules.home-manager
@@ -93,15 +93,16 @@
         ({ config, ... }: lib.mkMerge [{
           services.getty.greetingLine =
             "<<< Welcome to ${config.system.nixos.label} - Please leave\\l >>>";
-          stylix.image = ./assets/sad_station.jpg; # inputs.background.outPath;
+          #stylix.image = ./assets/sad_station.jpg; # inputs.background.outPath;
+          stylix.image = inputs.background.outPath;
           #stylix.image = inputs.background.outPath;
-          # stylix.base16Scheme = ./assets/midoriga.yml;
+          #stylix.base16Scheme = ./assets/midoriga.yml;
           stylix.polarity = "dark";
           stylix.fonts.monospace = {
             package = pkgs.nerdfonts;
             name = "agave Nerd Font Mono";
           };
-          #scheme = config.lib.stylix.colors;
+          scheme = config.lib.stylix.colors;
         }])
         { nixpkgs.overlays = [ nur.overlay ]; }
       ];
@@ -160,11 +161,11 @@
             home.stateVersion = "22.05";
             home.username = "jabbi";
             home.homeDirectory = "/home/jabbi";
-            scheme = "${inputs.theme}/woodland.yaml";
+            #scheme = "${inputs.theme}/woodland.yaml";
           }
         ];
         extraSpecialArgs = {
-          scheme = "${inputs.theme}/woodland.yaml";
+          #scheme = "${inputs.theme}/woodland.yaml";
           inherit inputs;
         };
         #homeDirectory = "/home/jabbi";

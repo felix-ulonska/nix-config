@@ -4,7 +4,8 @@
     keepassxc
     #inputs.nixpkgsMaster.legacyPackages."x86_64-linux".logseq
     #logseq
-    #obsidian
+    lazygit
+    obsidian
     vscode
     nerdfonts
     pavucontrol
@@ -21,6 +22,9 @@
     chromium
     scrcpy
     xournalpp
+    gh
+
+    wget
 
     nixpkgs-fmt
     zoom-us
@@ -38,7 +42,7 @@
     neovide
     libreoffice
     signal-desktop
-    inputs.felixnixvim.packages.x86_64-linux.default
+    #inputs.felixnixvim.packages.x86_64-linux.default
   ];
 
   programs.firefox = {
