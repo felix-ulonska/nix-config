@@ -50,8 +50,8 @@
       #url = github:vic/base16-rebecca;
       #url = github.com:chriskempson/base16-vim;
       #url = "github:hakatashi/base16-colors-scheme";
-      #url = "github:atelierbram/base16-atelier-schemes";
-      url = "github:joshwlewis/base16-unikitty";
+      url = "github:atelierbram/base16-atelier-schemes";
+      #url = "github:joshwlewis/base16-unikitty";
       #url = github:kjakapat/base16-eva-scheme;
       flake = false;
     };
@@ -85,7 +85,7 @@
         nixos-hardware.nixosModules.lenovo-legion-16ach6h
         #{ scheme = "${inputs.theme}/eva.yaml"; }
         #{ scheme = "${inputs.theme.outPath}/atelier-cave.yaml"; }
-        #Jk{ scheme = "${inputs.theme}/atelier-savanna.yaml"; }
+        { scheme = "${inputs.theme}/atelier-savanna.yaml"; }
         #{ scheme = "${inputs.theme}/nebula.yaml"; }
         home-manager.nixosModules.home-manager
         stylix.nixosModules.stylix
@@ -97,12 +97,13 @@
           stylix.image = inputs.background.outPath;
           #stylix.image = inputs.background.outPath;
           #stylix.base16Scheme = ./assets/midoriga.yml;
+          #stylix.base16Scheme = scheme;
           stylix.polarity = "dark";
           stylix.fonts.monospace = {
             package = pkgs.nerdfonts;
             name = "agave Nerd Font Mono";
           };
-          scheme = config.lib.stylix.colors;
+          #scheme = config.lib.stylix.colors;
         }])
         { nixpkgs.overlays = [ nur.overlay ]; }
       ];
@@ -133,17 +134,6 @@
             inputs.hyprland.nixosModules.default
             { programs.hyprland.enable = true; }
           ];
-        };
-
-      nixosConfigurations.edgeless-safety-cube =
-        nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit lib; inherit inputs; };
-          modules =  [
-              agenix.nixosModules.default
-              simple-nixos-mailserver.nixosModule
-              impermanence.nixosModule
-            ./hosts/edgeless-safety-cube/configuration.nix ];
         };
 
       homeConfigurations.jabbi = home-manager.lib.homeManagerConfiguration {

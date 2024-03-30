@@ -67,7 +67,8 @@ in
       ensureUsers = [
         {
           name = "nextcloud";
-          ensurePermissions."DATABASE nextcloud" = "ALL PRIVILEGES";
+          # Does not work anymore, but hope for the best?!
+          #ensurePermissions."DATABASE nextcloud" = "ALL PRIVILEGES";
         }
       ];
     };
