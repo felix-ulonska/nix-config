@@ -36,6 +36,10 @@ let pubkeys = import ../data/pubkeys.nix; in
     publicKeys = pubkeys.jabbi.computers;
   };
 
+  "mail-cvat-password.age" = {
+    publicKeys = pubkeys.jabbi.computers;
+  };
+
   "restic-mail-password.age" = {
     publicKeys = pubkeys.jabbi.computers;
   };

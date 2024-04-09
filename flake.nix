@@ -48,10 +48,11 @@
       #url = github:Misterio77/base16-nebula-scheme;
       #url = github:jcornwall/base16-woodland-scheme;
       #url = github:vic/base16-rebecca;
-      #url = github.com:chriskempson/base16-vim;
+      #url = github:chriskempson/base16-vim;
       #url = "github:hakatashi/base16-colors-scheme";
-      url = "github:atelierbram/base16-atelier-schemes";
+      #url = "github:atelierbram/base16-atelier-schemes";
       #url = "github:joshwlewis/base16-unikitty";
+      url = "github:chawyehsu/base16-snazzy-scheme";
       #url = github:kjakapat/base16-eva-scheme;
       flake = false;
     };
@@ -85,8 +86,8 @@
         nixos-hardware.nixosModules.lenovo-legion-16ach6h
         #{ scheme = "${inputs.theme}/eva.yaml"; }
         #{ scheme = "${inputs.theme.outPath}/atelier-cave.yaml"; }
-        { scheme = "${inputs.theme}/atelier-savanna.yaml"; }
-        #{ scheme = "${inputs.theme}/nebula.yaml"; }
+        #{ scheme = ./assets/summerfruit-light.yaml; }
+        { scheme = "${inputs.theme}/snazzy.yaml"; }
         home-manager.nixosModules.home-manager
         stylix.nixosModules.stylix
         (lib.my.mapModulesRec' (toString ./modules) import)
@@ -146,7 +147,6 @@
           ./hm-imports/cli.nix
           ./hm-imports/autorandr.nix
           ./hm-imports/polybar.nix
-          ./hm-imports/gnome.nix
           {
             home.stateVersion = "22.05";
             home.username = "jabbi";

@@ -335,11 +335,11 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1711621234,
-        "narHash": "sha256-Zcvdx++F4J1k6BNxjSC0ybtnit5XF1jHTS9cXdQchWI=",
+        "lastModified": 1712589529,
+        "narHash": "sha256-1D5MoyMIdAb54SNylunZHR7rGteWgiu9eYN+wee1Qco=",
         "owner": "felix-ulonska",
         "repo": "vim",
-        "rev": "0b9d4b042dde1ab74cab2b4c2bfede00f5f9300f",
+        "rev": "1052954f7132941b870ebd6fbdc42a55006af12b",
         "type": "github"
       },
       "original": {
@@ -1444,16 +1444,16 @@
     "theme": {
       "flake": false,
       "locked": {
-        "lastModified": 1495956440,
-        "narHash": "sha256-tKOPV4uStfEM6xBa+3sOLtpkpi/ykEiLlybt+3g09WQ=",
-        "owner": "atelierbram",
-        "repo": "base16-atelier-schemes",
-        "rev": "212179fded98ecfa7d88ad7a756d81297a3371c2",
+        "lastModified": 1620573320,
+        "narHash": "sha256-o/JdM/ODFEN19vw/omH6NVovsB03ARuM/wLKOjStzPs=",
+        "owner": "chawyehsu",
+        "repo": "base16-snazzy-scheme",
+        "rev": "6e64c88288270c9b6baf9cc7f9eb7496c39fbd0b",
         "type": "github"
       },
       "original": {
-        "owner": "atelierbram",
-        "repo": "base16-atelier-schemes",
+        "owner": "chawyehsu",
+        "repo": "base16-snazzy-scheme",
         "type": "github"
       }
     },

@@ -12,7 +12,6 @@ let
     ../../hm-imports/cli.nix
     ../../hm-imports/autorandr.nix
     ../../hm-imports/polybar.nix
-    ../../hm-imports/gnome.nix
     ../../hm-imports/nixvim.nix
     {
     stylix.targets.kde.enable = false;
