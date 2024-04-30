@@ -42,6 +42,8 @@
     neovide
     libreoffice
     signal-desktop
+    kubectl
+    openlens
     #inputs.felixnixvim.packages.x86_64-linux.default
   ];
 

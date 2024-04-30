@@ -139,6 +139,7 @@ bindm = $mainMod, mouse:272, movewindow
 bindm = $mainMod, mouse:273, resizewindow
 
     # ...
+source=~/.config/hypr/monitors.conf
   '';
 
   programs.waybar = {

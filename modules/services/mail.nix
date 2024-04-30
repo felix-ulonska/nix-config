@@ -22,6 +22,9 @@ in
       mail-nextcloud-password = {
         file = ../../secrets/mail-nextcloud-password.age;
       };
+      mail-cvat-password = {
+        file = ../../secrets/mail-cvat-password.age;
+      };
     };
 services.dovecot2.sieve.extensions = [ "fileinto" ];
     mailserver = {
@@ -36,6 +39,9 @@ services.dovecot2.sieve.extensions = [ "fileinto" ];
           hashedPasswordFile = "/run/agenix/mail-felix-password";
           aliases = [ "felix@webfoo.de" "@webfoo.de" ];
           catchAll = [ "webfoo.de" ];
+        };
+        "cvat@webfoo.de" = {
+          hashedPasswordFile = "/run/agenix/mail-cvat-password";
         };
         "info@it-projekt-muenster.de" = {
           hashedPasswordFile = "/run/agenix/mail-itpms-password";
