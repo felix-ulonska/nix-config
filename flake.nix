@@ -2,8 +2,8 @@
   description = "An example NixOS configuration";
 
   inputs = {
-    nixpkgs = { url = "path:/home/jabbi/Projects/nixpkgs"; };
-    #nixpkgs = { url = "github:nixos/nixpkgs/master"; };
+    #nixpkgs = { url = "path:/home/jabbi/Projects/nixpkgs"; };
+    nixpkgs = { url = "github:nixos/nixpkgs/nixos-unstable"; };
     nixpkgsMaster = { url = "github:nixos/nixpkgs/master"; };
     deploy-rs = {
       url = "github:serokell/deploy-rs";
@@ -83,7 +83,6 @@
         simple-nixos-mailserver.nixosModule
         impermanence.nixosModule
         base16.nixosModule
-        nixos-hardware.nixosModules.lenovo-legion-16ach6h
         #{ scheme = "${inputs.theme}/eva.yaml"; }
         #{ scheme = "${inputs.theme.outPath}/atelier-cave.yaml"; }
         #{ scheme = ./assets/summerfruit-light.yaml; }
@@ -132,6 +131,17 @@
           specialArgs = { inherit lib; inherit inputs; };
           modules = modulesList ++ [
             ./hosts/glados/configuration.nix
+            nixos-hardware.nixosModules.lenovo-legion-16ach6h
+            inputs.hyprland.nixosModules.default
+            { programs.hyprland.enable = true; }
+          ];
+        };
+      nixosConfigurations.the-bird =
+        nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit lib; inherit inputs; };
+          modules = modulesList ++ [
+            ./hosts/the-bird/configuration.nix
             inputs.hyprland.nixosModules.default
             { programs.hyprland.enable = true; }
           ];
@@ -182,6 +192,16 @@
               sshOpts = [ "-o" "StrictHostKeyChecking=no" ];
             };
           };
+          "the-bird" = {
+            hostname = "10.0.0.61";
+            sshUser = "root";
+            profiles.system = {
+              user = "root";
+              path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."the-bird";
+              magicRollback = false;
+              sshOpts = [ "-o" "StrictHostKeyChecking=no" ];
+            };
+          };
         };
       };
 
@@ -209,6 +229,9 @@
           }
           function deployFactCube() {
             nix run --show-trace github:serokell/deploy-rs .#fact-cube
+          }
+          function deployBird() {
+            nix run --show-trace github:serokell/deploy-rs .#the-bird
           }
         '';
       };
