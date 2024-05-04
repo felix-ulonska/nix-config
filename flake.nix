@@ -100,7 +100,7 @@
           #stylix.base16Scheme = scheme;
           stylix.polarity = "dark";
           stylix.fonts.monospace = {
-            package = pkgs.nerdfonts;
+            package = (pkgs.nerdfonts.override { fonts = [ "Agave" ]; });
             name = "agave Nerd Font Mono";
           };
           #scheme = config.lib.stylix.colors;

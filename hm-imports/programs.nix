@@ -7,7 +7,7 @@
     lazygit
     obsidian
     vscode
-    nerdfonts
+    (nerdfonts.override { fonts = [ "Agave" ]; })
     pavucontrol
     discord
     thunderbird
@@ -44,6 +44,7 @@
     signal-desktop
     kubectl
     openlens
+    graphite-cli
     #inputs.felixnixvim.packages.x86_64-linux.default
   ];
 
