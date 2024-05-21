@@ -1448,16 +1448,16 @@
     "theme": {
       "flake": false,
       "locked": {
-        "lastModified": 1620573320,
-        "narHash": "sha256-o/JdM/ODFEN19vw/omH6NVovsB03ARuM/wLKOjStzPs=",
-        "owner": "chawyehsu",
-        "repo": "base16-snazzy-scheme",
-        "rev": "6e64c88288270c9b6baf9cc7f9eb7496c39fbd0b",
+        "lastModified": 1702718998,
+        "narHash": "sha256-VTczZi1C4WSzejpTFbneMonAdarRLtDnFehVxWs6ad0=",
+        "owner": "tinted-theming",
+        "repo": "base16-schemes",
+        "rev": "2b6f2d0677216ddda50c9cabd6ee70fae4665f81",
         "type": "github"
       },
       "original": {
-        "owner": "chawyehsu",
-        "repo": "base16-snazzy-scheme",
+        "owner": "tinted-theming",
+        "repo": "base16-schemes",
         "type": "github"
       }
     },

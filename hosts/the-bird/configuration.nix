@@ -23,6 +23,11 @@
   programs.zsh.enable = true;
   programs.steam.enable = true;
 
+  services.logind.extraConfig = ''
+    # don’t shutdown when power button is short-pressed
+    HandlePowerKey=ignore
+  '';
+
   nixpkgs.config.permittedInsecurePackages = [
     "electron-25.9.0"
   ];
@@ -67,7 +72,6 @@
   ];
 
   networking.firewall.allowedTCPPorts = [ 80 443 ];
-  networking.firewall.allowedUDPPorts = [ ];
 
   nix = {
     package = pkgs.nixVersions.stable; # or versioned attributes like nix_2_7

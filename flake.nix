@@ -51,8 +51,8 @@
       #url = github:chriskempson/base16-vim;
       #url = "github:hakatashi/base16-colors-scheme";
       #url = "github:atelierbram/base16-atelier-schemes";
-      #url = "github:joshwlewis/base16-unikitty";
-      url = "github:chawyehsu/base16-snazzy-scheme";
+      url = "github:tinted-theming/base16-schemes";
+      #url = "github:chawyehsu/base16-snazzy-scheme";
       #url = github:kjakapat/base16-eva-scheme;
       flake = false;
     };
@@ -84,9 +84,9 @@
         impermanence.nixosModule
         base16.nixosModule
         #{ scheme = "${inputs.theme}/eva.yaml"; }
-        #{ scheme = "${inputs.theme.outPath}/atelier-cave.yaml"; }
+        #{ scheme = "${inputs.theme.outPath}/atelier-heath-light.yaml"; }
         #{ scheme = ./assets/summerfruit-light.yaml; }
-        { scheme = "${inputs.theme}/snazzy.yaml"; }
+        #{ scheme = "${inputs.theme}/snazzy.yaml"; }
         home-manager.nixosModules.home-manager
         stylix.nixosModules.stylix
         (lib.my.mapModulesRec' (toString ./modules) import)
@@ -103,7 +103,7 @@
             package = (pkgs.nerdfonts.override { fonts = [ "Agave" ]; });
             name = "agave Nerd Font Mono";
           };
-          #scheme = config.lib.stylix.colors;
+          scheme = config.lib.stylix.colors;
         }])
         { nixpkgs.overlays = [ nur.overlay ]; }
       ];
