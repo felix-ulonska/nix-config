@@ -13,13 +13,14 @@
     home-manager.url = "github:nix-community/home-manager/";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixos-hardware.url = "github:felix-ulonska/nixos-hardware/master";
-    nur.url = "github:nix-community/nur";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     impermanence.url = "github:nix-community/impermanence";
 
     base16.url = "github:SenchoPens/base16.nix/def69d6edc32792562975aec863dbef757f832cf";
     base16.inputs.nixpkgs.follows = "nixpkgs";
+    disko.url = "github:nix-community/disko/c1cfbfad7cb45f0c177b35b59ba67d1b5fc7ca82";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
 
     itpms-site.url = "gitlab:itpms/website";
     fix-ms-backend.url = "github:Fix-MS/backend/deployment";
@@ -28,12 +29,15 @@
     felixnixvim.url = "github:felix-ulonska/vim";
 
     stylix.url = "github:danth/stylix";
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland = {
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+     # submodules = true;
+    };
 
     background = {
       url = "https://i.redd.it/vl9u5xprcvv61.jpg";
       #url = "https://i.redd.it/yuxe7ow1wyy91.png"; # Sanfransico
-      #url = ./assets/weg.jpg;
+      #url = ./assets/rhein.jpg;
       flake = false;
     };
 
@@ -72,12 +76,13 @@
     };
     flake-utils.url = "github:numtide/flake-utils";
   };
-  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, impermanence, flake-utils, fix-ms-backend, stylix, background, nixos-hardware, nixpkgsMaster, felixnixvim, ... }:
+  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, impermanence, flake-utils, fix-ms-backend, stylix, background, nixos-hardware, nixpkgsMaster, felixnixvim, disko, ... }:
     let
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       lib = nixpkgs.lib.extend (self: super: {
         my = import ./lib { inherit inputs; lib = self; };
       });
+      backgroundImg = ./assets/kanal.jpg;
       modulesList = lib.flatten [
         agenix.nixosModules.default
         simple-nixos-mailserver.nixosModule
@@ -91,21 +96,21 @@
         stylix.nixosModules.stylix
         (lib.my.mapModulesRec' (toString ./modules) import)
         ({ config, ... }: lib.mkMerge [{
+          stylix.enable = true;
           services.getty.greetingLine =
             "<<< Welcome to ${config.system.nixos.label} - Please leave\\l >>>";
-          #stylix.image = ./assets/sad_station.jpg; # inputs.background.outPath;
-          stylix.image = inputs.background.outPath;
-          #stylix.image = inputs.background.outPath;
-          #stylix.base16Scheme = ./assets/midoriga.yml;
-          #stylix.base16Scheme = scheme;
-          stylix.polarity = "dark";
+          stylix.image = backgroundImg; # inputs.background.outPath;
+          stylix.polarity = "light";
           stylix.fonts.monospace = {
             package = (pkgs.nerdfonts.override { fonts = [ "Agave" ]; });
             name = "agave Nerd Font Mono";
           };
+          stylix.fonts.sansSerif = {
+            package = (pkgs.nerdfonts.override { fonts = [ "Agave" ]; });
+            name = "agave Nerd Font";
+          };
           scheme = config.lib.stylix.colors;
         }])
-        { nixpkgs.overlays = [ nur.overlay ]; }
       ];
     in
     {
@@ -117,7 +122,7 @@
       nixosConfigurations.fact-cube =
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit lib; inherit inputs; };
+          specialArgs = { inherit lib; inherit inputs backgroundImg; };
           modules = lib.flatten [
               agenix.nixosModules.default
               simple-nixos-mailserver.nixosModule
@@ -128,7 +133,7 @@
       nixosConfigurations.GLaDOS =
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit lib; inherit inputs; };
+          specialArgs = { inherit lib; inherit inputs backgroundImg; };
           modules = modulesList ++ [
             ./hosts/glados/configuration.nix
             nixos-hardware.nixosModules.lenovo-legion-16ach6h
@@ -139,9 +144,20 @@
       nixosConfigurations.the-bird =
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit lib; inherit inputs; };
+          specialArgs = { inherit lib; inherit inputs backgroundImg; };
           modules = modulesList ++ [
             ./hosts/the-bird/configuration.nix
+            inputs.hyprland.nixosModules.default
+            { programs.hyprland.enable = true; }
+          ];
+        };
+      nixosConfigurations.edgeless-safety-cube =
+        nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit lib; inherit inputs backgroundImg; };
+          modules = modulesList ++ [
+            disko.nixosModules.disko
+            ./hosts/edgeless-safety-cube/configuration.nix
             inputs.hyprland.nixosModules.default
             { programs.hyprland.enable = true; }
           ];

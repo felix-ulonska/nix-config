@@ -19,6 +19,8 @@
     docker.enable = true;
     #hardware.nvidia.enable = true;
   };
+  programs.wireshark.enable = true;
+  programs.wireshark.package = pkgs.wireshark;
   #boot.tmp.useTmpfs = true;
 
   #boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_1;
@@ -90,7 +92,7 @@
 
   users.users.jabbi = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "libvirtd" "adbusers" "scanner" "lp" ];
+    extraGroups = [ "wheel" "audio" "libvirtd" "adbusers" "scanner" "lp" "wireshark" ];
     hashedPassword = "$6$rejDSpuy6d$za9N7miMI/XHZNjZ6ib0IcaF511UdBn7QVwIV7MO1MTMO5yjVGwuvVT7kJlnTN165srbPd6rCJxtgdABTuEbj1";
     shell = pkgs.zsh;
   };
@@ -116,12 +118,6 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
-    binaryCaches = [
-      "https://formosa-crypto.cachix.org"
-    ];
-    binaryCachePublicKeys = [
-      "formosa-crypto.cachix.org-1:Ds5Tmop43AtcuyZfnoYecemtwLd7DldUruCv5ZV/JUM="
-    ];
   };
 
   services.openssh = {

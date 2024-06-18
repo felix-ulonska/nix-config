@@ -31,11 +31,11 @@
   users.users.jabbi = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
-    initialPassword = "test";
   };
 
   users.users."root".openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGQ+BFtjE8D9+wVAnZ7IrhkTPlA62jdEq037+PaKCXkM jabbi@mimo"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHcA1n51lr45ap7lQ729I3RpReyo0xGEASZpf63ydxWg root@edgeless-safety-cube"
   ];
 
   environment.systemPackages = with pkgs; [
