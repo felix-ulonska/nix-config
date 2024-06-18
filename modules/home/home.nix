@@ -1,4 +1,4 @@
-{ lib, config, home-manager, pkgs, inputs, ... }:
+{ lib, config, home-manager, pkgs, inputs, backgroundImg, ... }:
 with lib;
 with lib.my;
 let
@@ -53,7 +53,7 @@ in
     };
 
     #home-manager.extraSpecialArgs = { config.scheme = config.scheme; config.targets.darwin = {search = null; keybindings = null; defaults = {}; currentHostDefaults = {};}; inputs = inputs; };
-    home-manager.extraSpecialArgs = { inherit (config) scheme; inherit inputs; };
+    home-manager.extraSpecialArgs = { inherit (config) scheme; inherit inputs backgroundImg; };
 
     systemd.services.persistence-folder = {
       script = ''

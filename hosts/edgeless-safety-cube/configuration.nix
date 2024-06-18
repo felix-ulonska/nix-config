@@ -1,93 +1,57 @@
-{ pkgs, lib, config, nixpkgs, modulesPath, ... }:
-
-with lib;
+{ config, pkgs, modulesPath, ... }:
 {
-  imports = [
-    (modulesPath + "/virtualisation/qemu-vm.nix")
-    (modulesPath + "/profiles/qemu-guest.nix")
+  imports =
+    [
+      ./disk-config.nix
+      (modulesPath + "/installer/scan/not-detected.nix")
+      (modulesPath + "/profiles/qemu-guest.nix")
+    ];
+
+  nixpkgs.config.allowUnfree = true;
+
+  #jabbi.services.gitlab-runner.enable = true;
+  #jabbi.docker.enable = true;
+  #jabbi.services.itpms-site.enable = true;
+
+  #jabbi.services.nextcloud.enable = true;
+  #jabbi.services.nginx.enable = true;
+  #jabbi.services.mail.enable = true;
+  #jabbi.services.uptime-kuma.enable = true;
+  ## jabbi.services.fix-ms.enable = true;
+  #jabbi.services.paperless.enable = true;
+  #jabbi.services.wordpress.enable = true;
+
+  networking.hostName = "edgeless-safety-cube";
+
+  time.timeZone = "Europe/Amsterdam";
+
+  users.users.jabbi = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ];
+  };
+
+  users.users."root".openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGQ+BFtjE8D9+wVAnZ7IrhkTPlA62jdEq037+PaKCXkM jabbi@mimo"
   ];
 
-  config = {
-    services.qemuGuest.enable = true;
-    #jabbi.home.enable = true;
-    #jabbi.home.userName = "hacker";
+  environment.systemPackages = with pkgs; [
+    vim
+    wget
+    restic
+    htop
+  ];
 
-    fileSystems."/" = {
-      device = "/dev/disk/by-label/nixos";
-      fsType = "ext4";
-      autoResize = true;
-    };
+  networking.firewall.allowedTCPPorts = [ 80 443 25565 ];
 
-    boot = {
-      growPartition = true;
-      loader.timeout = 5;
-    };
-
-    virtualisation = {
-      diskSize = 15000; # MB
-      memorySize = 8048; # MB
-      writableStoreUseTmpfs = false;
-      resolution = { x = 1920; y = 1080; };
-      cores = 6;
-      # Prevent read of host nixstore
-      # true to prevent read of /nix/store but takes storage
-      useNixStoreImage = false;
-
-      sharedDirectories = {
-        #share = { 
-        #  source = "/tmp/mount";
-        #  target = "/shared";
-        #};
-      };
-      qemu = {
-        networkingOptions = lib.mkForce [ "-nic none" ];
-      };
-      writableStore = false;
-      graphics = false;
-    };
-
-    nixpkgs.config.pulseaudio = true;
-
-    #services.xserver = {
-    #  enable = true;
-    #  desktopManager = {
-    #    xterm.enable = false;
-    #    xfce.enable = true;
-    #  };
-    #  displayManager.autoLogin = {
-    #    enable = true;
-    #    user = "hacker";
-    #  };
-    #  displayManager.defaultSession = "xfce";
-    #};
-
-    services.openssh.enable = true;
-    services.openssh.permitRootLogin = "yes";
-
-    programs.wireshark.enable = true;
-
-    environment.systemPackages = with pkgs;
-      [
-        # some relevant packages here
-        firefox
-        neovim
-        htop
-        ghidra
-        wget
-        wireshark
-      ];
-
-    users.users.hacker = {
-      isNormalUser = true;
-      home = "/home/user";
-      description = "hacker";
-      password = "password";
-      extraGroups = [ "wheel" "networkmanager" ];
-      # openssh.authorizedKeys.keys = [ "ssh-dss AAAAB3Nza... alice@foobar" ];
-    };
-
-    # This is bad, but you know what you are doing, I hope
-    users.users.root.password = "rootroot"; # oops
-    users.mutableUsers = false;
+  services.openssh = {
+    enable = true;
+    permitRootLogin = "yes";
+    passwordAuthentication = false;
   };
+
+  system.stateVersion = "21.11";
+
+  nix.sshServe.enable = true;
+  nix.sshServe.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGQ+BFtjE8D9+wVAnZ7IrhkTPlA62jdEq037+PaKCXkM jabbi@mimo" ];
+  nix.sshServe.protocol = "ssh-ng";
 }
