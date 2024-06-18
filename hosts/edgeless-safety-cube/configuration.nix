@@ -10,20 +10,24 @@
   nixpkgs.config.allowUnfree = true;
 
   #jabbi.services.gitlab-runner.enable = true;
-  #jabbi.docker.enable = true;
-  #jabbi.services.itpms-site.enable = true;
+  jabbi.docker.enable = true;
+  jabbi.services.itpms-site.enable = true;
 
-  #jabbi.services.nextcloud.enable = true;
-  #jabbi.services.nginx.enable = true;
-  #jabbi.services.mail.enable = true;
+  jabbi.services.nextcloud.enable = true;
+  jabbi.services.nginx.enable = true;
+  jabbi.services.mail.enable = true;
   #jabbi.services.uptime-kuma.enable = true;
   ## jabbi.services.fix-ms.enable = true;
-  #jabbi.services.paperless.enable = true;
-  #jabbi.services.wordpress.enable = true;
+  jabbi.services.paperless.enable = true;
+  jabbi.services.wordpress.enable = true;
 
   networking.hostName = "edgeless-safety-cube";
 
   time.timeZone = "Europe/Amsterdam";
+  #networking.interfaces.ens3.ipv6.addresses = [{
+  #  address = "2a0a:4cc0:0:230a::";
+  #  prefixLength = 64;
+  #}];
 
   users.users.jabbi = {
     isNormalUser = true;

@@ -8,6 +8,7 @@ let
         wheatly = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHB5A0uxsv9oK04UpKCscoEV6zn1cQVm//boA/DGTtmq root@wheatly" ];
         fact-cube = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDf3XjI1FyC0ax8lffi9xcR8M4kye6rPeRDSroihme97 root@fact-cube" ];
         glados = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPWgAQhzQMztL6CXuu1j91ztCX2EkiYxSgJRPuQ/5EO9 root@nixos" ];
+        edgeless-safety-cube = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHzpQYk/Fv2K58EaFmKoH91Kj3JOS2u7KIrgOCxAviZz root@edgeless-safety-cube" ];
       };
     in
     {

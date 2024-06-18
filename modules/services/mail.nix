@@ -55,10 +55,18 @@ services.dovecot2.sieve.extensions = [ "fileinto" ];
 
       # Use Let's Encrypt certificates. Note that this needs to set up a stripped
       # down nginx and opens port 80.
-      certificateScheme = 3;
+      certificateScheme = "acme";
     };
 	# Seesimple-nixos-mailserver/nixos-mailserver#275 
 #	services.dovecot2.sieve.extensions = [ "fileinto" ];
+    # for acme gen
+    services.nginx.virtualHosts = {
+      "mail.webfoo.de" = {
+        forceSSL = true;
+        enableACME = true;
+        locations."/" = { };
+      };
+    };
     services.restic.backups = {
       mail = {
         repository = "b2:silberpfeil:/mail";

@@ -31,7 +31,7 @@ in
       path = [ pkgs.restic ];
       script = "
         mkdir -p backup
-        ./var/lib/paperless/paperless-manage backup 
+        #./var/lib/paperless/paperless-manage backup 
         restic --cache-dir /nix/persist/restic-cache -p /run/agenix/restic-paperless-password -r b2:silberpfeil:/paperless backup /var/lib/paperless
         ";
     };

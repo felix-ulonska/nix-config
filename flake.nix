@@ -218,6 +218,15 @@
               sshOpts = [ "-o" "StrictHostKeyChecking=no" ];
             };
           };
+          "edgeless-safety-cube" = {
+            hostname = "152.53.47.93";
+            sshUser = "root";
+            profiles.system = {
+              user = "root";
+              path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."edgeless-safety-cube";
+              magicRollback = false;
+            };
+          };
         };
       };
 
