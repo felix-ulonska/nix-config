@@ -93,6 +93,10 @@
     networking.firewall = {
     allowedUDPPorts = [ 51820 ]; # Clients and peers can use the same port, see listenport
   };
+   swapDevices = [ {
+    device = "/var/lib/swapfile";
+    size = 16*1024;
+  } ];
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
