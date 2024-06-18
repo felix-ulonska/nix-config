@@ -28,7 +28,10 @@
     felixnixvim.url = "github:felix-ulonska/vim";
 
     stylix.url = "github:danth/stylix";
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland = {
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+     # submodules = true;
+    };
 
     background = {
       url = "https://i.redd.it/vl9u5xprcvv61.jpg";

@@ -3,6 +3,8 @@
     nwg-dock-hyprland
     swaylock
     dunst
+    grim
+    slurp
   ];
   home.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = 1;
@@ -19,7 +21,6 @@ wayland.windowManager.hyprland = {
     bind=$mod,M, exec, swaylock
     bind = , Print, exec, grimblast copy area
     env = WLR_NO_HARDWARE_CURSORS,1
-
     # workspaces
     # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
     ${builtins.concatStringsSep "\n" (builtins.genList (
@@ -121,8 +122,9 @@ bind = $mainMod, M, exit,
 bind = $mainMod, E, exec, dolphin
 bind = $mainMod, V, togglefloating,
 bind = $mainMod, D, exec, rofi -show run
-bind = $mainMod, P, pseudo, # dwindle
+#bind = $mainMod, P, pseudo, # dwindle
 bind = $mainMod, S, togglesplit, # dwindle
+bind = $mainMod, P, exec, grim -g "$(slurp)"
 
 # Move focus with mainMod + arrow keys
 bind = $mainMod,H, movefocus, l
