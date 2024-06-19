@@ -27,7 +27,7 @@ in
     services.nextcloud = {
       enable = true;
       hostName = "cloud.webfoo.de";
-      package = pkgs.nextcloud28;
+      package = pkgs.nextcloud29;
 
       # Use HTTPS for links
       https = true;
@@ -67,8 +67,6 @@ in
       ensureUsers = [
         {
           name = "nextcloud";
-          # Does not work anymore, but hope for the best?!
-          #ensurePermissions."DATABASE nextcloud" = "ALL PRIVILEGES";
         }
       ];
     };
