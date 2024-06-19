@@ -97,10 +97,12 @@
         (lib.my.mapModulesRec' (toString ./modules) import)
         ({ config, ... }: lib.mkMerge [{
           stylix.enable = true;
+          stylix.opacity.terminal = 0.8;
+          stylix.opacity.applications = 0.8;
           services.getty.greetingLine =
             "<<< Welcome to ${config.system.nixos.label} - Please leave\\l >>>";
           stylix.image = backgroundImg; # inputs.background.outPath;
-          stylix.polarity = "light";
+          stylix.polarity = "dark";
           stylix.fonts.monospace = {
             package = (pkgs.nerdfonts.override { fonts = [ "Agave" ]; });
             name = "agave Nerd Font Mono";
@@ -117,7 +119,6 @@
       lib = lib.my;
       nixosModules = lib.my.mapModulesRec ./modules/services import;
       outputFoo = modulesList ++ [ ./hosts/silbervogel/configuration.nix ];
-
 
       nixosConfigurations.fact-cube =
         nixpkgs.lib.nixosSystem {

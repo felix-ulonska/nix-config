@@ -19,4 +19,4 @@
     base0E = scheme.withHashtag.base0E;
     base0F = scheme.withHashtag.base0F;
   };
-               }
+}
