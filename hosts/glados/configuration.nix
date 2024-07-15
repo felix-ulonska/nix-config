@@ -55,6 +55,9 @@
   # See https://github.com/NixOS/nixpkgs/issues/224332
   # environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
+  boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
+  hardware.nvidia.powerManagement.enable = true;
+
   # reboot your computer after adding those lines
   boot.extraModprobeConfig = ''
     options kvm_intel nested=1

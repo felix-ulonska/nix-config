@@ -19,7 +19,6 @@ in
     services.xserver.desktopManager.gnome.enable = true;
     services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon platformio ];
 
-    sound.enable = true;
     hardware.pulseaudio.enable = true;
 
     # Enable touchpad support (enabled default in most desktopManager).
