@@ -97,8 +97,8 @@
         (lib.my.mapModulesRec' (toString ./modules) import)
         ({ config, ... }: lib.mkMerge [{
           stylix.enable = true;
-          stylix.opacity.terminal = 0.8;
-          stylix.opacity.applications = 0.8;
+          stylix.opacity.terminal = 0.9;
+          stylix.opacity.applications = 0.9;
           services.getty.greetingLine =
             "<<< Welcome to ${config.system.nixos.label} - Please leave\\l >>>";
           stylix.image = backgroundImg; # inputs.background.outPath;

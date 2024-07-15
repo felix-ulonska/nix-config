@@ -22,6 +22,7 @@
   programs.ssh.startAgent = true;
   programs.zsh.enable = true;
   programs.steam.enable = true;
+  networking.nameservers = [ "1.1.1.1" "9.9.9.9" ];
 
   services.logind.extraConfig = ''
     # don’t shutdown when power button is short-pressed
@@ -71,7 +72,7 @@
     wireguard-tools
   ];
 
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.allowedTCPPorts = [ 22000 ];
 
   nix = {
     package = pkgs.nixVersions.stable; # or versioned attributes like nix_2_7
