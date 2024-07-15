@@ -14,7 +14,6 @@
     spotify
     vlc
     lazydocker
-    youtube-dl
     patchelf
     sshfs
     languagetool
