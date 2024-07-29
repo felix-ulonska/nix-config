@@ -82,7 +82,7 @@
       lib = nixpkgs.lib.extend (self: super: {
         my = import ./lib { inherit inputs; lib = self; };
       });
-      backgroundImg = ./assets/kanal.jpg;
+      backgroundImg = ./assets/sad_station.jpg;
       modulesList = lib.flatten [
         agenix.nixosModules.default
         simple-nixos-mailserver.nixosModule
