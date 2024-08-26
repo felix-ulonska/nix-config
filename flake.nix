@@ -35,7 +35,7 @@
     };
 
     background = {
-      url = "https://i.redd.it/vl9u5xprcvv61.jpg";
+      url = "https://i.redd.it/hirdcwgy29981.jpg";
       #url = "https://i.redd.it/yuxe7ow1wyy91.png"; # Sanfransico
       #url = ./assets/rhein.jpg;
       flake = false;
@@ -101,7 +101,7 @@
           stylix.opacity.applications = 0.9;
           services.getty.greetingLine =
             "<<< Welcome to ${config.system.nixos.label} - Please leave\\l >>>";
-          stylix.image = backgroundImg; # inputs.background.outPath;
+          stylix.image = inputs.background.outPath;
           stylix.polarity = "dark";
           stylix.fonts.monospace = {
             package = (pkgs.nerdfonts.override { fonts = [ "Agave" ]; });
