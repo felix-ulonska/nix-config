@@ -82,7 +82,7 @@
       lib = nixpkgs.lib.extend (self: super: {
         my = import ./lib { inherit inputs; lib = self; };
       });
-      backgroundImg = ./assets/kanal.jpg;
+      backgroundImg = background;
       modulesList = lib.flatten [
         agenix.nixosModules.default
         simple-nixos-mailserver.nixosModule
@@ -102,7 +102,7 @@
           services.getty.greetingLine =
             "<<< Welcome to ${config.system.nixos.label} - Please leave\\l >>>";
           stylix.image = backgroundImg; # inputs.background.outPath;
-          stylix.polarity = "dark";
+          stylix.polarity = "light";
           stylix.fonts.monospace = {
             package = (pkgs.nerdfonts.override { fonts = [ "Agave" ]; });
             name = "agave Nerd Font Mono";

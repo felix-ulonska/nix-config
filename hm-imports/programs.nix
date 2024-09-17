@@ -42,7 +42,7 @@
     libreoffice
     signal-desktop
     kubectl
-    openlens
+    #openlens
     graphite-cli
     zellij 
     #inputs.felixnixvim.packages.x86_64-linux.default
