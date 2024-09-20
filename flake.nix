@@ -3,7 +3,7 @@
 
   inputs = {
     #nixpkgs = { url = "path:/home/jabbi/Projects/nixpkgs"; };
-    nixpkgs = { url = "github:nixos/nixpkgs/nixos-unstable"; };
+    nixpkgs = { url = "github:nixos/nixpkgs/master"; };
     nixpkgsMaster = { url = "github:nixos/nixpkgs/master"; };
     deploy-rs = {
       url = "github:serokell/deploy-rs";
@@ -200,7 +200,7 @@
             };
           };
           "GLaDOS" = {
-            hostname = "localhost";
+            hostname = "10.0.0.20";
             sshUser = "root";
             profiles.system = {
               user = "root";
