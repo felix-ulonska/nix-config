@@ -102,7 +102,7 @@
           services.getty.greetingLine =
             "<<< Welcome to ${config.system.nixos.label} - Please leave\\l >>>";
           stylix.image = backgroundImg; # inputs.background.outPath;
-          stylix.polarity = "light";
+          stylix.polarity = "dark";
           stylix.fonts.monospace = {
             package = (pkgs.nerdfonts.override { fonts = [ "Agave" ]; });
             name = "agave Nerd Font Mono";
