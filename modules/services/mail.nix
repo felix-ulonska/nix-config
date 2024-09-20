@@ -48,9 +48,9 @@ services.dovecot2.sieve.extensions = [ "fileinto" ];
           aliases = [ "info@it-projekt-muenster.de" "@it-projekt-muenster.de" ];
           catchAll = [ "it-projekt-muenster.de" ];
         };
-	"nextcloud@webfoo.de" = {
+        "nextcloud@webfoo.de" = {
           hashedPasswordFile = "/run/agenix/mail-nextcloud-password";
-	};
+        };
       };
 
       # Use Let's Encrypt certificates. Note that this needs to set up a stripped
