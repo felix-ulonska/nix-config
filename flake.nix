@@ -35,8 +35,8 @@
     };
 
     background = {
-      url = "https://i.redd.it/hirdcwgy29981.jpg";
-      #url = "https://i.redd.it/yuxe7ow1wyy91.png"; # Sanfransico
+      #url = "https://i.redd.it/hirdcwgy29981.jpg";
+      url = "https://i.redd.it/yuxe7ow1wyy91.png"; # Sanfransico
       #url = ./assets/rhein.jpg;
       flake = false;
     };
@@ -190,6 +190,7 @@
       };
 
       deploy = {
+        remoteBuild = true;
         nodes = {
           "fact-cube" = {
             hostname = "fact-cube.webfoo.de";
@@ -197,7 +198,9 @@
             profiles.system = {
               user = "root";
               path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."fact-cube";
+              remoteBuild = true;
             };
+            remoteBuild = true;
           };
           "GLaDOS" = {
             hostname = "10.0.0.20";
