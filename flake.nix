@@ -195,6 +195,7 @@
       };
 
       deploy = {
+        remoteBuild = true;
         nodes = {
           "fact-cube" = {
             hostname = "fact-cube.webfoo.de";
@@ -202,7 +203,9 @@
             profiles.system = {
               user = "root";
               path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."fact-cube";
+              remoteBuild = true;
             };
+            remoteBuild = true;
           };
           "GLaDOS" = {
             hostname = "10.0.0.20";

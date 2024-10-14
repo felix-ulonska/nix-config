@@ -36,6 +36,7 @@
   networking.hostName = "the-bird";
 
   hardware.bluetooth.enable = true;
+  hardware.bluetooth.package = pkgs.bluez;
   programs.nix-ld.enable = true;
 
   # this is needed to get a bridge with DHCP enabled
@@ -44,10 +45,10 @@
   programs.fuse.userAllowOther = true;
   networking.firewall.enable = true;
 
-  virtualisation.virtualbox.host.enable = false;
-  #virtualisation.virtualbox.host.enableExtensionPack = true;
+  virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "jabbi" ];
-  networking.wireless.userControlled.enable = true;
+  virtualisation.virtualbox.guest.enable = true;
+  virtualisation.virtualbox.guest.dragAndDrop = true;
 
   # See https://github.com/NixOS/nixpkgs/issues/224332
   # environment.sessionVariables.NIXOS_OZONE_WL = "1";
