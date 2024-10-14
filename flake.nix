@@ -27,6 +27,10 @@
     fix-ms-frontend.url = "github:Fix-MS/app";
 
     felixnixvim.url = "github:felix-ulonska/vim";
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     stylix.url = "github:danth/stylix";
     hyprland = {
@@ -35,8 +39,8 @@
     };
 
     background = {
-      url = "https://i.redd.it/hirdcwgy29981.jpg";
-      #url = "https://i.redd.it/yuxe7ow1wyy91.png"; # Sanfransico
+      #url = "https://i.redd.it/hirdcwgy29981.jpg";
+      url = "https://i.redd.it/yuxe7ow1wyy91.png"; # Sanfransico
       #url = ./assets/rhein.jpg;
       flake = false;
     };
@@ -76,7 +80,7 @@
     };
     flake-utils.url = "github:numtide/flake-utils";
   };
-  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, impermanence, flake-utils, fix-ms-backend, stylix, background, nixos-hardware, nixpkgsMaster, felixnixvim, disko, ... }:
+  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, impermanence, flake-utils, fix-ms-backend, stylix, background, nixos-hardware, nixpkgsMaster, felixnixvim, disko, lix-module, ... }:
     let
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       lib = nixpkgs.lib.extend (self: super: {
@@ -87,6 +91,7 @@
         agenix.nixosModules.default
         simple-nixos-mailserver.nixosModule
         impermanence.nixosModule
+        lix-module.nixosModules.default
         base16.nixosModule
         #{ scheme = "${inputs.theme}/eva.yaml"; }
         #{ scheme = "${inputs.theme.outPath}/atelier-heath-light.yaml"; }
@@ -97,12 +102,12 @@
         (lib.my.mapModulesRec' (toString ./modules) import)
         ({ config, ... }: lib.mkMerge [{
           stylix.enable = true;
-          stylix.opacity.terminal = 0.9;
-          stylix.opacity.applications = 0.9;
+          #stylix.opacity.terminal = 0.9;
+          #stylix.opacity.applications = 0.9;
           services.getty.greetingLine =
             "<<< Welcome to ${config.system.nixos.label} - Please leave\\l >>>";
           stylix.image = backgroundImg; # inputs.background.outPath;
-          stylix.polarity = "dark";
+          stylix.polarity = "light";
           stylix.fonts.monospace = {
             package = (pkgs.nerdfonts.override { fonts = [ "Agave" ]; });
             name = "agave Nerd Font Mono";
