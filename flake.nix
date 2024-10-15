@@ -102,12 +102,12 @@
         (lib.my.mapModulesRec' (toString ./modules) import)
         ({ config, ... }: lib.mkMerge [{
           stylix.enable = true;
-          #stylix.opacity.terminal = 0.9;
-          #stylix.opacity.applications = 0.9;
+          stylix.opacity.terminal = 0.9;
+          stylix.opacity.applications = 0.9;
           services.getty.greetingLine =
             "<<< Welcome to ${config.system.nixos.label} - Please leave\\l >>>";
           stylix.image = backgroundImg; # inputs.background.outPath;
-          stylix.polarity = "light";
+          stylix.polarity = "dark";
           stylix.fonts.monospace = {
             package = (pkgs.nerdfonts.override { fonts = [ "Agave" ]; });
             name = "agave Nerd Font Mono";
@@ -203,9 +203,7 @@
             profiles.system = {
               user = "root";
               path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."fact-cube";
-              remoteBuild = true;
             };
-            remoteBuild = true;
           };
           "GLaDOS" = {
             hostname = "10.0.0.20";
