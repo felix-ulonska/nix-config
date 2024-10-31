@@ -307,11 +307,11 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1729074299,
-        "narHash": "sha256-vAFzwc9+Dfo8G79Et+rZvlu75sLT0IDD0BpiYCk+8kM=",
+        "lastModified": 1730301349,
+        "narHash": "sha256-yPjMHJeBHXkPKWGTOHRYAEtdLZ0IaUZMV1aDllo0HQE=",
         "owner": "felix-ulonska",
         "repo": "vim",
-        "rev": "5d192c4781349b853a0b376321fd2f43a92d2f0a",
+        "rev": "503d5638290b15edaa3cf6b0431a671ee6c281f8",
         "type": "github"
       },
       "original": {
@@ -1615,16 +1615,16 @@
     "theme": {
       "flake": false,
       "locked": {
-        "lastModified": 1702718998,
-        "narHash": "sha256-VTczZi1C4WSzejpTFbneMonAdarRLtDnFehVxWs6ad0=",
-        "owner": "tinted-theming",
-        "repo": "base16-schemes",
-        "rev": "2b6f2d0677216ddda50c9cabd6ee70fae4665f81",
+        "lastModified": 1589840056,
+        "narHash": "sha256-+52BPv/3f4vqG+p37XSxyf9w0CPkBSvCo6x1O/JE6Lg=",
+        "owner": "kjakapat",
+        "repo": "base16-eva-scheme",
+        "rev": "595ea6eff814ae462709f222e7af3492ee804e88",
         "type": "github"
       },
       "original": {
-        "owner": "tinted-theming",
-        "repo": "base16-schemes",
+        "owner": "kjakapat",
+        "repo": "base16-eva-scheme",
         "type": "github"
       }
     },

@@ -59,9 +59,9 @@
       #url = github:chriskempson/base16-vim;
       #url = "github:hakatashi/base16-colors-scheme";
       #url = "github:atelierbram/base16-atelier-schemes";
-      url = "github:tinted-theming/base16-schemes";
+      #url = "github:tinted-theming/base16-schemes";
       #url = "github:chawyehsu/base16-snazzy-scheme";
-      #url = github:kjakapat/base16-eva-scheme;
+      url = github:kjakapat/base16-eva-scheme;
       flake = false;
     };
 
@@ -93,7 +93,7 @@
         impermanence.nixosModule
         lix-module.nixosModules.default
         base16.nixosModule
-        #{ scheme = "${inputs.theme}/eva.yaml"; }
+        { scheme = "${inputs.theme}/eva.yaml"; }
         #{ scheme = "${inputs.theme.outPath}/atelier-heath-light.yaml"; }
         #{ scheme = ./assets/summerfruit-light.yaml; }
         #{ scheme = "${inputs.theme}/snazzy.yaml"; }
@@ -102,11 +102,13 @@
         (lib.my.mapModulesRec' (toString ./modules) import)
         ({ config, ... }: lib.mkMerge [{
           stylix.enable = true;
-          stylix.opacity.terminal = 0.9;
-          stylix.opacity.applications = 0.9;
+          stylix.opacity.terminal = 1.0;
+          stylix.opacity.applications = 1.0;
           services.getty.greetingLine =
             "<<< Welcome to ${config.system.nixos.label} - Please leave\\l >>>";
-          stylix.image = backgroundImg; # inputs.background.outPath;
+          #stylix.image = backgroundImg; # inputs.background.outPath;
+          stylix.image = config.lib.stylix.pixel "base0A";
+          stylix.base16Scheme = "${inputs.theme}/eva.yaml";
           stylix.polarity = "dark";
           stylix.fonts.monospace = {
             package = (pkgs.nerdfonts.override { fonts = [ "Agave" ]; });
@@ -116,7 +118,7 @@
             package = (pkgs.nerdfonts.override { fonts = [ "Agave" ]; });
             name = "agave Nerd Font";
           };
-          scheme = config.lib.stylix.colors;
+          #scheme = config.lib.stylix.colors;
         }])
       ];
     in
@@ -226,7 +228,7 @@
             };
           };
           "edgeless-safety-cube" = {
-            hostname = "152.53.47.93";
+            hostname = "webfoo.de";
             sshUser = "root";
             profiles.system = {
               user = "root";
