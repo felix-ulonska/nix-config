@@ -167,7 +167,6 @@
             disko.nixosModules.disko
             ./hosts/edgeless-safety-cube/configuration.nix
             inputs.hyprland.nixosModules.default
-            { programs.hyprland.enable = true; }
           ];
         };
 
@@ -230,6 +229,7 @@
           "edgeless-safety-cube" = {
             hostname = "webfoo.de";
             sshUser = "root";
+            remoteBuild = true;
             profiles.system = {
               user = "root";
               path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."edgeless-safety-cube";

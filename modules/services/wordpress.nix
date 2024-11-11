@@ -45,7 +45,7 @@ in
       environmentFile = "/run/agenix/resticSecrets";
       passwordFile = "/run/agenix/restic-wordpress-password";
       backupPrepareCommand = ''
-        ${pkgs.mysql}/bin/mysqldump --all-databases > /var/lib/wordpress/backup.sql
+        ${pkgs.mariadb}/bin/mysqldump --all-databases > /var/lib/wordpress/backup.sql
       '';
       timerConfig = {
         onCalendar = "hourly";
