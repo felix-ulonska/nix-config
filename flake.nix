@@ -3,7 +3,7 @@
 
   inputs = {
     #nixpkgs = { url = "path:/home/jabbi/Projects/nixpkgs"; };
-    nixpkgs = { url = "github:nixos/nixpkgs/master"; };
+    nixpkgs = { url = "github:nixos/nixpkgs/nixos-unstable"; };
     nixpkgsMaster = { url = "github:nixos/nixpkgs/master"; };
     deploy-rs = {
       url = "github:serokell/deploy-rs";
@@ -196,7 +196,7 @@
       };
 
       deploy = {
-        remoteBuild = true;
+        remoteBuild = false;
         nodes = {
           "fact-cube" = {
             hostname = "fact-cube.webfoo.de";
@@ -207,7 +207,7 @@
             };
           };
           "GLaDOS" = {
-            hostname = "10.0.0.20";
+            hostname = "10.0.0.70";
             sshUser = "root";
             profiles.system = {
               user = "root";
