@@ -57,6 +57,8 @@
 
   boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
   hardware.nvidia.powerManagement.enable = true;
+  # see https://github.com/NixOS/nixpkgs/issues/353990
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta
 
   # reboot your computer after adding those lines
   boot.extraModprobeConfig = ''
