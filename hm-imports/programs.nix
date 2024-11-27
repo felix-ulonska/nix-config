@@ -44,7 +44,7 @@
     kubectl
     #openlens
     graphite-cli
-    zellij 
+    zellij
     #inputs.felixnixvim.packages.x86_64-linux.default
     glances
   ];

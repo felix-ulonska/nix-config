@@ -1,7 +1,7 @@
-{scheme, pkgs, ...}: {
+{ scheme, pkgs, ... }: {
   home.packages = with pkgs; [ ripgrep lazygit ];
   jabbi.nixvim.enable = true;
-  jabbi.nixvim.base64scheme ={
+  jabbi.nixvim.base64scheme = {
     base00 = scheme.withHashtag.base00;
     base01 = scheme.withHashtag.base01;
     base02 = scheme.withHashtag.base02;

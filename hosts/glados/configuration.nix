@@ -30,9 +30,9 @@
   programs.zsh.enable = true;
   programs.steam.enable = true;
 
-                nixpkgs.config.permittedInsecurePackages = [
-                "electron-25.9.0"
-              ];
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-25.9.0"
+  ];
 
   networking.hostName = "GLaDOS";
 

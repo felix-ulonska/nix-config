@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, ... }:{
+{ config, inputs, pkgs, ... }: {
   stylix.enable = true;
   stylix.opacity.terminal = 1.0;
   stylix.opacity.applications = 1.0;

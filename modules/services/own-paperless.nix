@@ -300,7 +300,7 @@ in
         # Enable internet access
         PrivateNetwork = false;
         # Restrict write access
-        BindPaths = [];
+        BindPaths = [ ];
         BindReadOnlyPaths = [
           "/nix/store"
           "-/etc/resolv.conf"

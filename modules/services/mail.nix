@@ -26,7 +26,7 @@ in
         file = ../../secrets/mail-cvat-password.age;
       };
     };
-services.dovecot2.sieve.extensions = [ "fileinto" ];
+    services.dovecot2.sieve.extensions = [ "fileinto" ];
     mailserver = {
       enable = true;
       fqdn = "mail.webfoo.de";
@@ -57,8 +57,8 @@ services.dovecot2.sieve.extensions = [ "fileinto" ];
       # down nginx and opens port 80.
       certificateScheme = "acme";
     };
-	# Seesimple-nixos-mailserver/nixos-mailserver#275 
-#	services.dovecot2.sieve.extensions = [ "fileinto" ];
+    # Seesimple-nixos-mailserver/nixos-mailserver#275 
+    #	services.dovecot2.sieve.extensions = [ "fileinto" ];
     # for acme gen
     services.nginx.virtualHosts = {
       "mail.webfoo.de" = {
