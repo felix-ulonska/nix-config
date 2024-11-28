@@ -4,8 +4,8 @@
   stylix.opacity.applications = 1.0;
   services.getty.greetingLine = "<<< Welcome to ${config.system.nixos.label} - Please leave\\l >>>";
   #stylix.image = backgroundImg; # inputs.background.outPath;
-  stylix.image = config.lib.stylix.pixel "base0A";
-  stylix.base16Scheme = "${inputs.theme}/eva.yaml";
+  stylix.image = config.lib.stylix.pixel "base00";
+  stylix.base16Scheme = "${inputs.theme}/base16/mocha.yaml";
   stylix.polarity = "dark";
   stylix.fonts.monospace = {
     package = (pkgs.nerdfonts.override { fonts = [ "Agave" ]; });
