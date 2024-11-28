@@ -75,7 +75,7 @@
       modulesList = lib.flatten [
         agenix.nixosModules.default
         simple-nixos-mailserver.nixosModule
-        lix-module.nixosModules.default
+        #lix-module.nixosModules.default
         base16.nixosModule
         { scheme = "${inputs.theme}/base16/mocha.yaml"; }
         #{ scheme = "${inputs.theme.outPath}/atelier-heath-light.yaml"; }
@@ -126,14 +126,6 @@
       deploy = {
         remoteBuild = false;
         nodes = {
-          "fact-cube" = {
-            hostname = "fact-cube.webfoo.de";
-            sshUser = "root";
-            profiles.system = {
-              user = "root";
-              path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."fact-cube";
-            };
-          };
           "GLaDOS" = {
             hostname = "10.0.0.70";
             sshUser = "root";
