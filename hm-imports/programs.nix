@@ -1,5 +1,6 @@
 { pkgs, config, inputs, ... }:
 {
+  programs.k9s.enable = true;
   home.packages = with pkgs; [
     keepassxc
     #inputs.nixpkgsMaster.legacyPackages."x86_64-linux".logseq

@@ -15,6 +15,7 @@ let
     ../../hm-imports/nixvim.nix
     {
       stylix.targets.kde.enable = false;
+      stylix.targets.hyprland.enable = false;
       # Just broken, I do not use that tool?!
       stylix.targets.bemenu.enable = false;
     }
