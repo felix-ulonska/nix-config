@@ -39,6 +39,7 @@
           10)}
 
     #exec-once = nwg-dock-hyprland -d -f -x -f -p left
+    exec-once = swayidle -w timeout 600 "swaylock" before-sleep "swaylock"
     # exec-once = waybar & hyprpaper & firefox
     # See https://wiki.hyprland.org/Configuring/Monitors/
     monitor=,highres,auto,1
