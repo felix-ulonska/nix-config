@@ -10,7 +10,7 @@ fi
 for commit in $(git log --since="Jan 1 2024" --pretty=format:"%H"); do
     echo "Checking commit: $commit"
     # Checkout the commit
-    git checkout $commit > /dev/null 2>&1
+    git checkout $commit
 
     # Try to evaluate the attribute
     result=$(nix eval --json '.#nixosConfigurations.GLaDOS.config.stylix.base16Scheme')
