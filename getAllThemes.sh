@@ -13,7 +13,7 @@ for commit in $(git log --since="Jan 1 2024" --pretty=format:"%H"); do
     git checkout $commit
 
     # Try to evaluate the attribute
-    result=$(nix eval --json '.#nixosConfigurations.GLaDOS.config.stylix.base16Scheme')
+    result=$(nix eval --no-update-lock-file --json '.#nixosConfigurations.GLaDOS.config.stylix.base16Scheme')
     if [[ $? -eq 0 ]]; then
         echo "Commit: $commit -> $result"
     else
