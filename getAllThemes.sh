@@ -13,7 +13,7 @@ for commit in $(git log --since="Jan 1 2024" --pretty=format:"%H"); do
     git checkout $commit > /dev/null 2>&1
 
     # Try to evaluate the attribute
-    result=$(nix eval --raw '.#nixosConfigurations.GLaDOS.config.stylix.base16Scheme' 2>/dev/null)
+    result=$(nix eval --json '.#nixosConfigurations.GLaDOS.config.stylix.base16Scheme')
     if [[ $? -eq 0 ]]; then
         echo "Commit: $commit -> $result"
     else
