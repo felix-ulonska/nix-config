@@ -5,8 +5,8 @@
   services.getty.greetingLine = "<<< Welcome to ${config.system.nixos.label} - Please leave\\l >>>";
   #stylix.image = backgroundImg; # inputs.background.outPath;
   stylix.image = config.lib.stylix.pixel "base00";
-  stylix.base16Scheme = "${inputs.theme}/base16/mocha.yaml";
-  stylix.polarity = "dark";
+  stylix.base16Scheme = "${inputs.theme}/atelier-savanna-light.yaml";
+  stylix.polarity = "light";
   stylix.fonts.monospace = {
     package = (pkgs.nerdfonts.override { fonts = [ "Agave" ]; });
     name = "agave Nerd Font Mono";
