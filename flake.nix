@@ -52,11 +52,11 @@
       #url = github:vic/base16-rebecca;
       #url = github:chriskempson/base16-vim;
       #url = "github:hakatashi/base16-colors-scheme";
-      #url = "github:atelierbram/base16-atelier-schemes";
+      url = "github:atelierbram/base16-atelier-schemes";
       #url = "github:tinted-theming/base16-schemes";
       #url = "github:chawyehsu/base16-snazzy-scheme";
       #url = github:kjakapat/base16-eva-scheme;
-      url = "github:catppuccin/base16";
+      #url = "github:catppuccin/base16";
       flake = false;
     };
 
@@ -79,7 +79,7 @@
         simple-nixos-mailserver.nixosModule
         #lix-module.nixosModules.default
         base16.nixosModule
-        { scheme = "${inputs.theme}/base16/mocha.yaml"; }
+        { scheme = "${inputs.theme}/atelier-savanna-light.yaml"; }
         #{ scheme = "${inputs.theme.outPath}/atelier-heath-light.yaml"; }
         #{ scheme = ./assets/summerfruit-light.yaml; }
         #{ scheme = "${inputs.theme}/snazzy.yaml"; }
