@@ -3,8 +3,6 @@
   programs.k9s.enable = true;
   home.packages = with pkgs; [
     keepassxc
-    #inputs.nixpkgsMaster.legacyPackages."x86_64-linux".logseq
-    #logseq
     lazygit
     obsidian
     vscode
@@ -14,15 +12,12 @@
     thunderbird
     spotify
     vlc
-    lazydocker
     patchelf
     sshfs
     languagetool
     flameshot
     chromium
-    scrcpy
     xournalpp
-    gh
 
     wget
 
@@ -38,16 +33,15 @@
     ranger
     libxml2
     arandr
-    touchegg
-    neovide
     libreoffice
     signal-desktop
     kubectl
-    #openlens
     graphite-cli
     zellij
-    #inputs.felixnixvim.packages.x86_64-linux.default
     glances
+
+    inputs.zen-browser.packages."x86_64-linux".default
+    btop
   ];
 
   programs.firefox = {

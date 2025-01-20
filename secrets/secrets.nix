@@ -1,5 +1,9 @@
 let pubkeys = import ../data/pubkeys.nix; in
 {
+  "mail-report-kai-pass.age" = {
+    publicKeys = pubkeys.jabbi.computers;
+  };
+
   "nextcloud-db-pass.age" = {
     publicKeys = pubkeys.jabbi.computers;
   };

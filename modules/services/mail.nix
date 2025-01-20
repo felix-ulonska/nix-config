@@ -25,6 +25,9 @@ in
       mail-cvat-password = {
         file = ../../secrets/mail-cvat-password.age;
       };
+      mail-report-kai-password = {
+        file = ../../secrets/mail-report-kai-pass.age;
+      };
     };
     services.dovecot2.sieve.extensions = [ "fileinto" ];
     mailserver = {
@@ -50,6 +53,9 @@ in
         };
         "nextcloud@webfoo.de" = {
           hashedPasswordFile = "/run/agenix/mail-nextcloud-password";
+        };
+        "report_analysis@webfoo.de" = {
+          hashedPasswordFile = "/run/agenix/mail-report-kai-password";
         };
       };
 
