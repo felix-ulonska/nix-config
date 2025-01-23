@@ -52,7 +52,7 @@
       #url = github:vic/base16-rebecca;
       #url = github:chriskempson/base16-vim;
       #url = "github:hakatashi/base16-colors-scheme";
-      url = "github:atelierbram/base16-atelier-schemes";
+      url = "github:PandorasFox/base16-pandora-scheme";
       #url = "github:tinted-theming/base16-schemes";
       #url = "github:chawyehsu/base16-snazzy-scheme";
       #url = github:kjakapat/base16-eva-scheme;
@@ -73,13 +73,13 @@
       lib = nixpkgs.lib.extend (self: super: {
         my = import ./lib { inherit inputs; lib = self; };
       });
-      backgroundImg = background;
+      #backgroundImg = background;
       modulesList = lib.flatten [
         agenix.nixosModules.default
         simple-nixos-mailserver.nixosModule
         #lix-module.nixosModules.default
         base16.nixosModule
-        { scheme = "${inputs.theme}/atelier-savanna-light.yaml"; }
+        { scheme = "${inputs.theme}/pandora.yaml"; }
         #{ scheme = "${inputs.theme.outPath}/atelier-heath-light.yaml"; }
         #{ scheme = ./assets/summerfruit-light.yaml; }
         #{ scheme = "${inputs.theme}/snazzy.yaml"; }
@@ -96,7 +96,7 @@
       nixosConfigurations.GLaDOS =
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit lib; inherit inputs backgroundImg; };
+          specialArgs = { inherit lib inputs; };
           modules = modulesList ++ [
             ./hosts/glados/configuration.nix
             nixos-hardware.nixosModules.lenovo-legion-16ach6h
@@ -107,7 +107,7 @@
       nixosConfigurations.the-bird =
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit lib; inherit inputs backgroundImg; };
+          specialArgs = { inherit lib inputs; };
           modules = modulesList ++ [
             ./hosts/the-bird/configuration.nix
             inputs.hyprland.nixosModules.default
@@ -117,7 +117,7 @@
       nixosConfigurations.edgeless-safety-cube =
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit lib; inherit inputs backgroundImg; };
+          specialArgs = { inherit lib inputs; };
           modules = modulesList ++ [
             disko.nixosModules.disko
             ./hosts/edgeless-safety-cube/configuration.nix

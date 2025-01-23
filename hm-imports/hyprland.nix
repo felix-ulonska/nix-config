@@ -17,11 +17,11 @@
   };
 
   wayland.windowManager.hyprland.extraConfig = ''
+        exec-once = swaybg --image ${config.stylix.image} --mode center
         $mod = SUPER
         bind=$mod,F,fullscreen
         bind=$mod,M, exec, swaylock
         bind = , Print, exec, grimblast copy area
-        exec-once = swaybg --image ${backgroundImg} --mode center
         env = WLR_NO_HARDWARE_CURSORS,1
         # workspaces
         # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}

@@ -11,18 +11,16 @@ in
     services.xserver = {
       enable = true;
       layout = "de,us";
-      xkbVariant = "us,";
-      xkbOptions = "grp:win_space_toggle";
+      xkb.variant = "us,";
+      xkb.options = "grp:win_space_toggle";
     };
 
     services.xserver.displayManager.gdm.enable = true;
     services.xserver.desktopManager.gnome.enable = true;
+    services.libinput.enable = true;
     services.udev.packages = with pkgs; [ platformio ];
 
     hardware.pulseaudio.enable = false;
-
-    # Enable touchpad support (enabled default in most desktopManager).
-    services.xserver.libinput.enable = true;
 
     environment.systemPackages = with pkgs; [
       gnomeExtensions.appindicator

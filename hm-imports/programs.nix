@@ -41,8 +41,8 @@
     glances
 
     inputs.zen-browser.packages."x86_64-linux".default
-    btop
   ];
+  programs.btop.enable = true;
 
   programs.firefox = {
     enable = true;
