@@ -5,7 +5,7 @@
   services.getty.greetingLine = "<<< Welcome to ${config.system.nixos.label} - Please leave\\l >>>";
   #stylix.image = backgroundImg; # inputs.background.outPath;
   stylix.image = config.lib.stylix.pixel "base00";
-  stylix.base16Scheme = "${inputs.theme}/pandora.yaml";
+  stylix.base16Scheme = "${inputs.theme}/horizon-dark.yaml";
   #stylix.targets.hyprland.enable = true;
   stylix.polarity = "light";
   stylix.fonts.monospace = {

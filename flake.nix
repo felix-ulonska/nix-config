@@ -3,13 +3,12 @@
 
   inputs = {
     nixpkgs = { url = "github:nixos/nixpkgs/release-24.11"; };
-    nixpkgsMaster = { url = "github:nixos/nixpkgs/master"; };
     deploy-rs = {
       url = "github:serokell/deploy-rs";
     };
     agenix.url = "github:ryantm/agenix";
     simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/";
-    home-manager.url = "github:nix-community/home-manager/";
+    home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -32,7 +31,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-
     stylix.url = "github:danth/stylix";
 
     hyprland = {
@@ -52,8 +50,8 @@
       #url = github:vic/base16-rebecca;
       #url = github:chriskempson/base16-vim;
       #url = "github:hakatashi/base16-colors-scheme";
-      url = "github:PandorasFox/base16-pandora-scheme";
-      #url = "github:tinted-theming/base16-schemes";
+      #url = "github:PandorasFox/base16-pandora-scheme";
+      url = "github:tinted-theming/base16-schemes";
       #url = "github:chawyehsu/base16-snazzy-scheme";
       #url = github:kjakapat/base16-eva-scheme;
       #url = "github:catppuccin/base16";
@@ -67,7 +65,7 @@
 
     flake-utils.url = "github:numtide/flake-utils";
   };
-  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, impermanence, flake-utils, stylix, background, nixos-hardware, nixpkgsMaster, felixnixvim, disko, lix-module, zen-browser, ... }:
+  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, impermanence, flake-utils, stylix, background, nixos-hardware, felixnixvim, disko, lix-module, zen-browser, ... }:
     let
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       lib = nixpkgs.lib.extend (self: super: {
@@ -79,10 +77,10 @@
         simple-nixos-mailserver.nixosModule
         #lix-module.nixosModules.default
         base16.nixosModule
-        { scheme = "${inputs.theme}/pandora.yaml"; }
+        #{ scheme = "${inputs.theme}/pandora.yaml"; }
         #{ scheme = "${inputs.theme.outPath}/atelier-heath-light.yaml"; }
         #{ scheme = ./assets/summerfruit-light.yaml; }
-        #{ scheme = "${inputs.theme}/snazzy.yaml"; }
+        { scheme = "${inputs.theme}/horizon-dark.yaml"; }
         home-manager.nixosModules.home-manager
         stylix.nixosModules.stylix
         (lib.my.mapModulesRec' (toString ./modules) import)
