@@ -2,13 +2,13 @@
   description = "An example NixOS configuration";
 
   inputs = {
-    nixpkgs = { url = "github:nixos/nixpkgs/release-24.11"; };
+    nixpkgs = { url = "github:nixos/nixpkgs/nixos-24.11"; };
     deploy-rs = {
       url = "github:serokell/deploy-rs";
     };
     agenix.url = "github:ryantm/agenix";
     simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/";
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -31,7 +31,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    stylix.url = "github:danth/stylix";
+    stylix.url = "github:danth/stylix/release-24.11";
 
     hyprland = {
       url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
@@ -78,9 +78,9 @@
         #lix-module.nixosModules.default
         base16.nixosModule
         #{ scheme = "${inputs.theme}/pandora.yaml"; }
-        #{ scheme = "${inputs.theme.outPath}/atelier-heath-light.yaml"; }
+        { scheme = "${inputs.theme}/atelier-heath-light.yaml"; }
         #{ scheme = ./assets/summerfruit-light.yaml; }
-        { scheme = "${inputs.theme}/horizon-dark.yaml"; }
+        #{ scheme = "${inputs.theme}/horizon-light.yaml"; }
         home-manager.nixosModules.home-manager
         stylix.nixosModules.stylix
         (lib.my.mapModulesRec' (toString ./modules) import)
