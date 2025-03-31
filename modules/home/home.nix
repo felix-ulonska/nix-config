@@ -8,6 +8,7 @@ let
     inputs.base16.homeManagerModule
     inputs.felixnixvim.homeManagerModules.default
     ../../hm-imports/i3.nix
+    ../../hm-imports/shelly-color-setter.nix
     ../../hm-imports/zsh.nix
     ../../hm-imports/cli.nix
     ../../hm-imports/autorandr.nix
