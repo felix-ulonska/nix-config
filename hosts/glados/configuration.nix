@@ -115,6 +115,7 @@
     root = {
       device = "/dev/disk/by-uuid/e7a87461-a0d4-470d-ba3b-d9a7ca417d2e";
       preLVM = true;
+      bypassWorkqueues = true;
     };
   };
 
