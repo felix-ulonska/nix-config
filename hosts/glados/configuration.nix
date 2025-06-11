@@ -22,10 +22,14 @@
   programs.wireshark.enable = true;
   programs.wireshark.package = pkgs.wireshark;
   #boot.tmp.useTmpfs = true;
+  boot.binfmt = {
+    emulatedSystems = [ "aarch64-linux" "armv7l-linux" "mips-linux" "riscv32-linux"];
+    preferStaticEmulators = true; # Make it work with Docker
+  };
 
   #boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_1;
 
-  services.xserver.desktopManager.plasma5.enable = true;
+  #services.xserver.desktopManager.plasma5.enable = true;
   programs.ssh.startAgent = true;
   programs.zsh.enable = true;
   programs.steam.enable = true;

@@ -6,7 +6,7 @@
     lazygit
     obsidian
     vscode
-    (nerdfonts.override { fonts = [ "Agave" ]; })
+    (nerd-fonts.agave)
     pavucontrol
     discord
     thunderbird
