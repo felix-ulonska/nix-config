@@ -6,6 +6,7 @@
     ];
 
   nixpkgs.config.allowUnfree = true;
+  services.desktopManager.cosmic.enable = true;
 
   jabbi = {
     home = {

@@ -35,9 +35,9 @@
     stylix.url = "github:nix-community/stylix/7a0f30b57eb940cd280e2001c73b09a63e6a5311";
 
 
-    hyprland = {
-      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    };
+    #hyprland = {
+    #  url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    #};
 
     background = {
       url = "https://i.redd.it/yuxe7ow1wyy91.png"; # Sanfransico
@@ -79,11 +79,11 @@
         simple-nixos-mailserver.nixosModule
         #lix-module.nixosModules.default
         base16.nixosModule
-        { scheme = "${inputs.theme}/outrun-dark.yaml"; }
+        #{ scheme = "${inputs.theme}/outrun-dark.yaml"; }
         #{ scheme = "${inputs.theme}/oxocarbon-light.yaml"; }
         #{ scheme = "${inputs.theme}/atelier-heath-light.yaml"; }
         #{ scheme = ./assets/summerfruit-light.yaml; }
-        #{ scheme = "${inputs.theme}/horizon-light.yaml"; }
+        { scheme = "${inputs.theme}/windows-95-light.yaml"; }
         home-manager.nixosModules.home-manager
         stylix.nixosModules.stylix
         (lib.my.mapModulesRec' (toString ./modules) import)
@@ -101,7 +101,7 @@
           modules = modulesList ++ [
             ./hosts/glados/configuration.nix
             nixos-hardware.nixosModules.lenovo-legion-16ach6h
-            inputs.hyprland.nixosModules.default
+            #inputs.hyprland.nixosModules.default
             { programs.hyprland.enable = true; }
           ];
         };
@@ -111,7 +111,7 @@
           specialArgs = { inherit lib inputs; };
           modules = modulesList ++ [
             ./hosts/the-bird/configuration.nix
-            inputs.hyprland.nixosModules.default
+            #inputs.hyprland.nixosModules.default
             { programs.hyprland.enable = true; }
           ];
         };
@@ -122,7 +122,7 @@
           modules = modulesList ++ [
             disko.nixosModules.disko
             ./hosts/edgeless-safety-cube/configuration.nix
-            inputs.hyprland.nixosModules.default
+            #inputs.hyprland.nixosModules.default
           ];
         };
 
