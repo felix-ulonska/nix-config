@@ -80,10 +80,10 @@
         #lix-module.nixosModules.default
         base16.nixosModule
         #{ scheme = "${inputs.theme}/outrun-dark.yaml"; }
-        #{ scheme = "${inputs.theme}/oxocarbon-light.yaml"; }
+        { scheme = "${inputs.theme}/oxocarbon-light.yaml"; }
         #{ scheme = "${inputs.theme}/atelier-heath-light.yaml"; }
         #{ scheme = ./assets/summerfruit-light.yaml; }
-        { scheme = "${inputs.theme}/windows-95-light.yaml"; }
+        #{ scheme = "${inputs.theme}/windows-95-light.yaml"; }
         home-manager.nixosModules.home-manager
         stylix.nixosModules.stylix
         (lib.my.mapModulesRec' (toString ./modules) import)

@@ -8,6 +8,14 @@ in
 {
   inherit scheme;
 
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [
+      pkgs.xdg-desktop-portal-gnome
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-hyprland
+      pkgs.xdg-desktop-portal-wlr
+  ];
+
   home.packages = with pkgs; [
     brightnessctl
   ];
