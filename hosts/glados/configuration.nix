@@ -23,7 +23,7 @@
   programs.wireshark.package = pkgs.wireshark;
   #boot.tmp.useTmpfs = true;
   boot.binfmt = {
-    emulatedSystems = [ "aarch64-linux" "armv7l-linux" "mips-linux" "riscv32-linux"];
+    emulatedSystems = [ "aarch64-linux" "armv7l-linux" "mips-linux" "riscv32-linux" ];
     preferStaticEmulators = true; # Make it work with Docker
   };
 

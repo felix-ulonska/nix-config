@@ -72,6 +72,7 @@
   users.extraGroups.vboxusers.members = [ "jabbi" ];
   virtualisation.virtualbox.guest.enable = true;
   virtualisation.virtualbox.guest.dragAndDrop = true;
+  boot.kernelParams = [ "kvm.enable_virt_at_load=0" ];
 
   # See https://github.com/NixOS/nixpkgs/issues/224332
   # environment.sessionVariables.NIXOS_OZONE_WL = "1";
