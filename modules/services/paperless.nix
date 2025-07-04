@@ -8,10 +8,13 @@ in
     enable = mkEnableOption "Enable Paperless";
   };
   config = mkIf cfg.enable {
-    services.paperless-fixed = {
+    services.paperless = {
       enable = true;
       port = 9212;
       dataDir = "/var/lib/paperless";
+      settings = {
+        PAPERLESS_URL = "https://paperless.webfoo.de";
+      };
     };
 
     services.nginx.virtualHosts = {

@@ -80,7 +80,7 @@
         #lix-module.nixosModules.default
         base16.nixosModule
         { scheme = "${inputs.theme}/outrun-dark.yaml"; }
-        #{ scheme = "${inputs.theme}/oxocarbon-light.yaml"; }
+        #{ scheme = "${inputs.theme}/atelier-dune-light.yaml"; }
         #{ scheme = "${inputs.theme}/atelier-heath-light.yaml"; }
         #{ scheme = ./assets/summerfruit-light.yaml; }
         #{ scheme = "${inputs.theme}/horizon-light.yaml"; }
