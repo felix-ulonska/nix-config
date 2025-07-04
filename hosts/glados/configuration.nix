@@ -6,6 +6,17 @@
     ];
 
   nixpkgs.config.allowUnfree = true;
+  services.desktopManager.cosmic.enable = true;
+  services.displayManager.cosmic-greeter.enable = true;
+
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [
+      pkgs.xdg-desktop-portal-gnome
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-hyprland
+      pkgs.xdg-desktop-portal-wlr
+  ];
+
 
   jabbi = {
     home = {
@@ -82,6 +93,12 @@
     dig
     htop
     steam-run-native
+
+        xdg-desktop-portal-gnome
+    xdg-desktop-portal-gtk
+    xdg-desktop-portal-hyprland
+    xdg-desktop-portal-wlr
+
   ];
 
   networking.firewall.allowedTCPPorts = [ 80 443 ];
