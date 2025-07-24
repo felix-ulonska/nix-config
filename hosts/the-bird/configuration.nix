@@ -97,6 +97,25 @@
     wireguard-tools
   ];
 
+  networking.wireguard.interfaces = {
+    wg0 = {
+      ips = [ "10.100.0.4/32" ];
+      listenPort = 51820; 
+      privateKeyFile = "/etc/wireguardKeys/private";
+
+      peers = [
+        {
+          publicKey = "IFDOKRBtVSIDK3/KMGov35o4geKXWoN5yaGsfVJ65Wc=";
+          allowedIPs = [ "10.100.0.0/24" ];
+          endpoint = "152.53.47.93:51820"; # ToDo: route to endpoint not automatically configured https://wiki.archlinux.org/index.php/WireGuard#Loop_routing https://discourse.nixos.org/t/solved-minimal-firewall-setup-for-wireguard-client/7577
+          persistentKeepalive = 25;
+        }
+      ];
+    };
+  };
+
+
+
   networking.firewall.allowedTCPPorts = [ 22000 ];
 
   nix = {
