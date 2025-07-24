@@ -21,6 +21,7 @@
   ## jabbi.services.fix-ms.enable = true;
   jabbi.services.paperless.enable = true;
   jabbi.services.wordpress.enable = true;
+  jabbi.services.resticSecrets.enable = true;
 
   networking.hostName = "edgeless-safety-cube";
 
