@@ -1,4 +1,3 @@
-{ ... }: {
 { lib, config, ... }:
 with lib;
 let
