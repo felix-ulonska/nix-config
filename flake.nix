@@ -134,8 +134,8 @@
           system = "x86_64-linux";
           specialArgs = { inherit lib inputs; };
           modules = modulesList ++ [
-            ./hosts/cave/configuration.nix
             comin.nixosModules.comin
+            ./hosts/cave/configuration.nix
             #inputs.hyprland.nixosModules.default
           ];
         };

@@ -1,4 +1,4 @@
-{}: {
+{pkgs, ...}: {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -20,7 +20,6 @@
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
   };
-
 
   time.timeZone = "Europe/Amsterdam";
 
@@ -53,7 +52,6 @@
     isNormalUser = true;
     extraGroups = [ "wheel" "audio" "libvirtd" "adbusers" "scanner" "lp" ];
     hashedPassword = "$6$rejDSpuy6d$za9N7miMI/XHZNjZ6ib0IcaF511UdBn7QVwIV7MO1MTMO5yjVGwuvVT7kJlnTN165srbPd6rCJxtgdABTuEbj1";
-    shell = pkgs.zsh;
   };
 
   services.printing.enable = true;
@@ -79,9 +77,12 @@
     displayManager.sddm.wayland.enable = true;
 
     comin = {
-      name = "origin";
-      url = "https://github.com/felix-ulonska/nix-config.git";
-      branches.main.name = "main";
+      enable = true;
+      remotes = [{
+        name = "origin";
+        url = "https://github.com/felix-ulonska/nix-config.git";
+        branches.main.name = "main";
+      }];
     };
   };
 
