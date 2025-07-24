@@ -44,8 +44,6 @@
     haruna # Open source video player built with Qt/QML and libmpv
     wayland-utils # Wayland utilities
     wl-clipboard # Command-line copy/paste utilities for Wayland
-
-    rustdesk
   ];
 
   users.users.jabbi = {
@@ -53,6 +51,9 @@
     extraGroups = [ "wheel" "audio" "libvirtd" "adbusers" "scanner" "lp" ];
     hashedPassword = "$6$rejDSpuy6d$za9N7miMI/XHZNjZ6ib0IcaF511UdBn7QVwIV7MO1MTMO5yjVGwuvVT7kJlnTN165srbPd6rCJxtgdABTuEbj1";
   };
+  users.users."root".openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGQ+BFtjE8D9+wVAnZ7IrhkTPlA62jdEq037+PaKCXkM jabbi@mimo"
+  ];
 
   services.printing.enable = true;
 
@@ -83,6 +84,23 @@
         url = "https://github.com/felix-ulonska/nix-config.git";
         branches.main.name = "main";
       }];
+    };
+  };
+
+  networking.wireguard.interfaces = {
+    wg0 = {
+      ips = [ "10.100.0.3/32" ];
+      listenPort = 51820; 
+      privateKeyFile = "/etc/wireguardKeys/private";
+
+      peers = [
+        {
+          publicKey = "IFDOKRBtVSIDK3/KMGov35o4geKXWoN5yaGsfVJ65Wc=";
+          allowedIPs = [ "10.100.0.1/24" ];
+          endpoint = "152.53.47.93:51820"; # ToDo: route to endpoint not automatically configured https://wiki.archlinux.org/index.php/WireGuard#Loop_routing https://discourse.nixos.org/t/solved-minimal-firewall-setup-for-wireguard-client/7577
+          persistentKeepalive = 25;
+        }
+      ];
     };
   };
 
