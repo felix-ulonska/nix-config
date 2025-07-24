@@ -79,8 +79,8 @@
         simple-nixos-mailserver.nixosModule
         #lix-module.nixosModules.default
         base16.nixosModule
-        #{ scheme = "${inputs.theme}/outrun-dark.yaml"; }
-        { scheme = "${inputs.theme}/oxocarbon-light.yaml"; }
+        { scheme = "${inputs.theme}/humanoid-dark.yaml"; }
+        #{ scheme = "${inputs.theme}/oxocarbon-light.yaml"; }
         #{ scheme = "${inputs.theme}/atelier-heath-light.yaml"; }
         #{ scheme = ./assets/summerfruit-light.yaml; }
         #{ scheme = "${inputs.theme}/windows-95-light.yaml"; }
@@ -165,16 +165,9 @@
       let pkgs = nixpkgs.legacyPackages.${system};
       in
       {
-        # I re-export deploy-rs due to an issue with running `nix flake github:serokell/deploy-rs ...`
-        # per a conversation I had here: https://github.com/serokell/deploy-rs/issues/155
-        apps.deploy-rs = {
-          program = deploy-rs.defaultApp."${system}";
-          type = "app";
-        };
 
         devShells.default = pkgs.mkShell {
           buildInputs = [
-            deploy-rs.defaultPackage."${system}"
             agenix.packages.x86_64-linux.default
           ];
         };

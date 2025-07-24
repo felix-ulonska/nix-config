@@ -17,6 +17,7 @@
   jabbi.services.nginx.enable = true;
   jabbi.services.mail.enable = true;
   jabbi.services.uptime-kuma.enable = true;
+  jabbi.services.rustdesk.enable = true;
   ## jabbi.services.fix-ms.enable = true;
   jabbi.services.paperless.enable = true;
   jabbi.services.wordpress.enable = true;

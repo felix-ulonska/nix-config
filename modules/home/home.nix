@@ -10,6 +10,7 @@ let
     ../../hm-imports/i3.nix
     ../../hm-imports/shelly-color-setter.nix
     ../../hm-imports/zsh.nix
+    ../../hm-imports/nushell.nix
     ../../hm-imports/cli.nix
     ../../hm-imports/autorandr.nix
     ../../hm-imports/polybar.nix
