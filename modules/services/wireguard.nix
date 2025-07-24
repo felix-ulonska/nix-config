@@ -1,16 +1,16 @@
 { lib, config, pkgs, ... }:
 with lib;
 let
-  cfg = config.jabbi.wireguard;
+  cfg = config.jabbi.services.wireguard;
 in
 {
-  options.jabbi.wireguard = {
+  options.jabbi.services.wireguard = {
     enable = mkEnableOption "Enable Wireguard";
   };
   config = mkIf cfg.enable {
     # enable NAT
     networking.nat.enable = true;
-    networking.nat.externalInterface = "eth0";
+    networking.nat.externalInterface = "ens3";
     networking.nat.internalInterfaces = [ "wg0" ];
     networking.firewall = {
       allowedUDPPorts = [ 51820 ];
@@ -20,6 +20,8 @@ in
     networking.wireguard.interfaces = {
       # "wg0" is the network interface name. You can name the interface arbitrarily.
       wg0 = {
+        privateKeyFile = "/etc/wireguardKeys/private";
+
         # Determines the IP address and subnet of the server's end of the tunnel interface.
         ips = [ "10.100.0.1/24" ];
 
@@ -36,6 +38,13 @@ in
         postShutdown = ''
           ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o eth0 -j MASQUERADE
         '';
+
+        peers = [
+        # glados
+        {
+          publicKey = "L93lOQ+JMw/taHfBG/wF9pp1/ezU7jw5iHdcdms1FiU=";
+          allowedIPs = ["10.100.0.2/32"];
+        }];
       };
     };
   };

@@ -116,6 +116,36 @@
     };
   };
 
+  # todo move wireguard config to a better place
+
+  networking.wireguard.interfaces = {
+    # "wg0" is the network interface name. You can name the interface arbitrarily.
+    wg0 = {
+      # Determines the IP address and subnet of the client's end of the tunnel interface.
+      ips = [ "10.100.0.2/32" ];
+      listenPort = 51820; 
+      privateKeyFile = "/etc/wireguardKeys/private";
+
+      peers = [
+        # For a client configuration, one peer entry for the server will suffice.
+
+        {
+          # Public key of the server (not a file path).
+          publicKey = "IFDOKRBtVSIDK3/KMGov35o4geKXWoN5yaGsfVJ65Wc=";
+
+          # Forward all the traffic via VPN.
+          allowedIPs = [ "10.100.0.1/24" ];
+
+          # Set this to the server IP and port.
+          endpoint = "152.53.47.93:51820"; # ToDo: route to endpoint not automatically configured https://wiki.archlinux.org/index.php/WireGuard#Loop_routing https://discourse.nixos.org/t/solved-minimal-firewall-setup-for-wireguard-client/7577
+
+          # Send keepalives every 25 seconds. Important to keep NAT tables alive.
+          persistentKeepalive = 25;
+        }
+      ];
+    };
+  };
+
   programs.ssh.askPassword = pkgs.lib.mkForce "";
 
   # Webkit
