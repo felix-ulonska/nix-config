@@ -130,16 +130,9 @@
         # For a client configuration, one peer entry for the server will suffice.
 
         {
-          # Public key of the server (not a file path).
           publicKey = "IFDOKRBtVSIDK3/KMGov35o4geKXWoN5yaGsfVJ65Wc=";
-
-          # Forward all the traffic via VPN.
-          allowedIPs = [ "10.100.0.1/24" ];
-
-          # Set this to the server IP and port.
+          allowedIPs = [ "10.100.0.0/24" ];
           endpoint = "152.53.47.93:51820"; # ToDo: route to endpoint not automatically configured https://wiki.archlinux.org/index.php/WireGuard#Loop_routing https://discourse.nixos.org/t/solved-minimal-firewall-setup-for-wireguard-client/7577
-
-          # Send keepalives every 25 seconds. Important to keep NAT tables alive.
           persistentKeepalive = 25;
         }
       ];

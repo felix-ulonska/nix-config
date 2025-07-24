@@ -23,7 +23,7 @@ in
         privateKeyFile = "/etc/wireguardKeys/private";
 
         # Determines the IP address and subnet of the server's end of the tunnel interface.
-        ips = [ "10.100.0.1/24" ];
+        ips = [ "10.100.0.0/24" ];
 
         # The port that WireGuard listens to. Must be accessible by the client.
         listenPort = 51820;
@@ -44,7 +44,12 @@ in
         {
           publicKey = "L93lOQ+JMw/taHfBG/wF9pp1/ezU7jw5iHdcdms1FiU=";
           allowedIPs = ["10.100.0.2/32"];
-        }];
+        }
+        {
+          publicKey = "UGJJylhmr/aSmERwXb4YQ+OyhI70rOMZEjMmbmOeyFU=";
+          allowedIPs = ["10.100.0.3/32"];
+        }
+        ];
       };
     };
   };
