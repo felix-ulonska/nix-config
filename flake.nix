@@ -38,6 +38,10 @@
     #hyprland = {
     #  url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     #};
+    comin = {
+      url = "github:nlewo/comin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     background = {
       url = "https://i.redd.it/yuxe7ow1wyy91.png"; # Sanfransico
@@ -67,7 +71,7 @@
 
     flake-utils.url = "github:numtide/flake-utils";
   };
-  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, impermanence, flake-utils, stylix, background, nixos-hardware, felixnixvim, disko, lix-module, zen-browser, ... }:
+  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, impermanence, flake-utils, stylix, background, nixos-hardware, felixnixvim, disko, lix-module, zen-browser, comin, ... }:
     let
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       lib = nixpkgs.lib.extend (self: super: {
@@ -122,6 +126,16 @@
           modules = modulesList ++ [
             disko.nixosModules.disko
             ./hosts/edgeless-safety-cube/configuration.nix
+            #inputs.hyprland.nixosModules.default
+          ];
+        };
+      nixosConfigurations.cave =
+        nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit lib inputs; };
+          modules = modulesList ++ [
+            ./hosts/cave/configuration.nix
+            comin.nixosModules.comin
             #inputs.hyprland.nixosModules.default
           ];
         };

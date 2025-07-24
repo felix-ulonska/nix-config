@@ -30,8 +30,6 @@
     docker.enable = true;
     #hardware.nvidia.enable = true;
   };
-  programs.wireshark.enable = true;
-  programs.wireshark.package = pkgs.wireshark;
   #boot.tmp.useTmpfs = true;
   boot.binfmt = {
     emulatedSystems = [ "aarch64-linux" "armv7l-linux" "mips-linux" "riscv32-linux" ];
