@@ -28,6 +28,7 @@
     firefox
     thunderbird
     libreoffice
+    zoom-us
 
     # kde
     kdePackages.discover # Optional: Install if you use Flatpak or fwupd firmware update sevice
