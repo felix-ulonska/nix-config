@@ -42,6 +42,7 @@
     libreoffice
     zoom-us
     syncthing
+    bitwarden
 
     # kde
     kdePackages.discover # Optional: Install if you use Flatpak or fwupd firmware update sevice
