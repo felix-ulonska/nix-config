@@ -29,6 +29,8 @@
     thunderbird
     libreoffice
     zoom-us
+    # Brother printer
+    brlaser
 
     # kde
     kdePackages.discover # Optional: Install if you use Flatpak or fwupd firmware update sevice
