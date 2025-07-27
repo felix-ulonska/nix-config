@@ -27,6 +27,7 @@
     brlaser 
     brgenml1lpr
     brgenml1cupswrapper
+    gutenprint
   ];
 
   environment.systemPackages = with pkgs; [
