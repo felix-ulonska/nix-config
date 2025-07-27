@@ -31,6 +31,8 @@
     zoom-us
     # Brother printer
     brlaser
+    brgenml1lpr
+    brgenml1cupswrapper
 
     # kde
     kdePackages.discover # Optional: Install if you use Flatpak or fwupd firmware update sevice
