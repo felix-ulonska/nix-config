@@ -21,6 +21,11 @@
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
   };
 
+  services.syncthing = {
+    enable = true;
+    openDefaultPorts = true; # Open ports in the firewall for Syncthing
+  };
+
   time.timeZone = "Europe/Amsterdam";
 
   services.printing.drivers = with pkgs; [
