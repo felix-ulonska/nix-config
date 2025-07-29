@@ -9,6 +9,8 @@ let
     self.attrs = import ./attrs.nix { inherit lib; self = { }; };
   };
 
+  helper = import ./helper.nix { inherit lib; self = { }; };
+
   mylib = makeExtensible (self:
     with self; mapModules ./.
       (file: import file { inherit self lib inputs; }));

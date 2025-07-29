@@ -18,12 +18,11 @@
 ├── README.md
 └── secrets # My Secrets
     └── secrets.nix
+└── secret-nix-config # Settings which I do not want to have public. Think E-Mail addresses. Nothing of intreset
 ```
 
 ### Flake
 
-This Repo uses Flakes. Inside the `flake.nix` are the hosted definied. 
+This Repo uses Flakes. Inside the `flake.nix` are the hosted definied.
 
 ### modules
-
-

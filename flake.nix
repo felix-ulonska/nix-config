@@ -73,6 +73,7 @@
   };
   outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, impermanence, flake-utils, stylix, background, nixos-hardware, felixnixvim, disko, lix-module, zen-browser, comin, ... }:
     let
+      helper = import ./lib/helper.nix { inherit lib; };
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       lib = nixpkgs.lib.extend (self: super: {
         my = import ./lib { inherit inputs; lib = self; };
@@ -123,11 +124,11 @@
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit lib inputs; };
-          modules = modulesList ++ [
+          modules = helper.addIfExists ./secret-nix-config/edgeless-safety-cube.nix (modulesList ++ [
             disko.nixosModules.disko
             ./hosts/edgeless-safety-cube/configuration.nix
             #inputs.hyprland.nixosModules.default
-          ];
+          ]);
         };
       nixosConfigurations.cave =
         nixpkgs.lib.nixosSystem {
@@ -160,6 +161,16 @@
             profiles.system = {
               user = "root";
               path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."edgeless-safety-cube";
+              magicRollback = false;
+            };
+          };
+          "the-bird" = {
+            hostname = "10.0.0.61";
+            sshUser = "root";
+            remoteBuild = true;
+            profiles.system = {
+              user = "root";
+              path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."the-bird";
               magicRollback = false;
             };
           };
