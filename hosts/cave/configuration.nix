@@ -21,13 +21,28 @@
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
   };
 
+  services.syncthing = {
+    enable = true;
+    openDefaultPorts = true; # Open ports in the firewall for Syncthing
+  };
+
   time.timeZone = "Europe/Amsterdam";
+
+  services.printing.drivers = with pkgs; [
+    brlaser 
+    brgenml1lpr
+    brgenml1cupswrapper
+    gutenprint
+  ];
 
   environment.systemPackages = with pkgs; [
     ecryptfs
     firefox
     thunderbird
     libreoffice
+    zoom-us
+    syncthing
+    bitwarden
 
     # kde
     kdePackages.discover # Optional: Install if you use Flatpak or fwupd firmware update sevice
@@ -73,6 +88,7 @@
   };
   console.keyMap = "de";
   services = {
+    xserver.libinput.enable = true;
     desktopManager.plasma6.enable = true;
     displayManager.sddm.enable = true;
     displayManager.sddm.wayland.enable = true;

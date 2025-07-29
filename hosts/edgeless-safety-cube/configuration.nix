@@ -22,6 +22,10 @@
   jabbi.services.paperless.enable = true;
   jabbi.services.wordpress.enable = true;
   jabbi.services.resticSecrets.enable = true;
+  services.syncthing = {
+    enable = true;
+    openDefaultPorts = true; # Open ports in the firewall for Syncthing
+  };
 
   networking.hostName = "edgeless-safety-cube";
 
