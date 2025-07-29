@@ -28,6 +28,9 @@ in
       mail-report-kai-password = {
         file = ../../secrets/mail-report-kai-pass.age;
       };
+      mail-f-password = {
+        file = ../../secrets/mail-f-password.age;
+      };
     };
     services.dovecot2.sieve.extensions = [ "fileinto" ];
     mailserver = {
@@ -56,6 +59,9 @@ in
         };
         "report_analysis@webfoo.de" = {
           hashedPasswordFile = "/run/agenix/mail-report-kai-password";
+        };
+        "f@webfoo.de" = {
+          hashedPasswordFile = "/run/agenix/mail-f-password";
         };
       };
 

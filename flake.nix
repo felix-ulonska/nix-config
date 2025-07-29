@@ -124,7 +124,7 @@
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit lib inputs; };
-          modules = helper.addIfExists ./secret-nix-config/edgeless-safety-cube.nix (modulesList ++ [
+          modules = (modulesList ++ [
             disko.nixosModules.disko
             ./hosts/edgeless-safety-cube/configuration.nix
             #inputs.hyprland.nixosModules.default
