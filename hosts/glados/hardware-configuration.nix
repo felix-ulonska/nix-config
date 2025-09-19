@@ -59,6 +59,12 @@
       fsType = "ext4";
     };
 
+  fileSystems."/home/jabbi/data" =
+    {
+      device = "/dev/disk/by-uuid/ab2485ee-9898-40eb-b8ac-9f0dafe6fdb6";
+      fsType = "ext4";
+    };
+
   swapDevices = [ ];
 
   networking.useDHCP = lib.mkDefault true;
