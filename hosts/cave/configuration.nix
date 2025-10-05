@@ -43,6 +43,7 @@
     zoom-us
     syncthing
     bitwarden
+    anki-bin
 
     # kde
     kdePackages.discover # Optional: Install if you use Flatpak or fwupd firmware update sevice

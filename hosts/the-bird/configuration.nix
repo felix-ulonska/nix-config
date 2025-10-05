@@ -81,7 +81,7 @@
 
   users.users.jabbi = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "libvirtd" "adbusers" "scanner" "lp" ];
+    extraGroups = [ "wheel" "audio" "libvirtd" "adbusers" "scanner" "lp" "dialout" ];
     hashedPassword = "$6$rejDSpuy6d$za9N7miMI/XHZNjZ6ib0IcaF511UdBn7QVwIV7MO1MTMO5yjVGwuvVT7kJlnTN165srbPd6rCJxtgdABTuEbj1";
     shell = pkgs.zsh;
   };

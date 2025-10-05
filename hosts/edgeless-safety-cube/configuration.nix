@@ -18,6 +18,7 @@
   jabbi.services.wireguard.enable = true;
   jabbi.services.mail.enable = true;
   jabbi.services.uptime-kuma.enable = true;
+  services.kitchenowl.enable = true;
   ## jabbi.services.fix-ms.enable = true;
   jabbi.services.paperless.enable = true;
   jabbi.services.wordpress.enable = true;
