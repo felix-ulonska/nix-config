@@ -84,7 +84,7 @@
         simple-nixos-mailserver.nixosModule
         #lix-module.nixosModules.default
         base16.nixosModule
-        { scheme = "${inputs.theme}/humanoid-dark.yaml"; }
+        { scheme = "${inputs.theme}/framer.yaml"; }
         #{ scheme = "${inputs.theme}/oxocarbon-light.yaml"; }
         #{ scheme = "${inputs.theme}/atelier-heath-light.yaml"; }
         #{ scheme = ./assets/summerfruit-light.yaml; }
