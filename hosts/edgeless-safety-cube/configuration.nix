@@ -58,6 +58,7 @@
     permitRootLogin = "yes";
     passwordAuthentication = false;
   };
+  boot.kernelParams = [ "kvm.enable_virt_at_load=0" ];
 
   system.stateVersion = "21.11";
 
