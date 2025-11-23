@@ -44,6 +44,7 @@
     syncthing
     bitwarden
     anki-bin
+    hunspellDicts.de_DE
 
     # kde
     kdePackages.discover # Optional: Install if you use Flatpak or fwupd firmware update sevice
