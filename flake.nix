@@ -15,8 +15,6 @@
 
     impermanence.url = "github:nix-community/impermanence";
 
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
-
     base16.url = "github:SenchoPens/base16.nix/def69d6edc32792562975aec863dbef757f832cf";
     base16.inputs.nixpkgs.follows = "nixpkgs";
     disko.url = "github:nix-community/disko/c1cfbfad7cb45f0c177b35b59ba67d1b5fc7ca82";
@@ -71,7 +69,7 @@
 
     flake-utils.url = "github:numtide/flake-utils";
   };
-  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, impermanence, flake-utils, stylix, background, nixos-hardware, felixnixvim, disko, lix-module, zen-browser, comin, ... }:
+  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, impermanence, flake-utils, stylix, background, nixos-hardware, felixnixvim, disko, lix-module, comin, ... }:
     let
       helper = import ./lib/helper.nix { inherit lib; };
       pkgs = nixpkgs.legacyPackages.x86_64-linux;

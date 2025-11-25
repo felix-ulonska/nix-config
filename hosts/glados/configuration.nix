@@ -11,10 +11,10 @@
 
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [
-      pkgs.xdg-desktop-portal-gnome
-      pkgs.xdg-desktop-portal-gtk
-      pkgs.xdg-desktop-portal-hyprland
-      pkgs.xdg-desktop-portal-wlr
+    pkgs.xdg-desktop-portal-gnome
+    pkgs.xdg-desktop-portal-gtk
+    pkgs.xdg-desktop-portal-hyprland
+    pkgs.xdg-desktop-portal-wlr
   ];
 
   services.openssh.settings.LogLevel = "DEBUG3";
@@ -94,7 +94,7 @@
     htop
     steam-run-native
 
-        xdg-desktop-portal-gnome
+    xdg-desktop-portal-gnome
     xdg-desktop-portal-gtk
     xdg-desktop-portal-hyprland
     xdg-desktop-portal-wlr
@@ -125,7 +125,7 @@
     wg0 = {
       # Determines the IP address and subnet of the client's end of the tunnel interface.
       ips = [ "10.100.0.2/32" ];
-      listenPort = 51820; 
+      listenPort = 51820;
       privateKeyFile = "/etc/wireguardKeys/private";
 
       peers = [

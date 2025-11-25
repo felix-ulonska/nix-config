@@ -40,20 +40,20 @@ in
         '';
 
         peers = [
-        # glados
-        {
-          publicKey = "L93lOQ+JMw/taHfBG/wF9pp1/ezU7jw5iHdcdms1FiU=";
-          allowedIPs = ["10.100.0.2/32"];
-        }
-        # cave
-        {
-          publicKey = "UGJJylhmr/aSmERwXb4YQ+OyhI70rOMZEjMmbmOeyFU=";
-          allowedIPs = ["10.100.0.3/32"];
-        } 
-        {
-          publicKey = "igwFbsH4Ah8UdNTY3ZliSK+W9l7Z2+ix84W2buLs3mg=";
-          allowedIPs = ["10.100.0.4/32"];
-        }
+          # glados
+          {
+            publicKey = "L93lOQ+JMw/taHfBG/wF9pp1/ezU7jw5iHdcdms1FiU=";
+            allowedIPs = [ "10.100.0.2/32" ];
+          }
+          # cave
+          {
+            publicKey = "UGJJylhmr/aSmERwXb4YQ+OyhI70rOMZEjMmbmOeyFU=";
+            allowedIPs = [ "10.100.0.3/32" ];
+          }
+          {
+            publicKey = "igwFbsH4Ah8UdNTY3ZliSK+W9l7Z2+ix84W2buLs3mg=";
+            allowedIPs = [ "10.100.0.4/32" ];
+          }
         ];
       };
     };

@@ -104,7 +104,7 @@
   networking.wireguard.interfaces = {
     wg0 = {
       ips = [ "10.100.0.4/32" ];
-      listenPort = 51820; 
+      listenPort = 51820;
       privateKeyFile = "/etc/wireguardKeys/private";
 
       peers = [

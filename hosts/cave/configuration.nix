@@ -1,6 +1,7 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -9,7 +10,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "cave"; # Define your hostname.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   services.pipewire = {
     enable = true;
@@ -29,7 +30,7 @@
   time.timeZone = "Europe/Amsterdam";
 
   services.printing.drivers = with pkgs; [
-    brlaser 
+    brlaser
     brgenml1lpr
     brgenml1cupswrapper
     gutenprint
@@ -108,7 +109,7 @@
   networking.wireguard.interfaces = {
     wg0 = {
       ips = [ "10.100.0.3/32" ];
-      listenPort = 51820; 
+      listenPort = 51820;
       privateKeyFile = "/etc/wireguardKeys/private";
 
       peers = [
@@ -124,7 +125,7 @@
 
   # ecryptfs
   security.pam.enableEcryptfs = true;
-  boot.kernelModules = ["ecryptfs"];
+  boot.kernelModules = [ "ecryptfs" ];
 
   system.stateVersion = "25.05";
 }

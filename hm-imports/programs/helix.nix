@@ -7,7 +7,36 @@
         insert = "bar";
         select = "underline";
       };
-      keys.insert = { j = { k = "normal_mode"; }; };
+      keys = {
+        insert = { j = { k = "normal_mode"; }; };
+        normal = {
+          q = let
+            yazi-picker = writeShellApplication {
+              name = "yazi-picker";
+
+              text = ''
+                #!${pkgs.bash}/bin/bash
+
+                serpl
+                exit_code=$?
+
+                if [[ $exit_code -eq 0 ]]; then
+                    zellij action toggle-floating-panes
+                    zellij action write-chars ":reload-all"
+                    zellij action write 13 # send <Enter> key
+                fi
+              '';
+            };
+          in {
+            q =
+              ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh open";
+            v =
+              ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh vsplit";
+            s =
+              ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh hsplit";
+          };
+        };
+      };
     };
     languages.language = [
       {
@@ -41,7 +70,10 @@
     };
     extraPackages = with pkgs; [
       omnisharp-roslyn
-      #roslyn-ls
+      openssl_1_1.out
+      tofu-ls
+      yaml-language-server
+      helm-ls
       netcoredbg
       nil
       protols
@@ -50,6 +82,7 @@
       ty
     ];
   };
+
   programs.zellij = {
     enable = true;
     extraConfig = ''
@@ -69,5 +102,7 @@
         }
       }
     '';
+    enable = true;
+    enableNushellIntegration = true;
   };
 }
