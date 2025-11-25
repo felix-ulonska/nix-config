@@ -15,6 +15,7 @@ let
     ../../hm-imports/autorandr.nix
     ../../hm-imports/polybar.nix
     ../../hm-imports/nixvim.nix
+    ../../hm-imports/programs/helix.nix
     {
       stylix.targets.kde.enable = false;
       stylix.targets.hyprland.enable = true;
