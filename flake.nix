@@ -2,13 +2,13 @@
   description = "An example NixOS configuration";
 
   inputs = {
-    nixpkgs = { url = "github:nixos/nixpkgs/nixos-25.05"; };
+    nixpkgs = { url = "github:nixos/nixpkgs/nixos-25.11"; };
     deploy-rs = {
       url = "github:serokell/deploy-rs";
     };
     agenix.url = "github:ryantm/agenix";
-    simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-25.05";
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
+    simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-25.11";
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -32,7 +32,7 @@
     };
 
     #stylix.url = "github:nix-community/stylix/release-25.05";
-    stylix.url = "github:nix-community/stylix/7a0f30b57eb940cd280e2001c73b09a63e6a5311";
+    stylix.url = "github:nix-community/stylix/release-25.11";
 
 
     #hyprland = {

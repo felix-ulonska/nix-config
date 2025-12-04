@@ -1,9 +1,5 @@
-{ config, pkgs, nixpkgs, inputs, lib, ... }:
-{
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
+{ config, pkgs, nixpkgs, inputs, lib, ... }: {
+  imports = [ ./hardware-configuration.nix ];
 
   nixpkgs.config.allowUnfree = true;
 
@@ -13,18 +9,15 @@
       enableVisualApps = true;
     };
     i3wm.enable = true;
-    services = {
-      gnome.enable = true;
-    };
+    services = { gnome.enable = true; };
     docker.enable = true;
   };
-  #services.xserver.desktopManager.plasma5.enable = true;
-  programs.ssh.startAgent = true;
+  #programs.ssh.startAgent = true;
   programs.zsh.enable = true;
   programs.steam.enable = true;
   networking.nameservers = [ "1.1.1.1" "9.9.9.9" ];
 
-  services.logind.extraConfig = ''
+  services.logind.settings.Login.extraConfig = ''
     # don’t shutdown when power button is short-pressed
     HandlePowerKey=ignore
   '';
@@ -52,9 +45,7 @@
     };
   };
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-25.9.0"
-  ];
+  nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
 
   networking.hostName = "the-bird";
 
@@ -81,8 +72,10 @@
 
   users.users.jabbi = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "libvirtd" "adbusers" "scanner" "lp" "dialout" ];
-    hashedPassword = "$6$rejDSpuy6d$za9N7miMI/XHZNjZ6ib0IcaF511UdBn7QVwIV7MO1MTMO5yjVGwuvVT7kJlnTN165srbPd6rCJxtgdABTuEbj1";
+    extraGroups =
+      [ "wheel" "audio" "libvirtd" "adbusers" "scanner" "lp" "dialout" ];
+    hashedPassword =
+      "$6$rejDSpuy6d$za9N7miMI/XHZNjZ6ib0IcaF511UdBn7QVwIV7MO1MTMO5yjVGwuvVT7kJlnTN165srbPd6rCJxtgdABTuEbj1";
     shell = pkgs.zsh;
   };
 
@@ -91,30 +84,27 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGQ+BFtjE8D9+wVAnZ7IrhkTPlA62jdEq037+PaKCXkM jabbi@mimo"
   ];
 
-  environment.systemPackages = with pkgs; [
-    vim
-    htop
-    wireguard-tools
-  ];
+  environment.systemPackages = with pkgs; [ vim htop wireguard-tools ];
 
   networking.wireguard.interfaces = {
     wg0 = {
       ips = [ "10.100.0.4/32" ];
-      listenPort = 51820; 
+      listenPort = 51820;
       privateKeyFile = "/etc/wireguardKeys/private";
 
-      peers = [
-        {
-          publicKey = "IFDOKRBtVSIDK3/KMGov35o4geKXWoN5yaGsfVJ65Wc=";
-          allowedIPs = [ "10.100.0.0/24" ];
-          endpoint = "152.53.47.93:51820"; # ToDo: route to endpoint not automatically configured https://wiki.archlinux.org/index.php/WireGuard#Loop_routing https://discourse.nixos.org/t/solved-minimal-firewall-setup-for-wireguard-client/7577
-          persistentKeepalive = 25;
-        }
-      ];
+      peers = [{
+        publicKey = "IFDOKRBtVSIDK3/KMGov35o4geKXWoN5yaGsfVJ65Wc=";
+        allowedIPs = [ "10.100.0.0/24" ];
+        endpoint =
+          "152.53.47.93:51820"; # ToDo: route to endpoint not automatically configured https://wiki.archlinux.org/index.php/WireGuard#Loop_routing https://discourse.nixos.org/t/solved-minimal-firewall-setup-for-wireguard-client/7577
+        persistentKeepalive = 25;
+      }];
     };
   };
 
-
+  programs._1password.enable = true;
+  programs._1password-gui.polkitPolicyOwners = [ "jabbi" ];
+  programs._1password-gui.enable = true;
 
   networking.firewall.allowedTCPPorts = [ 22000 ];
 
@@ -136,7 +126,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
   networking.networkmanager.enable = true;
   networking.firewall = {
-    allowedUDPPorts = [ 51820 ]; # Clients and peers can use the same port, see listenport
+    allowedUDPPorts =
+      [ 51820 ]; # Clients and peers can use the same port, see listenport
   };
   swapDevices = [{
     device = "/var/lib/swapfile";

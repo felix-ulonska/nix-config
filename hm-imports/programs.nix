@@ -28,7 +28,7 @@
     networkmanagerapplet
 
     zathura
-    bitwarden
+    bitwarden-desktop
     inkscape
     ranger
     libxml2
