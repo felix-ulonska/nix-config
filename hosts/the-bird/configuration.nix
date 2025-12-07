@@ -62,6 +62,10 @@
   hardware.bluetooth.package = pkgs.bluez;
   programs.nix-ld.enable = true;
 
+  programs._1password.enable = true;
+  programs._1password-gui.enable = true;
+  programs._1password-gui.polkitPolicyOwners = ["jabbi"];
+
   # this is needed to get a bridge with DHCP enabled
   virtualisation.libvirtd.enable = true;
 
