@@ -3,10 +3,11 @@
 
   inputs = {
     nixpkgs = { url = "github:nixos/nixpkgs/nixos-25.11"; };
-    deploy-rs = { url = "github:serokell/deploy-rs"; };
+    deploy-rs = {
+      url = "github:serokell/deploy-rs";
+    };
     agenix.url = "github:ryantm/agenix";
-    simple-nixos-mailserver.url =
-      "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-25.11";
+    simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-25.11";
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -14,8 +15,7 @@
 
     impermanence.url = "github:nix-community/impermanence";
 
-    base16.url =
-      "github:SenchoPens/base16.nix/def69d6edc32792562975aec863dbef757f832cf";
+    base16.url = "github:SenchoPens/base16.nix/def69d6edc32792562975aec863dbef757f832cf";
     base16.inputs.nixpkgs.follows = "nixpkgs";
     disko.url =
       "github:nix-community/disko/c1cfbfad7cb45f0c177b35b59ba67d1b5fc7ca82";
@@ -31,7 +31,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    #stylix.url = "github:nix-community/stylix/release-25.05";
     stylix.url = "github:nix-community/stylix/release-25.11";
+
 
     #hyprland = {
     #  url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
@@ -69,9 +71,7 @@
 
     flake-utils.url = "github:numtide/flake-utils";
   };
-  outputs = inputs@{ self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver
-    , home-manager, base16, nur, impermanence, flake-utils, stylix, background
-    , nixos-hardware, felixnixvim, disko, lix-module, comin, ... }:
+  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, impermanence, flake-utils, stylix, background, nixos-hardware, felixnixvim, disko, lix-module, comin, ... }:
     let
       helper = import ./lib/helper.nix { inherit lib; };
       pkgs = import nixpkgs { system = "x86_64-linux"; };
@@ -103,45 +103,49 @@
       nixosModules = lib.my.mapModulesRec ./modules/services import;
       outputFoo = modulesList ++ [ ./hosts/silbervogel/configuration.nix ];
 
-      nixpkgs.config.permittedInsecurePackages = [ "openssl-1.1.1w" ];
-
-      nixosConfigurations.GLaDOS = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit lib inputs; };
-        modules = modulesList ++ [
-          ./hosts/glados/configuration.nix
-          nixos-hardware.nixosModules.lenovo-legion-16ach6h
-          #inputs.hyprland.nixosModules.default
-          { programs.hyprland.enable = true; }
-        ];
-      };
-      nixosConfigurations.the-bird = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit lib inputs; };
-        modules = modulesList ++ [
-          ./hosts/the-bird/configuration.nix
-          #inputs.hyprland.nixosModules.default
-          { programs.hyprland.enable = true; }
-        ];
-      };
-      nixosConfigurations.edgeless-safety-cube = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit lib inputs; };
-        modules = (modulesList ++ [
-          disko.nixosModules.disko
-          ./hosts/edgeless-safety-cube/configuration.nix
-          #inputs.hyprland.nixosModules.default
-        ]);
-      };
-      nixosConfigurations.cave = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit lib inputs; };
-        modules = modulesList ++ [
-          comin.nixosModules.comin
-          ./hosts/cave/configuration.nix
-          #inputs.hyprland.nixosModules.default
-        ];
-      };
+      nixosConfigurations.GLaDOS =
+        nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit lib inputs; };
+          modules = modulesList ++ [
+            ./hosts/glados/configuration.nix
+            nixos-hardware.nixosModules.lenovo-legion-16ach6h
+            #inputs.hyprland.nixosModules.default
+            { programs.hyprland.enable = true; }
+          ];
+        };
+      nixosConfigurations.the-bird =
+        nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit lib inputs; };
+          modules = modulesList ++ [
+            ./hosts/the-bird/configuration.nix
+            #inputs.hyprland.nixosModules.default
+            { programs.hyprland.enable = true;
+              #programs.hyprland.package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+            }
+          ];
+        };
+      nixosConfigurations.edgeless-safety-cube =
+        nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit lib inputs; };
+          modules = (modulesList ++ [
+            disko.nixosModules.disko
+            ./hosts/edgeless-safety-cube/configuration.nix
+            #inputs.hyprland.nixosModules.default
+          ]);
+        };
+      nixosConfigurations.cave =
+        nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit lib inputs; };
+          modules = modulesList ++ [
+            comin.nixosModules.comin
+            ./hosts/cave/configuration.nix
+            #inputs.hyprland.nixosModules.default
+          ];
+        };
 
       deploy = {
         remoteBuild = false;

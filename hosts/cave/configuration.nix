@@ -43,7 +43,7 @@
     libreoffice
     zoom-us
     syncthing
-    bitwarden
+    bitwarden-desktop
     anki-bin
     hunspellDicts.de_DE
 

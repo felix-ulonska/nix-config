@@ -119,10 +119,7 @@
         # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
     }
 
-    gestures {
-        # See https://wiki.hyprland.org/Configuring/Variables/ for more
-        workspace_swipe = on
-    }
+    #gesture = fingers, direction, action, options
 
 
     $mainMod = SUPER

@@ -34,8 +34,7 @@
 
   #boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_1;
 
-  #services.xserver.desktopManager.plasma5.enable = true;
-  #programs.ssh.startAgent = true;
+  programs.ssh.startAgent = true;
   programs.zsh.enable = true;
   programs.steam.enable = true;
 
