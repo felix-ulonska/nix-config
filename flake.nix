@@ -3,11 +3,10 @@
 
   inputs = {
     nixpkgs = { url = "github:nixos/nixpkgs/nixos-25.05"; };
-    deploy-rs = {
-      url = "github:serokell/deploy-rs";
-    };
+    deploy-rs = { url = "github:serokell/deploy-rs"; };
     agenix.url = "github:ryantm/agenix";
-    simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-25.05";
+    simple-nixos-mailserver.url =
+      "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-25.05";
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -15,9 +14,11 @@
 
     impermanence.url = "github:nix-community/impermanence";
 
-    base16.url = "github:SenchoPens/base16.nix/def69d6edc32792562975aec863dbef757f832cf";
+    base16.url =
+      "github:SenchoPens/base16.nix/def69d6edc32792562975aec863dbef757f832cf";
     base16.inputs.nixpkgs.follows = "nixpkgs";
-    disko.url = "github:nix-community/disko/c1cfbfad7cb45f0c177b35b59ba67d1b5fc7ca82";
+    disko.url =
+      "github:nix-community/disko/c1cfbfad7cb45f0c177b35b59ba67d1b5fc7ca82";
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
     itpms-site.url = "gitlab:itpms/website";
@@ -25,13 +26,14 @@
     felixnixvim.url = "github:felix-ulonska/vim";
 
     lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.1.tar.gz";
+      url =
+        "https://git.lix.systems/lix-project/nixos-module/archive/2.91.1.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     #stylix.url = "github:nix-community/stylix/release-25.05";
-    stylix.url = "github:nix-community/stylix/7a0f30b57eb940cd280e2001c73b09a63e6a5311";
-
+    stylix.url =
+      "github:nix-community/stylix/7a0f30b57eb940cd280e2001c73b09a63e6a5311";
 
     #hyprland = {
     #  url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
@@ -69,12 +71,17 @@
 
     flake-utils.url = "github:numtide/flake-utils";
   };
-  outputs = inputs @ { self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver, home-manager, base16, nur, impermanence, flake-utils, stylix, background, nixos-hardware, felixnixvim, disko, lix-module, comin, ... }:
+  outputs = inputs@{ self, nixpkgs, deploy-rs, agenix, simple-nixos-mailserver
+    , home-manager, base16, nur, impermanence, flake-utils, stylix, background
+    , nixos-hardware, felixnixvim, disko, lix-module, comin, ... }:
     let
       helper = import ./lib/helper.nix { inherit lib; };
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       lib = nixpkgs.lib.extend (self: super: {
-        my = import ./lib { inherit inputs; lib = self; };
+        my = import ./lib {
+          inherit inputs;
+          lib = self;
+        };
       });
       #backgroundImg = background;
       modulesList = lib.flatten [
@@ -82,7 +89,9 @@
         simple-nixos-mailserver.nixosModule
         #lix-module.nixosModules.default
         base16.nixosModule
-        { scheme = "${inputs.theme}/framer.yaml"; }
+        {
+          scheme = "${inputs.theme}/framer.yaml";
+        }
         #{ scheme = "${inputs.theme}/oxocarbon-light.yaml"; }
         #{ scheme = "${inputs.theme}/atelier-heath-light.yaml"; }
         #{ scheme = ./assets/summerfruit-light.yaml; }
@@ -91,53 +100,48 @@
         stylix.nixosModules.stylix
         (lib.my.mapModulesRec' (toString ./modules) import)
       ];
-    in
-    {
+    in {
       lib = lib.my;
       nixosModules = lib.my.mapModulesRec ./modules/services import;
       outputFoo = modulesList ++ [ ./hosts/silbervogel/configuration.nix ];
 
-      nixosConfigurations.GLaDOS =
-        nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit lib inputs; };
-          modules = modulesList ++ [
-            ./hosts/glados/configuration.nix
-            nixos-hardware.nixosModules.lenovo-legion-16ach6h
-            #inputs.hyprland.nixosModules.default
-            { programs.hyprland.enable = true; }
-          ];
-        };
-      nixosConfigurations.the-bird =
-        nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit lib inputs; };
-          modules = modulesList ++ [
-            ./hosts/the-bird/configuration.nix
-            #inputs.hyprland.nixosModules.default
-            { programs.hyprland.enable = true; }
-          ];
-        };
-      nixosConfigurations.edgeless-safety-cube =
-        nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit lib inputs; };
-          modules = (modulesList ++ [
-            disko.nixosModules.disko
-            ./hosts/edgeless-safety-cube/configuration.nix
-            #inputs.hyprland.nixosModules.default
-          ]);
-        };
-      nixosConfigurations.cave =
-        nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit lib inputs; };
-          modules = modulesList ++ [
-            comin.nixosModules.comin
-            ./hosts/cave/configuration.nix
-            #inputs.hyprland.nixosModules.default
-          ];
-        };
+      nixosConfigurations.GLaDOS = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit lib inputs; };
+        modules = modulesList ++ [
+          ./hosts/glados/configuration.nix
+          nixos-hardware.nixosModules.lenovo-legion-16ach6h
+          #inputs.hyprland.nixosModules.default
+          { programs.hyprland.enable = true; }
+        ];
+      };
+      nixosConfigurations.the-bird = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit lib inputs; };
+        modules = modulesList ++ [
+          ./hosts/the-bird/configuration.nix
+          #inputs.hyprland.nixosModules.default
+          { programs.hyprland.enable = true; }
+        ];
+      };
+      nixosConfigurations.edgeless-safety-cube = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit lib inputs; };
+        modules = (modulesList ++ [
+          disko.nixosModules.disko
+          ./hosts/edgeless-safety-cube/configuration.nix
+          #inputs.hyprland.nixosModules.default
+        ]);
+      };
+      nixosConfigurations.cave = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit lib inputs; };
+        modules = modulesList ++ [
+          comin.nixosModules.comin
+          ./hosts/cave/configuration.nix
+          #inputs.hyprland.nixosModules.default
+        ];
+      };
 
       deploy = {
         remoteBuild = false;
@@ -147,7 +151,8 @@
             sshUser = "root";
             profiles.system = {
               user = "root";
-              path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."GLaDOS";
+              path = deploy-rs.lib.x86_64-linux.activate.nixos
+                self.nixosConfigurations."GLaDOS";
               magicRollback = false;
               sshOpts = [ "-o" "StrictHostKeyChecking=no" ];
             };
@@ -158,7 +163,8 @@
             remoteBuild = true;
             profiles.system = {
               user = "root";
-              path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."edgeless-safety-cube";
+              path = deploy-rs.lib.x86_64-linux.activate.nixos
+                self.nixosConfigurations."edgeless-safety-cube";
               magicRollback = false;
             };
           };
@@ -168,14 +174,16 @@
             remoteBuild = true;
             profiles.system = {
               user = "root";
-              path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."the-bird";
+              path = deploy-rs.lib.x86_64-linux.activate.nixos
+                self.nixosConfigurations."the-bird";
               magicRollback = false;
             };
           };
         };
       };
 
-      checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
+      checks = builtins.mapAttrs
+        (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
 
       devShell.x86_64-linux = pkgs.mkShell {
         buildInputs = [
@@ -186,13 +194,10 @@
       };
     } // flake-utils.lib.eachDefaultSystem (system:
       let pkgs = nixpkgs.legacyPackages.${system};
-      in
-      {
+      in {
 
         devShells.default = pkgs.mkShell {
-          buildInputs = [
-            agenix.packages.x86_64-linux.default
-          ];
+          buildInputs = [ agenix.packages.x86_64-linux.default ];
         };
       });
 }

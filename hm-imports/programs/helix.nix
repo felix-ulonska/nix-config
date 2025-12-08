@@ -11,7 +11,7 @@
         insert = { j = { k = "normal_mode"; }; };
         normal = {
           q = let
-            yazi-picker = writeShellApplication {
+            yazi-picker = pkgs.writeShellApplication {
               name = "yazi-picker";
 
               text = ''
@@ -102,7 +102,6 @@
         }
       }
     '';
-    enable = true;
-    enableNushellIntegration = true;
+    #enableNushellIntegration = true;
   };
 }
