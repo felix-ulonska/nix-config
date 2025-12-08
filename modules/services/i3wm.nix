@@ -1,12 +1,8 @@
 { lib, config, pkgs, ... }:
 with lib;
-let
-  cfg = config.jabbi.i3wm;
-in
-{
-  options.jabbi.i3wm = {
-    enable = mkEnableOption "Enable i3wm";
-  };
+let cfg = config.jabbi.i3wm;
+in {
+  options.jabbi.i3wm = { enable = mkEnableOption "Enable i3wm"; };
   config = mkIf cfg.enable {
     services.xserver = {
       #enable = true;
@@ -16,8 +12,8 @@ in
       #  xterm.enable = false;
       #};
       windowManager.i3 = {
-        enable = true;
-        package = pkgs.i3-gaps;
+        enable = false;
+        #package = pkgs.i3-gaps;
       };
     };
     programs.sway = {

@@ -1,9 +1,5 @@
-{ config, pkgs, nixpkgs, inputs, lib, ... }:
-{
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
+{ config, pkgs, nixpkgs, inputs, lib, ... }: {
+  imports = [ ./hardware-configuration.nix ];
 
   nixpkgs.config.allowUnfree = true;
   services.desktopManager.cosmic.enable = true;
@@ -19,29 +15,27 @@
 
   services.openssh.settings.LogLevel = "DEBUG3";
 
-
   jabbi = {
     home = {
       enable = true;
       enableVisualApps = true;
     };
     i3wm.enable = true;
-    services = {
-      gnome.enable = true;
-    };
+    services = { gnome.enable = true; };
     docker.enable = true;
     #hardware.nvidia.enable = true;
   };
   #boot.tmp.useTmpfs = true;
   boot.binfmt = {
-    emulatedSystems = [ "aarch64-linux" "armv7l-linux" "mips-linux" "riscv32-linux" ];
+    emulatedSystems =
+      [ "aarch64-linux" "armv7l-linux" "mips-linux" "riscv32-linux" ];
     preferStaticEmulators = true; # Make it work with Docker
   };
 
   #boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_1;
 
   #services.xserver.desktopManager.plasma5.enable = true;
-  programs.ssh.startAgent = true;
+  #programs.ssh.startAgent = true;
   programs.zsh.enable = true;
   programs.steam.enable = true;
 
@@ -77,8 +71,10 @@
 
   users.users.jabbi = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "libvirtd" "adbusers" "scanner" "lp" "wireshark" ];
-    hashedPassword = "$6$rejDSpuy6d$za9N7miMI/XHZNjZ6ib0IcaF511UdBn7QVwIV7MO1MTMO5yjVGwuvVT7kJlnTN165srbPd6rCJxtgdABTuEbj1";
+    extraGroups =
+      [ "wheel" "audio" "libvirtd" "adbusers" "scanner" "lp" "wireshark" ];
+    hashedPassword =
+      "$6$rejDSpuy6d$za9N7miMI/XHZNjZ6ib0IcaF511UdBn7QVwIV7MO1MTMO5yjVGwuvVT7kJlnTN165srbPd6rCJxtgdABTuEbj1";
     shell = pkgs.nushell;
   };
 
@@ -92,7 +88,7 @@
     vim
     dig
     htop
-    steam-run-native
+    steam-run
 
     xdg-desktop-portal-gnome
     xdg-desktop-portal-gtk
@@ -134,7 +130,8 @@
         {
           publicKey = "IFDOKRBtVSIDK3/KMGov35o4geKXWoN5yaGsfVJ65Wc=";
           allowedIPs = [ "10.100.0.0/24" ];
-          endpoint = "152.53.47.93:51820"; # ToDo: route to endpoint not automatically configured https://wiki.archlinux.org/index.php/WireGuard#Loop_routing https://discourse.nixos.org/t/solved-minimal-firewall-setup-for-wireguard-client/7577
+          endpoint =
+            "152.53.47.93:51820"; # ToDo: route to endpoint not automatically configured https://wiki.archlinux.org/index.php/WireGuard#Loop_routing https://discourse.nixos.org/t/solved-minimal-firewall-setup-for-wireguard-client/7577
           persistentKeepalive = 25;
         }
       ];

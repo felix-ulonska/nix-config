@@ -1,5 +1,4 @@
-{ pkgs, config, inputs, ... }:
-{
+{ pkgs, config, inputs, ... }: {
   programs.k9s.enable = true;
   home.packages = with pkgs; [
     keepassxc
@@ -28,7 +27,7 @@
     networkmanagerapplet
 
     zathura
-    bitwarden
+    bitwarden-desktop
     inkscape
     ranger
     libxml2
@@ -51,9 +50,7 @@
     #];
   };
 
-  services.nextcloud-client = {
-    enable = true;
-  };
+  services.nextcloud-client = { enable = true; };
 
   services.syncthing.enable = true;
 }

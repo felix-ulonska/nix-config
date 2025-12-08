@@ -2,11 +2,11 @@
   description = "An example NixOS configuration";
 
   inputs = {
-    nixpkgs = { url = "github:nixos/nixpkgs/nixos-25.05"; };
+    nixpkgs = { url = "github:nixos/nixpkgs/nixos-25.11"; };
     deploy-rs = { url = "github:serokell/deploy-rs"; };
     agenix.url = "github:ryantm/agenix";
     simple-nixos-mailserver.url =
-      "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-25.05";
+      "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-25.11";
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -31,9 +31,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    #stylix.url = "github:nix-community/stylix/release-25.05";
-    stylix.url =
-      "github:nix-community/stylix/7a0f30b57eb940cd280e2001c73b09a63e6a5311";
+    stylix.url = "github:nix-community/stylix/release-25.11";
 
     #hyprland = {
     #  url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
@@ -76,7 +74,7 @@
     , nixos-hardware, felixnixvim, disko, lix-module, comin, ... }:
     let
       helper = import ./lib/helper.nix { inherit lib; };
-      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      pkgs = import nixpkgs { system = "x86_64-linux"; };
       lib = nixpkgs.lib.extend (self: super: {
         my = import ./lib {
           inherit inputs;
@@ -104,6 +102,8 @@
       lib = lib.my;
       nixosModules = lib.my.mapModulesRec ./modules/services import;
       outputFoo = modulesList ++ [ ./hosts/silbervogel/configuration.nix ];
+
+      nixpkgs.config.permittedInsecurePackages = [ "openssl-1.1.1w" ];
 
       nixosConfigurations.GLaDOS = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";

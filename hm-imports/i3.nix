@@ -4,8 +4,7 @@
 let
   modifier = "Mod4";
   alacritty = "${pkgs.alacritty}/bin/alacritty";
-in
-{
+in {
   inherit scheme;
 
   xdg.portal.enable = true;
@@ -16,12 +15,10 @@ in
     pkgs.xdg-desktop-portal-wlr
   ];
 
-  home.packages = with pkgs; [
-    brightnessctl
-  ];
+  home.packages = with pkgs; [ brightnessctl ];
 
   xsession.windowManager.i3 = {
-    enable = true;
+    enable = false;
     config = {
       terminal = alacritty;
       inherit modifier;
@@ -34,14 +31,39 @@ in
       defaultWorkspace = "workspace number 1";
 
       startup = [
-        { command = "autorandr -c"; notification = false; always = true; }
-        { command = "timeular --disable-gpu-sandbox"; notification = false; }
-        { command = "systemctl restart polybar --user"; notification = false; }
-        { command = "keepassxc"; notification = false; }
-        { command = "logseq"; notification = false; }
-        { command = "xclip"; notification = false; }
-        { command = "flameshot"; notification = false; }
-        { command = "nm-applet"; notification = false; }
+        {
+          command = "autorandr -c";
+          notification = false;
+          always = true;
+        }
+        {
+          command = "timeular --disable-gpu-sandbox";
+          notification = false;
+        }
+        {
+          command = "systemctl restart polybar --user";
+          notification = false;
+        }
+        {
+          command = "keepassxc";
+          notification = false;
+        }
+        {
+          command = "logseq";
+          notification = false;
+        }
+        {
+          command = "xclip";
+          notification = false;
+        }
+        {
+          command = "flameshot";
+          notification = false;
+        }
+        {
+          command = "nm-applet";
+          notification = false;
+        }
       ];
 
       window.commands = [
@@ -108,26 +130,16 @@ in
         "${modifier}+9" = "workspace number 9";
         "${modifier}+0" = "workspace number 10";
 
-        "${modifier}+Shift+1" =
-          "move container to workspace number 1";
-        "${modifier}+Shift+2" =
-          "move container to workspace number 2";
-        "${modifier}+Shift+3" =
-          "move container to workspace number 3";
-        "${modifier}+Shift+4" =
-          "move container to workspace number 4";
-        "${modifier}+Shift+5" =
-          "move container to workspace number 5";
-        "${modifier}+Shift+6" =
-          "move container to workspace number 6";
-        "${modifier}+Shift+7" =
-          "move container to workspace number 7";
-        "${modifier}+Shift+8" =
-          "move container to workspace number 8";
-        "${modifier}+Shift+9" =
-          "move container to workspace number 9";
-        "${modifier}+Shift+0" =
-          "move container to workspace number 10";
+        "${modifier}+Shift+1" = "move container to workspace number 1";
+        "${modifier}+Shift+2" = "move container to workspace number 2";
+        "${modifier}+Shift+3" = "move container to workspace number 3";
+        "${modifier}+Shift+4" = "move container to workspace number 4";
+        "${modifier}+Shift+5" = "move container to workspace number 5";
+        "${modifier}+Shift+6" = "move container to workspace number 6";
+        "${modifier}+Shift+7" = "move container to workspace number 7";
+        "${modifier}+Shift+8" = "move container to workspace number 8";
+        "${modifier}+Shift+9" = "move container to workspace number 9";
+        "${modifier}+Shift+0" = "move container to workspace number 10";
 
         "${modifier}+Shift+c" = "reload";
         "${modifier}+Shift+r" = "restart";

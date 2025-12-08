@@ -70,7 +70,6 @@
     };
     extraPackages = with pkgs; [
       omnisharp-roslyn
-      openssl_1_1.out
       tofu-ls
       yaml-language-server
       helm-ls
