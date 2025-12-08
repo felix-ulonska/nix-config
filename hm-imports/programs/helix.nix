@@ -55,6 +55,11 @@
         name = "hcl";
         file-types = [ "tofu" ];
       }
+      {
+        name = "markdown";
+        file-types = [ "md" "mdx" ];
+        language-servers = [ "ltex" "marksman" ];
+      }
     ];
     languages.language-server = {
       roslyn = {
@@ -67,6 +72,7 @@
           "/tmp/foo"
         ];
       };
+      ltex = { command = "${pkgs.ltex-ls-plus}/bin/ltex-ls-plus"; };
     };
     extraPackages = with pkgs; [
       omnisharp-roslyn
@@ -79,6 +85,7 @@
       rust-analyzer
       typescript-language-server
       ty
+      marksman
     ];
   };
 
