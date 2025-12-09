@@ -19,6 +19,7 @@ in
     services.xserver.desktopManager.gnome.enable = true;
     services.libinput.enable = true;
     services.udev.packages = with pkgs; [ platformio ];
+    services.gnome.gcr-ssh-agent.enable = lib.mkForce false;
 
     hardware.pulseaudio.enable = false;
 

@@ -61,6 +61,7 @@ in
 
     services.postgresql = {
       enable = true;
+      package = pkgs.postgresql_14;
 
       # Ensure the database, user, and permissions always exist
       ensureDatabases = [ "nextcloud" ];

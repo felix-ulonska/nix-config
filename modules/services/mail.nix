@@ -37,6 +37,7 @@ in
       enable = true;
       fqdn = "mail.webfoo.de";
       domains = [ "webfoo.de" "it-projekt-muenster.de" ];
+      stateVersion = 3;
 
       # A list of all login accounts. To create the password hashes, use
       # nix run nixpkgs.apacheHttpd -c htpasswd -nbB "" "super secret password" | cut -d: -f2
