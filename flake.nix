@@ -32,9 +32,6 @@
 
     stylix.url = "github:nix-community/stylix/release-25.11";
 
-    #hyprland = {
-    #  url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    #};
     comin = {
       url = "github:nlewo/comin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -100,19 +97,13 @@
           };
         }
       );
-      #backgroundImg = background;
       modulesList = lib.flatten [
         agenix.nixosModules.default
         simple-nixos-mailserver.nixosModule
-        #lix-module.nixosModules.default
         base16.nixosModule
         {
           scheme = "${inputs.theme}/framer.yaml";
         }
-        #{ scheme = "${inputs.theme}/oxocarbon-light.yaml"; }
-        #{ scheme = "${inputs.theme}/atelier-heath-light.yaml"; }
-        #{ scheme = ./assets/summerfruit-light.yaml; }
-        #{ scheme = "${inputs.theme}/windows-95-light.yaml"; }
         home-manager.nixosModules.home-manager
         stylix.nixosModules.stylix
         (lib.my.mapModulesRec' (toString ./modules) import)
@@ -129,7 +120,6 @@
         modules = modulesList ++ [
           ./hosts/glados/configuration.nix
           nixos-hardware.nixosModules.lenovo-legion-16ach6h
-          #inputs.hyprland.nixosModules.default
           { programs.hyprland.enable = true; }
         ];
       };
@@ -138,10 +128,8 @@
         specialArgs = { inherit lib inputs; };
         modules = modulesList ++ [
           ./hosts/the-bird/configuration.nix
-          #inputs.hyprland.nixosModules.default
           {
             programs.hyprland.enable = true;
-            #programs.hyprland.package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
           }
         ];
       };
@@ -153,7 +141,6 @@
           ++ [
             disko.nixosModules.disko
             ./hosts/edgeless-safety-cube/configuration.nix
-            #inputs.hyprland.nixosModules.default
           ]
         );
       };
@@ -163,7 +150,6 @@
         modules = modulesList ++ [
           comin.nixosModules.comin
           ./hosts/cave/configuration.nix
-          #inputs.hyprland.nixosModules.default
         ];
       };
 
@@ -210,9 +196,7 @@
 
       devShell.x86_64-linux = pkgs.mkShell {
         buildInputs = [
-          pkgs.lefthook
           pkgs.nixpkgs-fmt
-          #agenix.nixosModules.default
         ];
       };
     }

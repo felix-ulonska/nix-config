@@ -1,4 +1,12 @@
-{ lib, config, home-manager, pkgs, inputs, backgroundImg, ... }:
+{
+  lib,
+  config,
+  home-manager,
+  pkgs,
+  inputs,
+  backgroundImg,
+  ...
+}:
 with lib;
 with lib.my;
 let
@@ -18,6 +26,7 @@ let
     ../../hm-imports/programs/helix.nix
     {
       stylix.targets.kde.enable = false;
+      stylix.targets.firefox.profileNames = [ "Arbeit" ];
       stylix.targets.hyprland.enable = true;
       # Just broken, I do not use that tool?!
       stylix.targets.bemenu.enable = false;
@@ -53,12 +62,18 @@ in
     #home-manager.useUserPackages = true;
     home-manager.users."${cfg.userName}" = {
       home.stateVersion = "22.05";
-      imports = baseImports ++ optionals cfg.enableVisualApps visualImports ++ optional cfg.impermanence ../../hm-imports/impermanence.nix;
+      imports =
+        baseImports
+        ++ optionals cfg.enableVisualApps visualImports
+        ++ optional cfg.impermanence ../../hm-imports/impermanence.nix;
       nixpkgs.config.allowUnfree = true;
     };
 
     #home-manager.extraSpecialArgs = { config.scheme = config.scheme; config.targets.darwin = {search = null; keybindings = null; defaults = {}; currentHostDefaults = {};}; inputs = inputs; };
-    home-manager.extraSpecialArgs = { inherit (config) scheme; inherit inputs backgroundImg; };
+    home-manager.extraSpecialArgs = {
+      inherit (config) scheme;
+      inherit inputs backgroundImg;
+    };
 
     systemd.services.persistence-folder = {
       script = ''
