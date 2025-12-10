@@ -1,10 +1,15 @@
-{ home-manager, config, lib, ... }:
+{
+  home-manager,
+  config,
+  lib,
+  ...
+}:
 {
   programs.git = {
     enable = true;
     lfs.enable = true;
 
-    extraConfig = {
+    settings = {
       user.name = "Felix Ulonska";
       user.email = "git@webfoo.de";
       url."https://github.com/".insteadOf = "git://github.com/";
