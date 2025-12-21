@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.helix = {
     enable = true;
     settings = {
@@ -8,33 +9,36 @@
         select = "underline";
       };
       keys = {
-        insert = { j = { k = "normal_mode"; }; };
-        normal = {
-          q = let
-            yazi-picker = pkgs.writeShellApplication {
-              name = "yazi-picker";
-
-              text = ''
-                #!${pkgs.bash}/bin/bash
-
-                serpl
-                exit_code=$?
-
-                if [[ $exit_code -eq 0 ]]; then
-                    zellij action toggle-floating-panes
-                    zellij action write-chars ":reload-all"
-                    zellij action write 13 # send <Enter> key
-                fi
-              '';
-            };
-          in {
-            q =
-              ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh open";
-            v =
-              ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh vsplit";
-            s =
-              ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% -- bash ~/.config/helix/yazi-picker.sh hsplit";
+        insert = {
+          j = {
+            k = "normal_mode";
           };
+        };
+        normal = {
+          q =
+            let
+              yazi-picker = pkgs.writeShellApplication {
+                name = "yazi-picker";
+
+                text = ''
+                  #!${pkgs.bash}/bin/bash
+
+                  serpl
+                  exit_code=$?
+
+                  if [[ $exit_code -eq 0 ]]; then
+                      zellij action toggle-floating-panes
+                      zellij action write-chars ":reload-all"
+                      zellij action write 13 # send <Enter> key
+                  fi
+                '';
+              };
+            in
+            {
+              q = ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% -- bash ${yazi-picker} open";
+              v = ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% -- bash ${yazi-picker} vsplit";
+              s = ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% -- bash ${yazi-picker} hsplit";
+            };
         };
       };
     };
@@ -48,7 +52,10 @@
         name = "c-sharp";
         auto-format = true;
         formatter.command = "dotnet";
-        formatter.args = [ "csharpier" "format" ];
+        formatter.args = [
+          "csharpier"
+          "format"
+        ];
         #language-servers = [ "roslyn" ];
       }
       {
@@ -57,8 +64,14 @@
       }
       {
         name = "markdown";
-        file-types = [ "md" "mdx" ];
-        language-servers = [ "ltex" "marksman" ];
+        file-types = [
+          "md"
+          "mdx"
+        ];
+        language-servers = [
+          "ltex"
+          "marksman"
+        ];
       }
     ];
     languages.language-server = {
@@ -72,7 +85,9 @@
           "/tmp/foo"
         ];
       };
-      ltex = { command = "${pkgs.ltex-ls-plus}/bin/ltex-ls-plus"; };
+      ltex = {
+        command = "${pkgs.ltex-ls-plus}/bin/ltex-ls-plus";
+      };
     };
     extraPackages = with pkgs; [
       omnisharp-roslyn

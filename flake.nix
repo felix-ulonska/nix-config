@@ -102,7 +102,7 @@
         simple-nixos-mailserver.nixosModule
         base16.nixosModule
         {
-          scheme = "${inputs.theme}/framer.yaml";
+          scheme = "${inputs.theme}/eva.yaml";
         }
         home-manager.nixosModules.home-manager
         stylix.nixosModules.stylix

@@ -10,6 +10,10 @@
   services.desktopManager.cosmic.enable = true;
   services.displayManager.cosmic-greeter.enable = true;
 
+  programs._1password.enable = true;
+  programs._1password-gui.polkitPolicyOwners = [ "jabbi" ];
+  programs._1password-gui.enable = true;
+
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [
     pkgs.xdg-desktop-portal-gnome

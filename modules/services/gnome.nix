@@ -25,7 +25,6 @@ in
     services.displayManager.gdm.enable = true;
     services.desktopManager.gnome.enable = true;
     services.libinput.enable = true;
-    services.udev.packages = with pkgs; [ platformio ];
     services.gnome.gcr-ssh-agent.enable = lib.mkForce false;
 
     environment.systemPackages = with pkgs; [
