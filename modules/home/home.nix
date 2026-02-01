@@ -12,7 +12,6 @@ with lib.my;
 let
   cfg = config.jabbi.home;
   baseImports = [
-    "${inputs.impermanence}/home-manager.nix"
     inputs.base16.homeManagerModule
     inputs.felixnixvim.homeManagerModules.default
     ../../hm-imports/i3.nix
@@ -62,10 +61,7 @@ in
     #home-manager.useUserPackages = true;
     home-manager.users."${cfg.userName}" = {
       home.stateVersion = "22.05";
-      imports =
-        baseImports
-        ++ optionals cfg.enableVisualApps visualImports
-        ++ optional cfg.impermanence ../../hm-imports/impermanence.nix;
+      imports = baseImports ++ optionals cfg.enableVisualApps visualImports;
       nixpkgs.config.allowUnfree = true;
     };
 
@@ -73,17 +69,6 @@ in
     home-manager.extraSpecialArgs = {
       inherit (config) scheme;
       inherit inputs backgroundImg;
-    };
-
-    systemd.services.persistence-folder = {
-      script = ''
-        mkdir -p /nix/persist/home/jabbi
-        chown jabbi /nix/persist/home/jabbi
-      '';
-      wantedBy = [ "multi-user.target" ];
-      serviceConfig = {
-        Type = "oneshot";
-      };
     };
   };
 }

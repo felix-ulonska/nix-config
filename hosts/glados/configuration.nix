@@ -34,6 +34,8 @@
     docker.enable = true;
   };
 
+  services.tailscale.enable = true;
+
   programs.ssh.startAgent = true;
   programs.zsh.enable = true;
   programs.steam.enable = true;

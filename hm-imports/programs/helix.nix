@@ -49,6 +49,14 @@
         formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
       }
       {
+        name = "tsx";
+        language-servers = [
+          "typescript-language-server"
+          "vscode-lang-eslint"
+          "tailwindcss"
+        ];
+      }
+      {
         name = "c-sharp";
         auto-format = true;
         formatter.command = "dotnet";
@@ -56,7 +64,10 @@
           "csharpier"
           "format"
         ];
-        #language-servers = [ "roslyn" ];
+        language-servers = [
+          "omnisharp"
+          "hx-lsp"
+        ];
       }
       {
         name = "hcl";
@@ -75,19 +86,20 @@
       }
     ];
     languages.language-server = {
-      roslyn = {
-        command = "Microsoft.CodeAnalysis.LanguageServer";
-        args = [
-          "--stdio"
-          "--logLevel"
-          "Error"
-          "--extensionLogDirectory"
-          "/tmp/foo"
-        ];
-      };
       ltex = {
         command = "${pkgs.ltex-ls-plus}/bin/ltex-ls-plus";
       };
+      hx-lsp = {
+        command = "${pkgs.hx-lsp}/bin/hx-lsp";
+      };
+      tailwindcss = {
+        command = "${pkgs.tailwindcss-language-server}/bin/tailwindcss-language-server";
+        args = ["--stdio"];
+      };
+      vscode-lang-eslint = {
+        command = "${pkgs.vscode-langservers-extracted}/bin/vscode-eslint-language-server";
+        args = ["--stdio"];
+     };
     };
     extraPackages = with pkgs; [
       omnisharp-roslyn
