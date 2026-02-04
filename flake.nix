@@ -8,6 +8,10 @@
     deploy-rs = {
       url = "github:serokell/deploy-rs";
     };
+    authentik-nix = {
+      url = "github:nix-community/authentik-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     agenix.url = "github:ryantm/agenix";
     simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-25.11";
     home-manager.url = "github:nix-community/home-manager/release-25.11";
@@ -141,6 +145,7 @@
           ++ [
             disko.nixosModules.disko
             ./hosts/edgeless-safety-cube/configuration.nix
+            inputs.authentik-nix.nixosModules.default
           ]
         );
       };

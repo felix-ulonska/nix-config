@@ -1,30 +1,32 @@
-{ config, pkgs, modulesPath, ... }:
 {
-  imports =
-    [
-      ./disk-config.nix
-      (modulesPath + "/installer/scan/not-detected.nix")
-      (modulesPath + "/profiles/qemu-guest.nix")
-    ];
+  config,
+  pkgs,
+  modulesPath,
+  ...
+}:
+{
+  imports = [
+    ./disk-config.nix
+    (modulesPath + "/installer/scan/not-detected.nix")
+    (modulesPath + "/profiles/qemu-guest.nix")
+  ];
 
   nixpkgs.config.allowUnfree = true;
 
   #jabbi.services.gitlab-runner.enable = true;
   jabbi.docker.enable = true;
-  jabbi.services.itpms-site.enable = true;
-
-  jabbi.services.nextcloud.enable = true;
-  jabbi.services.nginx.enable = true;
-  jabbi.services.wireguard.enable = true;
-  jabbi.services.mail.enable = true;
-  jabbi.services.uptime-kuma.enable = true;
-  ## jabbi.services.fix-ms.enable = true;
-  jabbi.services.paperless.enable = true;
-  jabbi.services.wordpress.enable = true;
-  jabbi.services.resticSecrets.enable = true;
-  services.syncthing = {
-    enable = true;
-    openDefaultPorts = true; # Open ports in the firewall for Syncthing
+  jabbi.services = {
+    authentik.enable = true;
+    itpms-site.enable = true;
+    nextcloud.enable = true;
+    nginx.enable = true;
+    wireguard.enable = true;
+    mail.enable = true;
+    uptime-kuma.enable = true;
+    ## jabbi.services.fix-ms.enable = true;
+    paperless.enable = true;
+    wordpress.enable = true;
+    resticSecrets.enable = true;
   };
 
   networking.hostName = "edgeless-safety-cube";
@@ -51,7 +53,11 @@
     htop
   ];
 
-  networking.firewall.allowedTCPPorts = [ 80 443 25565 ];
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+    25565
+  ];
 
   services.openssh = {
     enable = true;
@@ -63,6 +69,8 @@
   system.stateVersion = "21.11";
 
   nix.sshServe.enable = true;
-  nix.sshServe.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGQ+BFtjE8D9+wVAnZ7IrhkTPlA62jdEq037+PaKCXkM jabbi@mimo" ];
+  nix.sshServe.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGQ+BFtjE8D9+wVAnZ7IrhkTPlA62jdEq037+PaKCXkM jabbi@mimo"
+  ];
   nix.sshServe.protocol = "ssh-ng";
 }
