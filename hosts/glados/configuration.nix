@@ -147,6 +147,7 @@
       device = "/dev/disk/by-uuid/e7a87461-a0d4-470d-ba3b-d9a7ca417d2e";
       preLVM = true;
       bypassWorkqueues = true;
+      allowDiscards = true;
     };
   };
 
@@ -155,6 +156,7 @@
       device = "/dev/disk/by-uuid/15b532ec-ac21-4e63-8809-120675ee68b8";
       preLVM = true;
       bypassWorkqueues = true;
+      allowDiscards = true;
     };
   };
 
