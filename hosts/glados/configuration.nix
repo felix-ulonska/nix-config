@@ -35,6 +35,7 @@
   };
 
   services.tailscale.enable = true;
+  services.logind.lidSwitchExternalPower = "ignore";
 
   programs.ssh.startAgent = true;
   programs.zsh.enable = true;
