@@ -101,7 +101,6 @@
         }
       );
       modulesList = lib.flatten [
-        inputs.authentik-nix.nixosModules.default
         agenix.nixosModules.default
         simple-nixos-mailserver.nixosModule
         base16.nixosModule
@@ -137,6 +136,14 @@
           }
         ];
       };
+      nixosConfigurations.tower = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit lib inputs; };
+        modules = modulesList ++ [
+          disko.nixosModules.disko
+          ./hosts/tower/configuration.nix
+        ];
+      };
       nixosConfigurations.edgeless-safety-cube = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit lib inputs; };
@@ -170,6 +177,15 @@
                 "-o"
                 "StrictHostKeyChecking=no"
               ];
+            };
+          };
+          "tower" = {
+            hostname = "alfred.webfoo.de";
+            sshUser = "root";
+            profiles.system = {
+              user = "root";
+              path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."tower";
+              magicRollback = false;
             };
           };
           "edgeless-safety-cube" = {
