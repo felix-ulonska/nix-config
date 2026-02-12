@@ -1,9 +1,14 @@
-{ pkgs, config, inputs, ... }: {
+{
+  pkgs,
+  config,
+  inputs,
+  ...
+}:
+{
   programs.k9s.enable = true;
   home.packages = with pkgs; [
     keepassxc
     lazygit
-    obsidian
     vscode
     (nerd-fonts.agave)
     pavucontrol
@@ -50,7 +55,9 @@
     #];
   };
 
-  services.nextcloud-client = { enable = true; };
+  services.nextcloud-client = {
+    enable = true;
+  };
 
   services.syncthing.enable = true;
 }

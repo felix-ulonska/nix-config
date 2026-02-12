@@ -10,7 +10,6 @@
     };
     authentik-nix = {
       url = "github:nix-community/authentik-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     agenix.url = "github:ryantm/agenix";
     simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-25.11";
@@ -102,6 +101,7 @@
         }
       );
       modulesList = lib.flatten [
+        inputs.authentik-nix.nixosModules.default
         agenix.nixosModules.default
         simple-nixos-mailserver.nixosModule
         base16.nixosModule
@@ -145,7 +145,6 @@
           ++ [
             disko.nixosModules.disko
             ./hosts/edgeless-safety-cube/configuration.nix
-            inputs.authentik-nix.nixosModules.default
           ]
         );
       };
@@ -159,7 +158,6 @@
       };
 
       deploy = {
-        remoteBuild = false;
         nodes = {
           "GLaDOS" = {
             hostname = "10.0.0.64";
@@ -177,7 +175,7 @@
           "edgeless-safety-cube" = {
             hostname = "webfoo.de";
             sshUser = "root";
-            remoteBuild = true;
+            remoteBuild = false;
             profiles.system = {
               user = "root";
               path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations."edgeless-safety-cube";
