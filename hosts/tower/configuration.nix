@@ -18,9 +18,17 @@
   boot.loader.grub.enable = true;
   services.openssh.enable = true;
 
-  services.postgresql = {
-    enable = false;
-  };
+  sops.defaultSopsFile = ../../sops-secrets/authentik.yaml;
+  sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+  security.acme.acceptTerms = true;
+  security.acme.defaults.email = "le@webfoo.de";
+
+  jabbi.services.authentik.enable = true;
+
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+  ];
 
   system.stateVersion = "25.11";
 }

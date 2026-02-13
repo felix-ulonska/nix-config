@@ -13,6 +13,8 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  sops.defaultSopsFile = ../../sops-secrets/authentik.yaml;
+
   #jabbi.services.gitlab-runner.enable = true;
   jabbi.docker.enable = true;
   jabbi.services = {

@@ -10,6 +10,7 @@
   imports = [ ./hardware-configuration.nix ];
 
   nixpkgs.config.allowUnfree = true;
+  sops.defaultSopsFile = ../../sops-secrets/authentik.yaml;
 
   jabbi = {
     home = {

@@ -1,0 +1,10 @@
+keys:
+  - &felix age1e8e86xkqj9jan0ljh7k447p7aytp0w8gw9meu55kjjn8ljy5p54qu6qm7k
+  - &server_tower age1gp69gelpmpus64x5tax73kaqprsz2qy7km3w4z9fw4ypwmd2d3rqc9tl2f
+
+creation_rules:
+  - path_regex: sops-secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+          - *felix
+          - *server_tower

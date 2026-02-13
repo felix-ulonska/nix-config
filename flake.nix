@@ -15,10 +15,10 @@
     simple-nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver/nixos-25.11";
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    sops.url = "github:Mic92/sops-nix";
+    sops.inputs.nixpkgs.follows = "nixpkgs";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-
-    impermanence.url = "github:nix-community/impermanence";
 
     base16.url = "github:SenchoPens/base16.nix/def69d6edc32792562975aec863dbef757f832cf";
     disko.url = "github:nix-community/disko/c1cfbfad7cb45f0c177b35b59ba67d1b5fc7ca82";
@@ -78,7 +78,6 @@
       home-manager,
       base16,
       nur,
-      impermanence,
       flake-utils,
       stylix,
       background,
@@ -101,6 +100,8 @@
         }
       );
       modulesList = lib.flatten [
+        inputs.authentik-nix.nixosModules.default
+        inputs.sops.nixosModules.sops
         agenix.nixosModules.default
         simple-nixos-mailserver.nixosModule
         base16.nixosModule
@@ -180,7 +181,7 @@
             };
           };
           "tower" = {
-            hostname = "alfred.webfoo.de";
+            hostname = "tower.webfoo.de";
             sshUser = "root";
             profiles.system = {
               user = "root";
@@ -225,9 +226,11 @@
         pkgs = nixpkgs.legacyPackages.${system};
       in
       {
-
         devShells.default = pkgs.mkShell {
-          buildInputs = [ agenix.packages.x86_64-linux.default ];
+          buildInputs = with pkgs; [
+            agenix.packages.x86_64-linux.default
+            sops
+          ];
         };
       }
     );

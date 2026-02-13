@@ -47,10 +47,6 @@ in
       type = lib.types.bool;
       default = false;
     };
-    impermanence = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
     userName = lib.mkOption {
       type = lib.types.str;
       default = "jabbi";

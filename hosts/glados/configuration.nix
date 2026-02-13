@@ -5,6 +5,7 @@
 }:
 {
   imports = [ ./hardware-configuration.nix ];
+  sops.defaultSopsFile = ../../sops-secrets/authentik.yaml;
 
   nixpkgs.config.allowUnfree = true;
   services.desktopManager.cosmic.enable = true;
