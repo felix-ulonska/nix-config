@@ -106,7 +106,7 @@
         simple-nixos-mailserver.nixosModule
         base16.nixosModule
         {
-          scheme = "${inputs.theme}/darcula.yaml";
+          scheme = "${inputs.theme}/heetch-light.yaml";
         }
         home-manager.nixosModules.home-manager
         stylix.nixosModules.stylix

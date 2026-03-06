@@ -96,6 +96,7 @@
     dig
     htop
     steam-run
+    vagrant
 
     xdg-desktop-portal-gnome
     xdg-desktop-portal-gtk
