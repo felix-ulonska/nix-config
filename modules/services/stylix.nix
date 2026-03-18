@@ -10,7 +10,7 @@
   stylix.opacity.applications = 1.0;
   #stylix.image = backgroundImg; # inputs.background.outPath;
   stylix.image = config.lib.stylix.pixel "base00";
-  stylix.base16Scheme = "${inputs.theme}/heetch-light.yaml";
+  stylix.base16Scheme = "${inputs.theme}/atelier-cave-light.yaml";
   #stylix.targets.hyprland.enable = true;
   stylix.polarity = "light";
   stylix.fonts.monospace = {
