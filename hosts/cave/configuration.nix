@@ -1,9 +1,9 @@
-{ pkgs, ... }: {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+{ pkgs, ... }:
+{
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -37,6 +37,7 @@
   ];
 
   environment.systemPackages = with pkgs; [
+    nextcloud-client
     ecryptfs
     firefox
     thunderbird
@@ -66,7 +67,14 @@
 
   users.users.jabbi = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "libvirtd" "adbusers" "scanner" "lp" ];
+    extraGroups = [
+      "wheel"
+      "audio"
+      "libvirtd"
+      "adbusers"
+      "scanner"
+      "lp"
+    ];
     hashedPassword = "$6$rejDSpuy6d$za9N7miMI/XHZNjZ6ib0IcaF511UdBn7QVwIV7MO1MTMO5yjVGwuvVT7kJlnTN165srbPd6rCJxtgdABTuEbj1";
   };
   users.users."root".openssh.authorizedKeys.keys = [
@@ -98,11 +106,13 @@
 
     comin = {
       enable = true;
-      remotes = [{
-        name = "origin";
-        url = "https://github.com/felix-ulonska/nix-config.git";
-        branches.main.name = "main";
-      }];
+      remotes = [
+        {
+          name = "origin";
+          url = "https://github.com/felix-ulonska/nix-config.git";
+          branches.main.name = "main";
+        }
+      ];
     };
   };
 
