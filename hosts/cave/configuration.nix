@@ -30,6 +30,10 @@
     openDefaultPorts = true; # Open ports in the firewall for Syncthing
   };
 
+  networking.nameservers = [
+    "9.9.9.9"
+  ];
+
   time.timeZone = "Europe/Amsterdam";
 
   services.printing.drivers = with pkgs; [
