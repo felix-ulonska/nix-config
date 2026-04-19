@@ -36,6 +36,11 @@
     gutenprint
   ];
 
+  networking.networkmanager.plugins = with pkgs; [
+    networkmanager-openconnect
+
+  ];
+
   environment.systemPackages = with pkgs; [
     nextcloud-client
     ecryptfs
@@ -48,7 +53,6 @@
     anki-bin
     hunspellDicts.de_DE
     openconnect
-    networkmanager-openconnect
 
     # kde
     kdePackages.discover # Optional: Install if you use Flatpak or fwupd firmware update sevice
